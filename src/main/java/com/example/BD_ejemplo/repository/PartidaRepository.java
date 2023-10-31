@@ -17,8 +17,8 @@ import com.example.BD_ejemplo.model.Partida;
 @Repository
 public interface PartidaRepository extends CrudRepository<Partida, Long> {
 	
-//	@Query("SELECT d FROM Direccion d WHERE d.usuario.id = ?1")
-//	List<Direccion> findDireccionesByUserId(Long userId);
+	@Query("SELECT p FROM Partida d WHERE p.usuario.id = ?1")
+	List<Partida> findPartidasByID(Long userId);
 	
 
 }
