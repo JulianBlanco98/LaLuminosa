@@ -8,7 +8,7 @@ public class main_prueba {
     	
     	Tablero t = new Tablero();
     	t.inicializarMatriz();
-    	
+    	System.out.println("PRUEBAS");
     	
     	System.out.println("MATRIZ POR VALOR");
     	t.imprimirValor();
