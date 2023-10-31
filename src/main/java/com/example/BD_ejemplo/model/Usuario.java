@@ -20,10 +20,6 @@ public class Usuario {
 	public int edad;
 	public String contra;
 	public long dinero;
-	
-	
-
-
 	@OneToMany (mappedBy = "usuario")
 	private List <Partida> partidas = new ArrayList<>();
 	
