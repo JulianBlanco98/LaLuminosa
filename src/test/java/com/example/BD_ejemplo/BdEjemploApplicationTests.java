@@ -97,7 +97,7 @@ class BdEjemploApplicationTests {
 		List<Partida> partidas = (List<Partida>) partidaRepository.findAll();
 		System.out.println("Número de partidas: "+partidas.size());
 		Iterator it2 = partidas.iterator();
-		while (it.hasNext()) {
+		while (it2.hasNext()) {
 			Partida aux = (Partida) it2.next();
 			System.out.println(aux.toString());
 		}
