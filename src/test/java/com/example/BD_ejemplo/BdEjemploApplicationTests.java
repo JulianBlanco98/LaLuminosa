@@ -8,7 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.example.BD_ejemplo.model.Partida;
 import com.example.BD_ejemplo.model.Usuario;
+import com.example.BD_ejemplo.repository.PartidaRepository;
 import com.example.BD_ejemplo.repository.UsuarioRepository;
 
 @SpringBootTest
@@ -17,7 +19,8 @@ class BdEjemploApplicationTests {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
-	
+	@Autowired
+	private PartidaRepository partidaRepository;
 
 	@Test
 	void contextLoads() {
@@ -50,13 +53,20 @@ class BdEjemploApplicationTests {
 		usuario2 = usuarioRepository.save(usuario2);
 		usuario3 = usuarioRepository.save(usuario3);
 
+		//Ver los usuarios en la base de datos
 		List<Usuario> usuarios = (List<Usuario>) usuarioRepository.findAll();
 		Iterator it = usuarios.iterator();
 		while (it.hasNext()) {
 			Usuario aux = (Usuario) it.next();
 			System.out.println(aux.toString());
-
 		}
+		
+		//3 partidas
+		Partida p1 = new Partida();
+		Partida p2 = new Partida();
+		Partida p3 = new Partida();
+		
+		
 
 	}
 
