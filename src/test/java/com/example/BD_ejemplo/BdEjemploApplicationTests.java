@@ -86,11 +86,26 @@ class BdEjemploApplicationTests {
 		
 		// Ver los usuarios en la base de datos
 		List<Usuario> usuarios = (List<Usuario>) usuarioRepository.findAll();
+		System.out.println("Número de usuarios: "+usuarios.size());
 		Iterator it = usuarios.iterator();
 		while (it.hasNext()) {
 			Usuario aux = (Usuario) it.next();
 			System.out.println(aux.toString());
 		}
+		
+		//Mostrar todas las partidas
+		List<Partida> partidas = (List<Partida>) partidaRepository.findAll();
+		System.out.println("Número de partidas: "+partidas.size());
+		Iterator it2 = partidas.iterator();
+		while (it.hasNext()) {
+			Partida aux = (Partida) it2.next();
+			System.out.println(aux.toString());
+		}
+		
+		//Mostrar las partidas por idUsuario
+		List<Partida> partidasUsuario1 = partidaRepository.findPartidasByID(usuario1.getIdUsuario());
+		System.out.println("Número de partidas de "+usuario1.getNombre()+" : "+partidasUsuario1.size());
+		System.out.println(partidasUsuario1.toString());
 
 	}
 
