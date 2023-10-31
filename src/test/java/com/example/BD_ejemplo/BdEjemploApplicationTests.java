@@ -48,25 +48,49 @@ class BdEjemploApplicationTests {
 		usuario2.setDinero(1000L);
 		usuario3.setDinero(1000L);
 
+		// 3 partidas
+		Partida p1 = new Partida();
+		Partida p2 = new Partida();
+		Partida p3 = new Partida();
+
+		// Rellenamos los datos de partidas: usuario1 tendrá 2 partidas, usuario2 tendrá
+		// 1 y usuario 3: 0
+		p1.setTiempo(3000L);
+		p2.setTiempo(4000L);
+		p3.setTiempo(500L);
+		p1.setVictoria(6);
+		p2.setVictoria(4);
+		p3.setVictoria(10);
+		p1.setDerrota(3);
+		p2.setDerrota(6);
+		p3.setDerrota(4);
+		p1.setProfit(35L);
+		p2.setProfit(-35L);
+		p3.setProfit(10L);
+
+		//Se añaden las partidas a los usuarios
+		usuario1.getPartidas().add(p1);
+		usuario1.getPartidas().add(p2);
+		usuario2.getPartidas().add(p3);
+
 		// Creamos los usuarios
 		usuario1 = usuarioRepository.save(usuario1);
 		usuario2 = usuarioRepository.save(usuario2);
 		usuario3 = usuarioRepository.save(usuario3);
-
-		//Ver los usuarios en la base de datos
+		
+		//Creamos las direcciones
+		p1=partidaRepository.save(p1);
+		p2=partidaRepository.save(p2);
+		p3=partidaRepository.save(p3);
+		
+		
+		// Ver los usuarios en la base de datos
 		List<Usuario> usuarios = (List<Usuario>) usuarioRepository.findAll();
 		Iterator it = usuarios.iterator();
 		while (it.hasNext()) {
 			Usuario aux = (Usuario) it.next();
 			System.out.println(aux.toString());
 		}
-		
-		//3 partidas
-		Partida p1 = new Partida();
-		Partida p2 = new Partida();
-		Partida p3 = new Partida();
-		
-		
 
 	}
 
