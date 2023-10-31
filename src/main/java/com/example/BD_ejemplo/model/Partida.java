@@ -85,6 +85,13 @@ public class Partida {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+	@Override
+	public String toString() {
+		return "Partida [idPartida=" + idPartida + ", tiempo=" + tiempo + ", victoria=" + victoria + ", derrota="
+				+ derrota + ", profit=" + profit + "]";
+	}
+	
 	
 	
 }

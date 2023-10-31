@@ -22,6 +22,8 @@ public class Usuario {
 	public long dinero;
 	
 	
+
+
 	@OneToMany (mappedBy = "usuario")
 	private List <Partida> partidas = new ArrayList<>();
 	
@@ -79,7 +81,11 @@ public class Usuario {
 		this.partidas = partidas;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Usuario [idUsuario=" + idUsuario + ", nombre=" + nombre + ", edad=" + edad + ", contra=" + contra
+				+ ", dinero=" + dinero + "]";
+	}
 	
 }
 
