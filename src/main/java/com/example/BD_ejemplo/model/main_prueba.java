@@ -24,5 +24,7 @@ public class main_prueba {
     	t.imprimirTipo();
     	
     	
+    	
+    	
 	}
 }

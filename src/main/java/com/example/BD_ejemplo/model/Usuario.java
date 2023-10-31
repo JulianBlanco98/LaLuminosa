@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 
-//@Entity
+@Entity
 public class Usuario {
 	
 	@Id
