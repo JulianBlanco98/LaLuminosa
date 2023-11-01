@@ -16,6 +16,6 @@ import com.example.BD_ejemplo.model.Partida;
 public interface FichaRepository extends CrudRepository<Ficha, Long> {
 	
 	@Query("SELECT f FROM Ficha f WHERE f.tirada.idTirada = ?1")
-	List<Partida> findFichasByTiradaId(Long tiradaId);
+	List<Ficha> findFichasByTiradaId(Long tiradaId);
 	
 }
