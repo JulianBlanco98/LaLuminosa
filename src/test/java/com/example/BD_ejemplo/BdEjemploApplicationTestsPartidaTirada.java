@@ -104,7 +104,14 @@ class BdEjemploApplicationTestsPartidaTirada {
 			System.out.println(aux.toString());
 		}
 		
-		
+		//Mostrar tiradas por id de Partida
+		List<Tirada> tiradasPartidas = tiradaRepository.findTiradasByPartidaId(p1.getIdPartida());
+		System.out.println("Número de tiradas de : "+tiradasPartidas.size());
+		Iterator it3 = tiradasPartidas.iterator();
+		while(it3.hasNext()) {
+			Tirada aux =(Tirada)it3.next();
+			System.out.println(aux.toString());
+		}
 		
 		
 
