@@ -11,9 +11,7 @@ public class Ficha {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private long idFicha;
 	private int valor;
-	
-	@ManyToOne
-	public Tirada tirada; 
+
 	
 	public Ficha(int valor) {
 		super();
@@ -27,13 +25,6 @@ public class Ficha {
 	public void setValor(int valor) {
 		this.valor = valor;
 	}
-
-	@Override
-	public String toString() {
-		return "Ficha [idFicha=" + idFicha + ", valor=" + valor + "]";
-	}
-	
-	
 	
 	
 

@@ -13,10 +13,7 @@ public class Tirada {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private long idTirada;
-	
-	@OneToMany (mappedBy = "tirada")
 	private List<Ficha> nFichas;
-	
 	private long apuesta;
 	private int ganado; //boolean
 	private long profit;
