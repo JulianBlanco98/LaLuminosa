@@ -1,10 +1,14 @@
 package com.example.BD_ejemplo.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Partida {
@@ -17,7 +21,11 @@ public class Partida {
 	public int derrota;
 	public long profit;
 	
-	@ManyToOne
+	@OneToMany (mappedBy = "partida")
+	private List <Tirada> tiradas = new ArrayList<>();
+
+	
+
 	public Usuario usuario;
 	
 	public Partida() {
@@ -85,7 +93,15 @@ public class Partida {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	public List<Tirada> getTiradas() {
+		return tiradas;
+	}
 
+	public void setTiradas(List<Tirada> tiradas) {
+		this.tiradas = tiradas;
+	}
+
+	@ManyToOne
 	@Override
 	public String toString() {
 		return "Partida [idPartida=" + idPartida + ", tiempo=" + tiempo + ", victoria=" + victoria + ", derrota="

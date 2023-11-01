@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -21,6 +22,9 @@ public class Tirada {
 	@OneToMany (mappedBy = "tirada")
 	private List<Ficha> nFichas;
 		
+	@ManyToOne
+	public Partida partida;
+	
 	public Tirada() {
 		nFichas= new LinkedList<>();
 		apuesta=0L;
@@ -64,6 +68,15 @@ public class Tirada {
 	}
 	public void setProfit(long profit) {
 		this.profit = profit;
+	}
+	
+
+	public Partida getPartida() {
+		return partida;
+	}
+
+	public void setPartida(Partida partida) {
+		this.partida = partida;
 	}
 
 	@Override
