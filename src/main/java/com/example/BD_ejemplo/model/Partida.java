@@ -24,8 +24,7 @@ public class Partida {
 	@OneToMany (mappedBy = "partida")
 	private List <Tirada> tiradas = new ArrayList<>();
 
-	
-
+	@ManyToOne
 	public Usuario usuario;
 	
 	public Partida() {
@@ -101,7 +100,7 @@ public class Partida {
 		this.tiradas = tiradas;
 	}
 
-	@ManyToOne
+	
 	@Override
 	public String toString() {
 		return "Partida [idPartida=" + idPartida + ", tiempo=" + tiempo + ", victoria=" + victoria + ", derrota="
