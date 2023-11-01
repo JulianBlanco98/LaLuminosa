@@ -27,6 +27,13 @@ public class Ficha {
 	public void setValor(int valor) {
 		this.valor = valor;
 	}
+
+	@Override
+	public String toString() {
+		return "Ficha [idFicha=" + idFicha + ", valor=" + valor + "]";
+	}
+	
+	
 	
 	
 

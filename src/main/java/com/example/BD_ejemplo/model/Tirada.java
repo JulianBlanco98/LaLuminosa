@@ -65,6 +65,12 @@ public class Tirada {
 	public void setProfit(long profit) {
 		this.profit = profit;
 	}
+
+	@Override
+	public String toString() {
+		return "Tirada [idTirada=" + idTirada + ", apuesta=" + apuesta + ", ganado=" + ganado + ", profit=" + profit
+				+ "]";
+	}
 	
 	
 	
