@@ -67,6 +67,11 @@ class BdEjemploApplicationTests {
 		p1.setProfit(35L);
 		p2.setProfit(-35L);
 		p3.setProfit(10L);
+		
+		//Se añaden usuarios a partidas
+		p1.setUsuario(usuario1);
+		p2.setUsuario(usuario1);
+		p3.setUsuario(usuario2);
 
 		//Se añaden las partidas a los usuarios
 		usuario1.getPartidas().add(p1);
