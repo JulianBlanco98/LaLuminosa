@@ -184,6 +184,15 @@ class BdEjemploApplicationTestsCompleto {
 			System.out.println(aux.toString());
 		}
 		
+		//Mostrar tiradas por id de Usuario
+		System.out.println("-----------TIRADA POR ID DE USUARIO----------");
+		List<Tirada> tiradasUsuario = tiradaRepository.findTiradasByUsuarioId(usuario3.getIdUsuario());
+		Iterator it6 = tiradasUsuario.iterator();
+		while(it6.hasNext()) {
+			Tirada aux =(Tirada)it6.next();
+			System.out.println(aux.toString());
+		}
+		
 	}
 
 }

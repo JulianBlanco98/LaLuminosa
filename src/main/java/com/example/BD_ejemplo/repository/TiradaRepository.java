@@ -18,5 +18,11 @@ public interface TiradaRepository extends CrudRepository<Tirada, Long> {
 	
 	@Query("SELECT t FROM Tirada t WHERE t.partida.idPartida = ?1")
 	List<Tirada> findTiradasByPartidaId(Long partidaId);
+	
+//	@Query("SELECT * FROM Tirada WHERE partida_id IN (SELECT idPartida FROM Partida WHERE usuario_id = :idUser)")
+//	List<Tirada> findTiradasByUserId(Long userId);
+	
+	@Query("SELECT t FROM Tirada t WHERE t.partida.usuario.idUsuario = ?1")
+    List<Tirada> findTiradasByUsuarioId(Long usuarioId);
 
 }
