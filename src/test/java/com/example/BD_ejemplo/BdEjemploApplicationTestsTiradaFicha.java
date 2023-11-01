@@ -110,6 +110,18 @@ class BdEjemploApplicationTestsTiradaFicha {
 			System.out.println(aux.toString());
 		}
 		
+		//Ver las tiradas en la base de datos
+		List<Tirada> listaTiradas = (List<Tirada>) tiradaRepository.findAll();
+		System.out.println("Número de tiradas: "+listaTiradas.size());
+		Iterator it2 = listaTiradas.iterator();
+		while(it2.hasNext()) {
+			Tirada aux = (Tirada)it2.next();
+			System.out.println(aux.toString());
+		}
+		
+		//Ver las fichas según la tirada usada
+		
+		
 		
 	}
 
