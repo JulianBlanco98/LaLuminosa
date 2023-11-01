@@ -6,13 +6,17 @@ import java.util.List;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 public class Tirada {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private long idTirada;
+	
+	@OneToMany (mappedBy = "tirada")
 	private List<Ficha> nFichas;
+	
 	private long apuesta;
 	private int ganado; //boolean
 	private long profit;
