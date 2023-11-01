@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.BD_ejemplo.model.Partida;
 import com.example.BD_ejemplo.model.Usuario;
+import com.example.BD_ejemplo.repository.FichaRepository;
 import com.example.BD_ejemplo.repository.PartidaRepository;
 import com.example.BD_ejemplo.repository.UsuarioRepository;
 
@@ -21,6 +22,9 @@ class BdEjemploApplicationTests {
 
 	@Autowired
 	private PartidaRepository partidaRepository;
+	
+	@Autowired
+	private FichaRepository fichaRepository;
 
 	@Test
 	void contextLoads() {
