@@ -112,9 +112,9 @@ class BdEjemploApplicationTests {
 		}
 		
 		//Mostrar las partidas por idUsuario
-		System.out.println("Id usuario1: "+usuario1.getIdUsuario());
-		List<Partida> partidasUsuario1 = partidaRepository.findPartidasByUserId(usuario1.getIdUsuario());
-		System.out.println("Número de partidas de "+usuario1.getNombre()+" : "+partidasUsuario1.size());
+		System.out.println("Id usuario1: "+usuario2.getIdUsuario());
+		List<Partida> partidasUsuario1 = partidaRepository.findPartidasByUserId(usuario2.getIdUsuario());
+		System.out.println("Número de partidas de "+usuario2.getNombre()+" : "+partidasUsuario1.size());
 		for (Partida partida : partidasUsuario1) {
 		    System.out.println(partida.toString());
 		}
