@@ -3,6 +3,7 @@ package com.example.BD_ejemplo.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,7 +21,7 @@ public class Usuario {
 	public int edad;
 	public String contra;
 	public long dinero;
-	@OneToMany (mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List <Partida> partidas = new ArrayList<>();
 	
 	public Usuario() {

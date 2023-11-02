@@ -112,6 +112,7 @@ class BdEjemploApplicationTests {
 		}
 		
 		//Mostrar las partidas por idUsuario
+		System.out.println("MOSTRAMOS PARTIDAS POR ID------------");
 		System.out.println("Id usuario1: "+usuario2.getIdUsuario());
 		List<Partida> partidasUsuario1 = partidaRepository.findPartidasByUserId(usuario2.getIdUsuario());
 		System.out.println("Número de partidas de "+usuario2.getNombre()+" : "+partidasUsuario1.size());
@@ -119,6 +120,25 @@ class BdEjemploApplicationTests {
 		    System.out.println(partida.toString());
 		}
 
+		System.out.println("------------BORRAMOS USUARIO 2-------------");
+		usuarioRepository.delete(usuario2);
+		//Mostrar las partidas por idUsuario
+		System.out.println("MOSTRAMOS PARTIDAS POR ID------------");
+		System.out.println("Id usuario1: "+usuario2.getIdUsuario());
+		List<Partida> partidasUsuario2 = partidaRepository.findPartidasByUserId(usuario2.getIdUsuario());
+		System.out.println("Número de partidas de "+usuario2.getNombre()+" : "+partidasUsuario2.size());
+		for (Partida partida : partidasUsuario2) {
+		    System.out.println(partida.toString());
+		}
+		
+		// Ver los usuarios en la base de datos
+		List<Usuario> usuarios2 = (List<Usuario>) usuarioRepository.findAll();
+		System.out.println("Número de usuarios: "+usuarios2.size());
+		Iterator it11 = usuarios2.iterator();
+		while (it11.hasNext()) {
+			Usuario aux = (Usuario) it11.next();
+			System.out.println(aux.toString());
+		}
 	}
 
 }
