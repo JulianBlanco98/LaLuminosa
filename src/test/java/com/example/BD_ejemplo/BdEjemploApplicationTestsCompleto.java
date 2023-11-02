@@ -193,6 +193,37 @@ class BdEjemploApplicationTestsCompleto {
 			System.out.println(aux.toString());
 		}
 		
+		usuarioRepository.delete(usuario1);
+		System.out.println("---------------BORRAMOS EL USUARIO 1------------");
+		// Ver los usuarios en la base de datos
+		System.out.println("---------USUARIOS--------");
+		List<Usuario> usuarios2 = (List<Usuario>) usuarioRepository.findAll();
+		System.out.println("Número de usuarios: "+usuarios2.size());
+		Iterator it1 = usuarios2.iterator();
+		while (it1.hasNext()) {
+			Usuario aux = (Usuario) it1.next();
+			System.out.println(aux.toString());
+		}
+		//Mostrar todas las partidas
+		System.out.println("--------PARTIDAS--------");
+		List<Partida> partidas2 = (List<Partida>) partidaRepository.findAll();
+		System.out.println("Número de partidas: "+partidas2.size());
+		Iterator it21 = partidas2.iterator();
+		while (it21.hasNext()) {
+			Partida aux = (Partida) it21.next();
+			System.out.println(aux.toString());
+		}
+	
+		//Ver las tiradas en la base de datos
+		System.out.println("-------TIRADAS-----------");
+		List<Tirada> listaTiradas2 = (List<Tirada>) tiradaRepository.findAll();
+		System.out.println("Número de tiradas: "+listaTiradas2.size());
+		Iterator it31 = listaTiradas2.iterator();
+		while(it31.hasNext()) {
+			Tirada aux = (Tirada)it31.next();
+			System.out.println(aux.toString());
+		}
+		
 	}
 
 }
