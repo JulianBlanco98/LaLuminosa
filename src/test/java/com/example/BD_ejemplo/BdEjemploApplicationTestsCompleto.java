@@ -224,6 +224,18 @@ class BdEjemploApplicationTestsCompleto {
 			System.out.println(aux.toString());
 		}
 		
+		//Ver las tiradas en la base de datos
+		System.out.println("---------MOSTRAMOS LAS FICHAS-----------");
+		//Ver las fichas en la base de datos
+		List<Ficha> listaFichas = (List<Ficha>) fichaRepository.findAll();
+		System.out.println("Número de fichas: "+listaFichas.size());
+		Iterator ite = listaFichas.iterator();
+		while(ite.hasNext()) {
+			Ficha aux = (Ficha)ite.next();
+			System.out.println(aux.toString());
+		}
+	
+		
 	}
 
 }
