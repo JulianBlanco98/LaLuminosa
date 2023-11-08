@@ -13,6 +13,7 @@ public class Celda {
 		espar=null;
 		tipo=0;
 	}
+	//
 	
 	public Celda(int valor, String color, boolean espar, int tipo) {
 		super();
