@@ -6,24 +6,21 @@ public class Celda {
 	private String color;
 	private Boolean espar; //true: par, false: impar
 	private int tipo; //0: es el 0 verde, 1: es número normal, 2: casilla de apuestas
-	private int apuesta; //x2: color, par/impar, x18: numero, x36: 0 verde
 	
 	public Celda() {
 		valor=0;
 		color="";
 		espar=null;
 		tipo=0;
-		apuesta=0;
 	}
 	//
 	
-	public Celda(int valor, String color, boolean espar, int tipo, int apuesta) {
+	public Celda(int valor, String color, boolean espar, int tipo) {
 		super();
 		this.valor = valor;
 		this.color = color;
 		this.espar = espar;
 		this.tipo = tipo;
-		this.apuesta=apuesta;
 	}
 	public int getValor() {
 		return valor;
@@ -50,13 +47,6 @@ public class Celda {
 		this.tipo = tipo;
 	}
 
-	public int getApuesta() {
-		return apuesta;
-	}
-
-	public void setApuesta(int apuesta) {
-		this.apuesta = apuesta;
-	}
 	
 	
 	

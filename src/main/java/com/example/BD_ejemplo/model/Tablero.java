@@ -55,31 +55,30 @@ public class Tablero {
 				} else {
 					tablero[i][j].setEspar(false);
 				}
-				tablero[i][j].setApuesta(18);
 			}
 
 		}
 
 		for (int j = 0; j < columna; j++) {
-			if(j == 3 || j == 4) { //celdas de apuesta impar
+			tablero[3][j] = new Celda();
+		}
+
+		for (int j = 0; j < columna; j++) {
+			if (j == 3 || j == 4) { // celdas de apuesta impar
 				tablero[3][j].setTipo(2);
-				tablero[3][j].setApuesta(2);
-				
+
 			}
-			if(j == 5 || j == 6) { //celdas de apuesta rojo
+			if (j == 5 || j == 6) { // celdas de apuesta rojo
 				tablero[3][j].setTipo(2);
-				tablero[3][j].setApuesta(2);
-				
+
 			}
-			if(j == 7 || j == 8) { //celdas de apuesta negro
+			if (j == 7 || j == 8) { // celdas de apuesta negro
 				tablero[3][j].setTipo(2);
-				tablero[3][j].setApuesta(2);
-				
+
 			}
-			if(j == 9 || j == 10) { //celdas de apuesta par
+			if (j == 9 || j == 10) { // celdas de apuesta par
 				tablero[3][j].setTipo(2);
-				tablero[3][j].setApuesta(2);
-				
+
 			}
 		}
 
@@ -96,27 +95,31 @@ public class Tablero {
 				color = "rojo";
 			}
 		}
-		
-		//Poner el valor de 0
+
+		// Poner el valor de 0
 		for (int i = 0; i < fila - 1; i++) {
 			tablero[i][0] = new Celda();
 			tablero[i][0].setValor(0);
 			tablero[i][0].setColor("verde");
 			tablero[i][0].setTipo(0);
-			tablero[i][0].setApuesta(36);
 		}
-		
-		//Resto de casillas: ponerlas a null
+
+		// Resto de casillas: ponerlas a null
 		tablero[3][0].setValor(-1);
 		tablero[3][0].setTipo(-1);
-		tablero[3][0].setApuesta(-1);
-		
-		
+		tablero[3][1].setValor(-1);
+		tablero[3][1].setTipo(-1);
+		tablero[3][2].setValor(-1);
+		tablero[3][2].setTipo(-1);
+		tablero[3][11].setValor(-1);
+		tablero[3][11].setTipo(-1);
+		tablero[3][12].setValor(-1);
+		tablero[3][12].setTipo(-1);
 
 	}
 
 	public void imprimirValor() {
-		for (int i = 0; i < fila - 1; i++) {
+		for (int i = 0; i < fila; i++) {
 			for (int j = 0; j < columna; j++) {
 				System.out.print("| " + tablero[i][j].getValor() + " | ");
 			}
@@ -125,7 +128,7 @@ public class Tablero {
 	}
 
 	public void imprimirColor() {
-		for (int i = 0; i < fila - 1; i++) {
+		for (int i = 0; i < fila; i++) {
 			for (int j = 0; j < columna; j++) {
 				System.out.print("| " + tablero[i][j].getColor() + " | ");
 			}
@@ -134,7 +137,7 @@ public class Tablero {
 	}
 
 	public void imprimirpParImopar() {
-		for (int i = 0; i < fila - 1; i++) {
+		for (int i = 0; i < fila; i++) {
 			for (int j = 0; j < columna; j++) {
 				try {
 					System.out.print("| " + tablero[i][j].isEspar() + " | ");
@@ -147,7 +150,7 @@ public class Tablero {
 	}
 
 	public void imprimirTipo() {
-		for (int i = 0; i < fila - 1; i++) {
+		for (int i = 0; i < fila; i++) {
 			for (int j = 0; j < columna; j++) {
 				System.out.print("| " + tablero[i][j].getTipo() + " | ");
 			}
