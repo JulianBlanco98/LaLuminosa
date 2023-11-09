@@ -28,6 +28,9 @@ public class Partida {
 	@ManyToOne
 	public Usuario usuario;
 	
+	//prueba
+	public Tablero tablero;
+	
 	public Partida() {
 		tiempo=0L;
 		victoria=0;
@@ -107,6 +110,18 @@ public class Partida {
 		return "Partida [idPartida=" + idPartida + ", tiempo=" + tiempo + ", victoria=" + victoria + ", derrota="
 				+ derrota + ", profit=" + profit + "]";
 	}
+	
+	/**
+	 * Calcular la apuesta según la ficha usada y donde la haya colocado el usuario.
+	 * @param ficha
+	 * @return
+	 */
+	/*
+	public double calcularTiradaUnica(Ficha ficha) {
+		
+		int valorFicha = ficha.getValor();
+		
+	}*/
 	
 	
 	

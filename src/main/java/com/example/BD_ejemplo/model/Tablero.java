@@ -148,6 +148,9 @@ public class Tablero {
 			System.out.println();
 		}
 	}
+	
+	
+	
 
 	public void imprimirTipo() {
 		for (int i = 0; i < fila; i++) {
