@@ -127,12 +127,14 @@ public class Partida {
 	 * @param ficha
 	 * @return
 	 */
-	/*
+	
 	public double calcularTiradaUnica(Ficha ficha) {
 		
 		int valorFicha = ficha.getValor();
 		
-	}*/
+		return 0L;
+		
+	}
 	
 	
 	
