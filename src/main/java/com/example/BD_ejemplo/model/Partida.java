@@ -36,6 +36,7 @@ public class Partida {
 		victoria=0;
 		derrota=0;
 		profit=0;
+		tablero = new Tablero();
 		
 	}
 
@@ -110,6 +111,16 @@ public class Partida {
 		return "Partida [idPartida=" + idPartida + ", tiempo=" + tiempo + ", victoria=" + victoria + ", derrota="
 				+ derrota + ", profit=" + profit + "]";
 	}
+
+	public Tablero getTablero() {
+		return tablero;
+	}
+
+	public void setTablero(Tablero tablero) {
+		this.tablero = tablero;
+	}
+	
+	
 	
 	/**
 	 * Calcular la apuesta según la ficha usada y donde la haya colocado el usuario.

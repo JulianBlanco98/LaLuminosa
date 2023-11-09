@@ -5,7 +5,8 @@ public class main_prueba {
 	
     public static void main(String[] args) {
 		
-    	
+    	/**
+    	//Pruebas de tablero: completadas
     	Tablero t = new Tablero();
     	t.inicializarMatriz();
     	System.out.println("PRUEBAS");
@@ -22,7 +23,11 @@ public class main_prueba {
     	System.out.println("--------------------------------------------------");
     	System.out.println("MATRIZ TIPO: 0(0 verde), 1(número), 2(apuestas)");
     	t.imprimirTipo();
+    	*/
     	
+    	//Prueba de una partida
+    	Partida p1 = new Partida();
+    	p1.getTablero().inicializarMatriz();
     	
     	
     	
