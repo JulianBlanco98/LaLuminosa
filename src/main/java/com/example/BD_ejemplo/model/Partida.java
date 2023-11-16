@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
 
 @Entity
 public class Partida {
@@ -29,6 +30,7 @@ public class Partida {
 	public Usuario usuario;
 	
 	//prueba
+	@Transient
 	public Tablero tablero;
 	
 	public Partida() {
@@ -112,13 +114,13 @@ public class Partida {
 				+ derrota + ", profit=" + profit + "]";
 	}
 
-	public Tablero getTablero() {
+	/*public Tablero getTablero() {
 		return tablero;
 	}
 
 	public void setTablero(Tablero tablero) {
 		this.tablero = tablero;
-	}
+	}*/
 	
 	
 	
