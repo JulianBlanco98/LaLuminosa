@@ -7,7 +7,19 @@
 <body>
 
 	<h1>Página de prueba para listar usuarios</h1>
-	<h2>Hay un total de: </h2>
+	<h2>Hay un total de: <span th:text="${#lists.size(usuarios)}"></span></h2>
+	
+	<ul>
+        <li th:each="usuario : ${usuarios}" th:text="${usuario.nombre}"></li>
+    </ul>
+    
+    <table>
+		<tr th:each="usuario : ${usuarios}">
+			<td th:text="${usuario.idUsuario}"></td>
+			<td th:text="${usuario.nombre}"></td>
+			<td th:text="${usuario.edad}"></td>
+		</tr>
+	</table>
 
 
 </body>

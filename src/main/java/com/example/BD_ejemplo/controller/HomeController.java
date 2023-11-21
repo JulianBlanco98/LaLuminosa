@@ -16,6 +16,14 @@ public class HomeController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
+	@GetMapping("/listarUsuarios")
+	public String ListarUsuario(Model model) {
+		
+		List<Usuario> usuarios = usuarioService.findUsuarios();
+		model.addAttribute("usuarios", usuarios);
+		
+		return "Usuario/listarUsuario";
+	}
 	@GetMapping("/")
 	public String holaPage(Model model) {
 		String texto ="Hola mundo en ejecución";
@@ -24,13 +32,5 @@ public class HomeController {
 		return "index";
 	}
 	
-	@GetMapping("/Usuario/listarUsuarios")
-	public String ListarUsuario(Model model) {
-		
-		List<Usuario> usuarios = usuarioService.findUsuarios();
-		model.addAttribute("usuarios", usuarios);
-		
-		return "listarUsuario";
-	}
 
 }
