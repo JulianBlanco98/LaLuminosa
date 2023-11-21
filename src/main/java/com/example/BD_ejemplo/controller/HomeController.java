@@ -14,5 +14,14 @@ public class HomeController {
 		
 		return "index";
 	}
+	
+	@GetMapping("/Usuario/listarUsuarios")
+	public String ListarUsuario(Model model) {
+		
+		List<Usuario> usuarios = 
+		
+		
+		return "listarUsuario";
+	}
 
 }
