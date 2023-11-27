@@ -49,6 +49,12 @@ public class main_prueba {
     	Ficha f_100 = new Ficha(100);
     	
     	p1.calcularTiradaUnica(f_5, 1, 4, usuario.getDinero());
+    	System.out.println("----------------------------------------------------");
+    	p1.calcularTiradaUnica(f_100, 3, 3, usuario.getDinero());
+    	System.out.println("----------------------------------------------------");
+    	System.out.println("MATRIZ CON LA FICHA COLOCADA");
+    	p1.getTablero().imprimirOcupadas();
+    	
     	
     	
     	

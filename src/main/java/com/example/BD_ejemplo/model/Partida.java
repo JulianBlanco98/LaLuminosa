@@ -141,7 +141,7 @@ public class Partida {
 		System.out.println("Saldo del jugador " + this.getUsuario().getNombre() + ": " + saldo);
 		
 		//Poner la celda de tablero en ocupada = true por la ficha que se va a juagr
-		
+		tablero.fichaEnCelda(fila, columna);
 
 		// Una vez obtenido el valor del tablero donde se ha colocado la ficha, hay que
 		// ver todas las posibidades

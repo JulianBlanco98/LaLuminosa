@@ -150,7 +150,14 @@ public class Tablero {
 		}
 	}
 	
-	
+	public void imprimirOcupadas() {
+		for (int i = 0; i < fila; i++) {
+			for (int j = 0; j < columna; j++) {
+				System.out.printf("| %-6b |", tablero[i][j].isOcupada());
+			}
+			System.out.println();
+		}
+	}
 	
 
 	public void imprimirTipo() {
