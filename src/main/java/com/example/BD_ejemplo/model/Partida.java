@@ -114,13 +114,13 @@ public class Partida {
 				+ derrota + ", profit=" + profit + "]";
 	}
 
-	/*public Tablero getTablero() {
+	public Tablero getTablero() {
 		return tablero;
 	}
 
 	public void setTablero(Tablero tablero) {
 		this.tablero = tablero;
-	}*/
+	}
 	
 	
 	

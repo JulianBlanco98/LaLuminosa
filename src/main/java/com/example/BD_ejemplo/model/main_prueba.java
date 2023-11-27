@@ -27,8 +27,8 @@ public class main_prueba {
     	
     	//Prueba de una partida
     	Partida p1 = new Partida();
-//    	p1.getTablero().inicializarMatriz();
-//    	p1.getTablero().imprimirValor();
+    	p1.getTablero().inicializarMatriz();
+    	p1.getTablero().imprimirValor();
     	
     	
     	
