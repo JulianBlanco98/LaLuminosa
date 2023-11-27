@@ -191,5 +191,12 @@ public class Tablero {
 		System.out.println("Fila: "+i+", Columna: "+j);
 		return this.tablero[i][j].getValor();
 	}
+	public int getTipoCeldaTablero(int i, int j) {
+		return this.tablero[i][j].getTipo();
+	}
+	public void fichaEnCelda(int i, int j) {
+		
+		this.tablero[i][j].setOcupada(true);
+	}
 
 }

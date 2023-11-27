@@ -16,30 +16,30 @@ import jakarta.persistence.Transient;
 public class Partida {
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idPartida;
 	public long tiempo;
 	public int victoria;
 	public int derrota;
 	public long profit;
-	
-    @OneToMany(mappedBy = "partida", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List <Tirada> tiradas = new ArrayList<>();
+
+	@OneToMany(mappedBy = "partida", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Tirada> tiradas = new ArrayList<>();
 
 	@ManyToOne
 	public Usuario usuario;
-	
-	//prueba
+
+	// prueba
 	@Transient
 	public Tablero tablero;
-	
+
 	public Partida() {
-		tiempo=0L;
-		victoria=0;
-		derrota=0;
-		profit=0;
+		tiempo = 0L;
+		victoria = 0;
+		derrota = 0;
+		profit = 0;
 		tablero = new Tablero();
-		
+
 	}
 
 	public Partida(long tiempo, int victoria, int derrota, long profit, Usuario usuario) {
@@ -83,7 +83,6 @@ public class Partida {
 		this.derrota = derrota;
 	}
 
-
 	public long getProfit() {
 		return profit;
 	}
@@ -99,6 +98,7 @@ public class Partida {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
 	public List<Tirada> getTiradas() {
 		return tiradas;
 	}
@@ -107,7 +107,6 @@ public class Partida {
 		this.tiradas = tiradas;
 	}
 
-	
 	@Override
 	public String toString() {
 		return "Partida [idPartida=" + idPartida + ", tiempo=" + tiempo + ", victoria=" + victoria + ", derrota="
@@ -121,41 +120,57 @@ public class Partida {
 	public void setTablero(Tablero tablero) {
 		this.tablero = tablero;
 	}
-	
-	
-	
+
 	/**
 	 * Calcular la apuesta según la ficha usada y donde la haya colocado el usuario.
-	 * @param ficha: ficha que pone en el tablero
-	 * @param fila: fila donde coloca la ficha
+	 * 
+	 * @param ficha:   ficha que pone en el tablero
+	 * @param fila:    fila donde coloca la ficha
 	 * @param columna: columna donde coloca la ficha
 	 * @return
 	 */
-	
-	public double calcularTiradaUnica(Ficha ficha, int fila, int columna) {
-		
-		int valorFicha = ficha.getValor();		
-		System.out.println("Valor de la ficha: "+valorFicha);
+
+	public double calcularTiradaUnica(Ficha ficha, int fila, int columna, long saldo) {
+
+		int valorFicha = ficha.getValor();
 		int valorTablero = tablero.getValorTablero(fila, columna);
-		System.out.println("Valor de la posición de la ficha en el tablero: "+valorTablero);
+		long profitSaldo = 0L;
+		int tipoCelda = tablero.getTipoCeldaTablero(fila, columna);
+		System.out.println("Valor de la ficha: " + valorFicha);
+		System.out.println("Valor de la posición de la ficha en el tablero: " + valorTablero);
+		System.out.println("Saldo del jugador " + this.getUsuario().getNombre() + ": " + saldo);
 		
+		//Poner la celda de tablero en ocupada = true por la ficha que se va a juagr
 		
-		//Una vez obtenido el valor del tablero donde se ha colocado la ficha, hay que ver todas las posibidades
-		
-		
-		return 0L;
-		
+
+		// Una vez obtenido el valor del tablero donde se ha colocado la ficha, hay que
+		// ver todas las posibidades
+
+		System.out.println("\n-->Tipo de casilla a apostar: " + tipoCelda);
+		profitSaldo = actualizarSaldo(saldo, tipoCelda, valorFicha);
+		System.out.println("Ganacias previstas: "+profitSaldo);
+
+		return profitSaldo;
+
 	}
+
 	/**
 	 * Método para calcular el saldo nuevo
+	 * 
 	 * @return
 	 */
-	public long actualizarSaldo() {
-		
-		return 0L;
+	public long actualizarSaldo(long saldo, int tipo, int apuesta) {
+
+		int multiplicador = 0;
+		int ganancias = 0;
+		if(tipo == 0 || tipo == 1) {
+			multiplicador = 36;
+		}
+		else {
+			multiplicador = 2;
+		}
+		ganancias = apuesta * multiplicador;
+		return (saldo + ganancias);
 	}
-	
-	
-	
-	
+
 }

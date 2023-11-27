@@ -35,6 +35,8 @@ public class main_prueba {
     	Partida p1 = new Partida();
     	p1.getTablero().inicializarMatriz();
     	p1.getTablero().imprimirValor();
+    	System.out.println("----------------------------------------------------");
+    	p1.getTablero().imprimirTipo();
     	
     	//Añadir usuario (en memoria)
     	p1.setUsuario(usuario);
@@ -46,7 +48,7 @@ public class main_prueba {
     	Ficha f_50 = new Ficha(50);
     	Ficha f_100 = new Ficha(100);
     	
-    	p1.calcularTiradaUnica(f_5, 1, 4);
+    	p1.calcularTiradaUnica(f_5, 1, 4, usuario.getDinero());
     	
     	
     	
