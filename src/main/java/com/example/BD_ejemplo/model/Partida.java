@@ -126,13 +126,18 @@ public class Partida {
 	
 	/**
 	 * Calcular la apuesta según la ficha usada y donde la haya colocado el usuario.
-	 * @param ficha
+	 * @param ficha: ficha que pone en el tablero
+	 * @param fila: fila donde coloca la ficha
+	 * @param columna: columna donde coloca la ficha
 	 * @return
 	 */
 	
-	public double calcularTiradaUnica(Ficha ficha) {
+	public double calcularTiradaUnica(Ficha ficha, int fila, int columna) {
 		
-		int valorFicha = ficha.getValor();
+		int valorFicha = ficha.getValor();		
+		System.out.println("Valor de la ficha: "+valorFicha);
+		int valorTablero = tablero.getValorTablero(fila, columna);
+		System.out.println("Valor de la posición de la ficha en el tablero: "+valorTablero);
 		
 		return 0L;
 		
@@ -145,6 +150,7 @@ public class Partida {
 		
 		return 0L;
 	}
+	
 	
 	
 	

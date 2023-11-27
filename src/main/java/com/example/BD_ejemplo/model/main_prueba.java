@@ -37,7 +37,7 @@ public class main_prueba {
     	Ficha f_50 = new Ficha(50);
     	Ficha f_100 = new Ficha(100);
     	
-    	p1.calcularTiradaUnica(f_5);
+    	p1.calcularTiradaUnica(f_5, 1, 4);
     	
     	
     	

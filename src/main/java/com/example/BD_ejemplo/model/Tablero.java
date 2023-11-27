@@ -121,7 +121,8 @@ public class Tablero {
 	public void imprimirValor() {
 		for (int i = 0; i < fila; i++) {
 			for (int j = 0; j < columna; j++) {
-				System.out.print("| " + tablero[i][j].getValor() + " | ");
+//				System.out.print("| " + tablero[i][j].getValor() + " | ");
+				System.out.printf("| %2d |", tablero[i][j].getValor());
 			}
 			System.out.println();
 		}
@@ -181,6 +182,14 @@ public class Tablero {
 
 	public void setColumna(int columna) {
 		this.columna = columna;
+	}
+	public int getValorTablero(int i, int j) {
+		
+//		int valor = 0;
+//		valor = this.tablero[i][j].getValor();
+//		return valor;
+		System.out.println("Fila: "+i+", Columna: "+j);
+		return this.tablero[i][j].getValor();
 	}
 
 }
