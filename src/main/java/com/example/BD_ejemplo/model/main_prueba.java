@@ -48,15 +48,27 @@ public class main_prueba {
     	Ficha f_50 = new Ficha(50);
     	Ficha f_100 = new Ficha(100);
     	
-    	p1.calcularTiradaUnica(f_5, 1, 4, usuario.getDinero());
+    	//Primera tirada
+    	Tirada t1 = new Tirada();
+    	t1.addFichas(f_5);
+    	t1.addFichas(f_10);
+    	t1.addFichas(f_20);
+    	t1.addFichas(f_50);
+    	t1.addFichas(f_100);
+    	
+    	//hay que ver esto, porque el atributo apuesta lo veo raro
+    	//en este caso, vamos a hacer un movimiento con una ficha de 5 a un número
+    	t1.setApuesta(f_5.getValor());
+    	long profitTemporal = 0L;
+    	profitTemporal = p1.calcularTiradaUnica(t1.getnFichas().get(0), 1, 4, usuario.getDinero());
+    	t1.setProfit(profitTemporal - usuario.getDinero());
+    	System.out.println("PROFIT DE LA TIRADA: "+t1.getProfit());
     	System.out.println("----------------------------------------------------");
-    	p1.calcularTiradaUnica(f_100, 3, 3, usuario.getDinero());
-    	System.out.println("----------------------------------------------------");
+//    	p1.calcularTiradaUnica(f_100, 3, 3, usuario.getDinero());
+//    	System.out.println("----------------------------------------------------");
     	System.out.println("MATRIZ CON LA FICHA COLOCADA");
     	p1.getTablero().imprimirOcupadas();
-    	
-    	
-    	
+    	    	
     	
 	}
 }

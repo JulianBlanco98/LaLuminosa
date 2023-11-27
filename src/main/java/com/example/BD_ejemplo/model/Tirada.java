@@ -84,6 +84,14 @@ public class Tirada {
 		return "Tirada [idTirada=" + idTirada + ", apuesta=" + apuesta + ", ganado=" + ganado + ", profit=" + profit
 				+ "]";
 	}
+	/**
+	 * Método para agregar las fichas a tiradas
+	 * @param ficha
+	 * @return
+	 */
+	public boolean addFichas(Ficha ficha) {
+		return nFichas.add(ficha);
+	}
 	
 	
 	
