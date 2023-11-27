@@ -6,12 +6,14 @@ public class Celda {
 	private String color;
 	private Boolean espar; //true: par, false: impar
 	private int tipo; //0: es el 0 verde, 1: es número normal, 2: casilla de apuestas
+	private boolean ocupada; //boolean para ver la casilla donde se va a poner la ficha
 	
 	public Celda() {
 		valor=0;
 		color="";
 		espar=null;
 		tipo=0;
+		ocupada=false;
 	}
 	//
 	
@@ -47,6 +49,14 @@ public class Celda {
 		this.tipo = tipo;
 	}
 
+	public boolean isOcupada() {
+		return ocupada;
+	}
+
+	public void setOcupada(boolean ocupada) {
+		this.ocupada = ocupada;
+	}
+	
 	
 	
 	

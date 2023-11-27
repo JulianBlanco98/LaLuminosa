@@ -21,8 +21,10 @@ public class Ficha {
 		valor=0;
 	}
 	
-	
-
+	public Ficha(int valor) {
+		super();
+		this.valor = valor;
+	}
 	
 	public long getIdFicha() {
 		return idFicha;
@@ -49,13 +51,6 @@ public class Ficha {
 		this.tirada = tirada;
 	}
 
-
-
-
-	public Ficha(int valor) {
-		super();
-		this.valor = valor;
-	}
 
 	public int getValor() {
 		return valor;

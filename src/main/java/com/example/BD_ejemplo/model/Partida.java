@@ -137,6 +137,14 @@ public class Partida {
 		return 0L;
 		
 	}
+	/**
+	 * Método para calcular el saldo nuevo
+	 * @return
+	 */
+	public long actualizarSaldo() {
+		
+		return 0L;
+	}
 	
 	
 	
