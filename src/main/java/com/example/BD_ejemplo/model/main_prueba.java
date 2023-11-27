@@ -25,10 +25,19 @@ public class main_prueba {
     	t.imprimirTipo();
     	*/
     	
+    	//Usuario que va a jugar la partida
+    	Usuario usuario = new Usuario();
+    	usuario.setNombre("JuanDeDios");
+    	usuario.setEdad(50);
+    	usuario.setContra("contra1234");
+    	usuario.setDinero(100L);
     	//Prueba de una partida
     	Partida p1 = new Partida();
     	p1.getTablero().inicializarMatriz();
     	p1.getTablero().imprimirValor();
+    	
+    	//Añadir usuario (en memoria)
+    	p1.setUsuario(usuario);
     	
     	//Fichas para apostar
     	Ficha f_5 = new Ficha(5);

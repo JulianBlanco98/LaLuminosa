@@ -25,9 +25,7 @@ public class Usuario {
 	private List <Partida> partidas = new ArrayList<>();
 	
 	public Usuario() {
-		
-		
-		
+				
 	}
 
 	public long getIdUsuario() {

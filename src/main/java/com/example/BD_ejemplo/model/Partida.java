@@ -139,6 +139,10 @@ public class Partida {
 		int valorTablero = tablero.getValorTablero(fila, columna);
 		System.out.println("Valor de la posición de la ficha en el tablero: "+valorTablero);
 		
+		
+		//Una vez obtenido el valor del tablero donde se ha colocado la ficha, hay que ver todas las posibidades
+		
+		
 		return 0L;
 		
 	}
