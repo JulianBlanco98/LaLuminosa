@@ -77,7 +77,11 @@ public class main_prueba {
     	System.out.println("NÚMERO RULETA: "+numeroRuleta);
     	Celda numRuleta = null;
     	numRuleta = p1.getTablero().getCeldaNumero(numeroRuleta);
-    	System.out.println(numRuleta.toString());
+    	System.out.println("Casilla del número de la ruleta: "+numRuleta.toString());
+    	Celda apuesta = null;
+    	apuesta = p1.getTablero().getCeldaFilaColumna(1, 4);
+    	System.out.println("Casilla de la apuesta:           "+apuesta.toString());
+    	
     	    	
     	
 	}

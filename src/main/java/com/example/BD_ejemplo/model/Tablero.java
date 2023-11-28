@@ -216,5 +216,8 @@ public class Tablero {
 		}
 		return aux;
 	}
+	public Celda getCeldaFilaColumna(int i, int j) {
+		return tablero[i][j];
+	}
 
 }
