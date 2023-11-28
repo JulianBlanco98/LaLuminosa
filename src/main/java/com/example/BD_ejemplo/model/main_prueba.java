@@ -68,6 +68,11 @@ public class main_prueba {
 //    	System.out.println("----------------------------------------------------");
     	System.out.println("MATRIZ CON LA FICHA COLOCADA");
     	p1.getTablero().imprimirOcupadas();
+    	
+    	//Se va a jugar: número aleatorio.
+    	//En este caso, el número 8 va a salir
+    	int numeroRuleta = 8;
+    	
     	    	
     	
 	}

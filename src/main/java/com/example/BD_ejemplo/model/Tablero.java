@@ -69,11 +69,11 @@ public class Tablero {
 
 			}
 			if (j == 5 || j == 6) { // celdas de apuesta rojo
-				tablero[3][j].setTipo(2);
+				tablero[3][j].setTipo(3);
 
 			}
 			if (j == 7 || j == 8) { // celdas de apuesta negro
-				tablero[3][j].setTipo(2);
+				tablero[3][j].setTipo(3);
 
 			}
 			if (j == 9 || j == 10) { // celdas de apuesta par
