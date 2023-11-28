@@ -205,5 +205,16 @@ public class Tablero {
 		
 		this.tablero[i][j].setOcupada(true);
 	}
+	public Celda getCeldaNumero(int numero) {
+		Celda aux = null;
+		for(int i=0;i<fila;i++) {
+			for(int j=0;j<(columna-1);j++) { //recorrer solo las filas de números
+				if(tablero[i][j].getValor() == numero) {
+					aux = tablero[i][j];
+				}
+			}
+		}
+		return aux;
+	}
 
 }

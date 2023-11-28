@@ -71,8 +71,13 @@ public class main_prueba {
     	
     	//Se va a jugar: número aleatorio.
     	//En este caso, el número 8 va a salir
+    	System.out.println("----------------------------------------------------");
+    	System.out.println("SE TIRA DE LA RULETA...");
     	int numeroRuleta = 8;
-    	
+    	System.out.println("NÚMERO RULETA: "+numeroRuleta);
+    	Celda numRuleta = null;
+    	numRuleta = p1.getTablero().getCeldaNumero(numeroRuleta);
+    	System.out.println(numRuleta.toString());
     	    	
     	
 	}

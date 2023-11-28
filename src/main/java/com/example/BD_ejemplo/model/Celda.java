@@ -56,6 +56,13 @@ public class Celda {
 	public void setOcupada(boolean ocupada) {
 		this.ocupada = ocupada;
 	}
+
+	@Override
+	public String toString() {
+		return "Celda [valor=" + valor + ", color=" + color + ", espar=" + espar + ", tipo=" + tipo + ", ocupada="
+				+ ocupada + "]";
+	}
+	
 	
 	
 	
