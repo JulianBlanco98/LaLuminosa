@@ -66,18 +66,23 @@ public class Tablero {
 		for (int j = 0; j < columna; j++) {
 			if (j == 3 || j == 4) { // celdas de apuesta impar
 				tablero[3][j].setTipo(2);
+				tablero[3][j].setEspar(false);
 
 			}
 			if (j == 5 || j == 6) { // celdas de apuesta rojo
 				tablero[3][j].setTipo(3);
+				tablero[3][j].setColor("rojo");
+				
 
 			}
 			if (j == 7 || j == 8) { // celdas de apuesta negro
 				tablero[3][j].setTipo(3);
+				tablero[3][j].setColor("negro");
 
 			}
 			if (j == 9 || j == 10) { // celdas de apuesta par
 				tablero[3][j].setTipo(2);
+				tablero[3][j].setEspar(true);
 
 			}
 		}

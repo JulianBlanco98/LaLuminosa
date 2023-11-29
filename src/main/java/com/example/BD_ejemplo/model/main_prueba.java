@@ -37,6 +37,8 @@ public class main_prueba {
     	p1.getTablero().imprimirValor();
     	System.out.println("----------------------------------------------------");
     	p1.getTablero().imprimirTipo();
+    	p1.getTablero().imprimirpParImopar();
+    	p1.getTablero().imprimirColor();
     	
     	//Añadir usuario (en memoria)
     	p1.setUsuario(usuario);
