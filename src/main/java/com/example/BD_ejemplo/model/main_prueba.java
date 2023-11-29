@@ -62,12 +62,14 @@ public class main_prueba {
     	//en este caso, vamos a hacer un movimiento con una ficha de 5 a un número
     	t1.setApuesta(f_5.getValor());
     	long profitTemporal = 0L;
-    	profitTemporal = p1.calcularTiradaUnica(t1.getnFichas().get(0), 3, 8, usuario.getDinero());
-    	t1.setProfit(profitTemporal - usuario.getDinero());
+    	Celda profit_aux = null;
+    	profit_aux = p1.getTablero().getCeldaFilaColumna(2, 8);
+    	
+    	
+    	
+    	p1.actualizarProfitTirada(f_5, t1, profit_aux);
     	System.out.println("PROFIT DE LA TIRADA: "+t1.getProfit());
     	System.out.println("----------------------------------------------------");
-//    	p1.calcularTiradaUnica(f_100, 3, 3, usuario.getDinero());
-//    	System.out.println("----------------------------------------------------");
     	System.out.println("MATRIZ CON LA FICHA COLOCADA");
     	p1.getTablero().imprimirOcupadas();
     	

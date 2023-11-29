@@ -130,7 +130,7 @@ public class Partida {
 	 * @return
 	 */
 
-	public long calcularTiradaUnica(Ficha ficha, int fila, int columna, long saldo) {
+	/*public long calcularTiradaUnica(Ficha ficha, int fila, int columna, long saldo) {
 
 		int valorFicha = ficha.getValor();
 		int valorTablero = tablero.getValorTablero(fila, columna);
@@ -148,30 +148,23 @@ public class Partida {
 
 		System.out.println("\n-->Tipo de casilla a apostar: " + tipoCelda);
 		profitSaldo = actualizarSaldoTemporal(saldo, tipoCelda, valorFicha);
-		System.out.println("Saldo previsto: "+profitSaldo);
+		System.out.println("Saldo previsto: "+(profitSaldo-ficha.getValor()));
 
 		return profitSaldo;
 
-	}
+	}*/
 
-	/**
-	 * Método para calcular el saldo nuevo
-	 * 
-	 * @return
-	 */
-	public long actualizarSaldoTemporal(long saldo, int tipo, int apuesta) {
-
-		int multiplicador = 0;
-		int ganancias = 0;
-		if(tipo == 0 || tipo == 1) {
-			multiplicador = 36;
+	public void actualizarProfitTirada(Ficha ficha, Tirada t, Celda apuesta) {
+		
+		if(apuesta.getTipo() == 0 || apuesta.getTipo() == 1) {
+			t.setProfit(ficha.getValor() * 36);
 		}
 		else {
-			multiplicador = 2;
+			t.setProfit(ficha.getValor() * 2);
 		}
-		ganancias = apuesta * multiplicador;
-		return (saldo + ganancias);
 	}
+	
+	
 	public void comprobarTiradas(Tirada tirada) {
 		
 		//Número aleatorio de la ruleta. Prueba de que se acierta un número
