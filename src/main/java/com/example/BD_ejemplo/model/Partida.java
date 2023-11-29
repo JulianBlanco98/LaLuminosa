@@ -180,6 +180,12 @@ public class Partida {
 		tirada.getnFichas().get(0);
 	}
 	
+	public long restarSaldoApuesta(long apuesta, long saldo) {
+		
+		return saldo - apuesta;
+		
+	}
+	
 	public boolean comprobarApuesta(Celda ganadora, Celda jugador, long saldo) {
 		
 		//Si el jugador apuesta a un numero

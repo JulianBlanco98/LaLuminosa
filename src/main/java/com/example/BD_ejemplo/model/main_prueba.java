@@ -75,14 +75,18 @@ public class main_prueba {
     	//En este caso, el número 8 va a salir
     	System.out.println("----------------------------------------------------");
     	System.out.println("SE TIRA DE LA RULETA...");
+    	p1.getUsuario().setDinero(p1.restarSaldoApuesta(t1.getApuesta(), p1.getUsuario().getDinero()));
+    	
     	int numeroRuleta = 8;
     	System.out.println("NÚMERO RULETA: "+numeroRuleta);
     	Celda numRuleta = null;
     	numRuleta = p1.getTablero().getCeldaNumero(numeroRuleta);
     	System.out.println("Casilla del número de la ruleta: "+numRuleta.toString());
     	Celda apuesta = null;
-    	apuesta = p1.getTablero().getCeldaFilaColumna(3, 9);
+    	apuesta = p1.getTablero().getCeldaFilaColumna(3, 8);
     	System.out.println("Casilla de la apuesta:           "+apuesta.toString());
+    	
+    	System.out.println("Saldo del jugador: "+p1.getUsuario().getDinero());
     	
     	if(p1.comprobarApuesta(numRuleta, apuesta, p1.getUsuario().getDinero())) {
     		System.out.println("GANA");
