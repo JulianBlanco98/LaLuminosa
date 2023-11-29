@@ -79,8 +79,14 @@ public class main_prueba {
     	numRuleta = p1.getTablero().getCeldaNumero(numeroRuleta);
     	System.out.println("Casilla del número de la ruleta: "+numRuleta.toString());
     	Celda apuesta = null;
-    	apuesta = p1.getTablero().getCeldaFilaColumna(1, 4);
+    	apuesta = p1.getTablero().getCeldaFilaColumna(3, 9);
     	System.out.println("Casilla de la apuesta:           "+apuesta.toString());
+    	
+    	if(p1.comprobarApuesta(numRuleta, apuesta, p1.getUsuario().getDinero())) {
+    		System.out.println("GANA");
+    	}else {
+    		System.out.println("PIERDE");
+    	}
     	
     	    	
     	
