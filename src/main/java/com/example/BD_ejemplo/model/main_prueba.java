@@ -62,7 +62,7 @@ public class main_prueba {
     	//en este caso, vamos a hacer un movimiento con una ficha de 5 a un número
     	t1.setApuesta(f_5.getValor());
     	long profitTemporal = 0L;
-    	profitTemporal = p1.calcularTiradaUnica(t1.getnFichas().get(0), 1, 4, usuario.getDinero());
+    	profitTemporal = p1.calcularTiradaUnica(t1.getnFichas().get(0), 3, 8, usuario.getDinero());
     	t1.setProfit(profitTemporal - usuario.getDinero());
     	System.out.println("PROFIT DE LA TIRADA: "+t1.getProfit());
     	System.out.println("----------------------------------------------------");
@@ -75,8 +75,7 @@ public class main_prueba {
     	//En este caso, el número 8 va a salir
     	System.out.println("----------------------------------------------------");
     	System.out.println("SE TIRA DE LA RULETA...");
-    	p1.getUsuario().setDinero(p1.restarSaldoApuesta(t1.getApuesta(), p1.getUsuario().getDinero()));
-    	
+    	p1.restarSaldoApuesta(usuario, t1);
     	int numeroRuleta = 8;
     	System.out.println("NÚMERO RULETA: "+numeroRuleta);
     	Celda numRuleta = null;
@@ -88,13 +87,14 @@ public class main_prueba {
     	
     	System.out.println("Saldo del jugador: "+p1.getUsuario().getDinero());
     	
-    	if(p1.comprobarApuesta(numRuleta, apuesta, p1.getUsuario().getDinero())) {
+    	if(p1.comprobarApuesta(numRuleta, apuesta, usuario, t1)) {
     		System.out.println("GANA");
     	}else {
     		System.out.println("PIERDE");
     	}
     	
-    	    	
+
+    	System.out.println("Saldo FINAL: "+p1.getUsuario().getDinero());	
     	
 	}
 }

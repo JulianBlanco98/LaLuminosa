@@ -180,19 +180,20 @@ public class Partida {
 		tirada.getnFichas().get(0);
 	}
 	
-	public long restarSaldoApuesta(long apuesta, long saldo) {		
-		return saldo - apuesta;		
+	public void restarSaldoApuesta(Usuario j1, Tirada t) {		
+		j1.setDinero(j1.getDinero()-t.getApuesta());	
 	}
 	
 	public long actualizarSaldoJugador(long apuesta, int multi) {
 		return apuesta * multi;
 	}
 	
-	public boolean comprobarApuesta(Celda ganadora, Celda jugador, long saldo) {
+	public boolean comprobarApuesta(Celda ganadora, Celda jugador, Usuario j1, Tirada t) {
 		
 		//Si el jugador apuesta a un numero
 		if(jugador.getTipo()==0 || jugador.getTipo()==1) {
 			if(ganadora.getValor()==jugador.getValor()) {
+				j1.setDinero(j1.getDinero()+ actualizarSaldoJugador(t.getApuesta(), 36));
 				return true;
 			}else {
 				return false;
@@ -200,6 +201,8 @@ public class Partida {
 			//Si el jugador apuesa a Par/Impar
 		}else if(jugador.getTipo()==2) {
 			if(ganadora.isEspar()==jugador.isEspar()) {
+				j1.setDinero(j1.getDinero()+ actualizarSaldoJugador(t.getApuesta(), 2));
+
 				return true;
 			}else {
 				return false;
@@ -207,6 +210,7 @@ public class Partida {
 			//Si el jugador apuesta a Rojo/Negroe
 		}else if(jugador.getTipo()==3) {
 			if(ganadora.getColor()==jugador.getColor()) {
+				j1.setDinero(j1.getDinero()+ actualizarSaldoJugador(t.getApuesta(), 2));
 				return true;
 			}else {
 				return false;
