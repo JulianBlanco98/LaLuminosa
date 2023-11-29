@@ -181,6 +181,7 @@ public class Partida {
 		return apuesta * multi;
 	}
 	
+	
 	public boolean comprobarApuesta(Celda ganadora, Celda jugador, Usuario j1, Tirada t) {
 		
 		//Si el jugador apuesta a un numero

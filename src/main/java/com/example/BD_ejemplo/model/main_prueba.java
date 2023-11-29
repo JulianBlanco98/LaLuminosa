@@ -64,9 +64,7 @@ public class main_prueba {
     	long profitTemporal = 0L;
     	Celda profit_aux = null;
     	profit_aux = p1.getTablero().getCeldaFilaColumna(2, 8);
-    	
-    	
-    	
+    	   	
     	p1.actualizarProfitTirada(f_5, t1, profit_aux);
     	System.out.println("PROFIT DE LA TIRADA: "+t1.getProfit());
     	System.out.println("----------------------------------------------------");
