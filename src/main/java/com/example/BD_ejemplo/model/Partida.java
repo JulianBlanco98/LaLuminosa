@@ -179,5 +179,33 @@ public class Partida {
 		
 		tirada.getnFichas().get(0);
 	}
+	
+	public boolean comprobarApuesta(Celda ganadora, Celda jugador, long saldo) {
+		
+		//Si el jugador apuesta a un numero
+		if(jugador.getTipo()==0 || jugador.getTipo()==1) {
+			if(ganadora.getValor()==jugador.getValor()) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+		//Si el jugador apuesa a Par/Impar
+		if(jugador.getTipo()==2) {
+			if(ganadora.isEspar()==jugador.isEspar()) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+		//Si el jugador apuesta a Rojo/Negro
+		if(jugador.getTipo()==3) {
+			if(ganadora.getColor()==jugador.getColor()) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+	}
 
 }
