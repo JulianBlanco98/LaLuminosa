@@ -180,10 +180,12 @@ public class Partida {
 		tirada.getnFichas().get(0);
 	}
 	
-	public long restarSaldoApuesta(long apuesta, long saldo) {
-		
-		return saldo - apuesta;
-		
+	public long restarSaldoApuesta(long apuesta, long saldo) {		
+		return saldo - apuesta;		
+	}
+	
+	public long actualizarSaldoJugador(long apuesta, int multi) {
+		return apuesta * multi;
 	}
 	
 	public boolean comprobarApuesta(Celda ganadora, Celda jugador, long saldo) {
