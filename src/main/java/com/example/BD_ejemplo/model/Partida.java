@@ -189,22 +189,23 @@ public class Partida {
 			}else {
 				return false;
 			}
-		}
-		//Si el jugador apuesa a Par/Impar
-		if(jugador.getTipo()==2) {
+			//Si el jugador apuesa a Par/Impar
+		}else if(jugador.getTipo()==2) {
 			if(ganadora.isEspar()==jugador.isEspar()) {
 				return true;
 			}else {
 				return false;
 			}
-		}
-		//Si el jugador apuesta a Rojo/Negro
-		if(jugador.getTipo()==3) {
+			//Si el jugador apuesta a Rojo/Negroe
+		}else if(jugador.getTipo()==3) {
 			if(ganadora.getColor()==jugador.getColor()) {
 				return true;
 			}else {
 				return false;
 			}
+			//Sin opcion
+		}else {
+			return false;
 		}
 	}
 
