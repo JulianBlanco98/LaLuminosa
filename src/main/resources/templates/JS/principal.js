@@ -14,26 +14,43 @@ function initWheel() {
 
   row += "<div class='row'>";
   row += "  <div class='card red'>1<\/div>";
-  row += "  <div class='card black'>14<\/div>";
+  row += "  <div class='card black'>32<\/div>";
+  row += "  <div class='card black'>23<\/div>";
+  row += "  <div class='card red'>14<\/div>";
   row += "  <div class='card red'>2<\/div>";
-  row += "  <div class='card black'>13<\/div>";
-  row += "  <div class='card red'>3<\/div>";
+  row += "  <div class='card red'>26<\/div>";
+  row += "  <div class='card red'>13<\/div>";
+  row += "  <div class='card black'>21<\/div>";
+  row += "  <div class='card black'>3<\/div>";
   row += "  <div class='card black'>20<\/div>";
-  row += "  <div class='card black'>18<\/div>";
-  row += "  <div class='card black'>12<\/div>";
-  row += "  <div class='card red'>4<\/div>";
+  row += "  <div class='card red'>18<\/div>";
+  row += "  <div class='card red'>12<\/div>";
+  row += "  <div class='card red'>29<\/div>";
+  row += "  <div class='card black'>4<\/div>";
+  row += "  <div class='card black'>34<\/div>";
+  row += "  <div class='card black'>27<\/div>";
   row += "  <div class='card black'>16<\/div>";
+  row += "  <div class='card red'>36<\/div>";
   row += "  <div class='card green'>0<\/div>";
   row += "  <div class='card black'>11<\/div>";
+  row += "  <div class='card black'>22<\/div>";
   row += "  <div class='card red'>5<\/div>";
+  row += "  <div class='card red'>30<\/div>";
   row += "  <div class='card black'>10<\/div>";
   row += "  <div class='card red'>6<\/div>";
-  row += "  <div class='card black'>17<\/div>";
+  row += "  <div class='card red'>24<\/div>";
+  row += "  <div class='card red'>17<\/div>";
+  row += "  <div class='card red'>31<\/div>";
   row += "  <div class='card black'>9<\/div>";
+  row += "  <div class='card black'>28<\/div>";
   row += "  <div class='card red'>7<\/div>";
+  row += "  <div class='card black'>35<\/div>";
   row += "  <div class='card black'>8<\/div>";
-  row += "  <div class='card black'>19<\/div>";
-  row += "  <div class='card red'>15<\/div>";
+  row += "  <div class='card red'>19<\/div>";
+  row += "  <div class='card black'>15<\/div>";
+  row += "  <div class='card black'>33<\/div>";
+  row += "  <div class='card red'>25<\/div>";
+  
   row += "<\/div>";
 
   for (var x = 0; x < 29; x++) {
@@ -43,7 +60,7 @@ function initWheel() {
 
 function spinWheel(roll) {
   var $wheel = $('.roulette-wrapper .wheel'),
-    order = [0, 11, 5, 10, 6, 17, 9, 7, 8, 19, 15, 1, 14, 2, 13, 3, 20, 18, 12, 4, 16],
+    order = [0, 11, 22, 5, 30, 10, 6, 24, 17, 31, 9, 28, 7, 35, 8, 19, 15, 33, 25, 1, 32, 23, 14, 2, 26, 13, 21, 3, 20, 18, 12, 29, 4, 34, 27, 16, 36],
     position = order.indexOf(roll);
   console.log("Array: " + order);
   console.log("Posicion: "+position);
