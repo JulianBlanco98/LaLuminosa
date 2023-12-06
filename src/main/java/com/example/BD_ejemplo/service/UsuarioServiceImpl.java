@@ -23,4 +23,12 @@ public class UsuarioServiceImpl implements UsuarioService{
 		
 	}
 
+	@Override
+	public Iterable<Usuario> crearUsuario(Usuario u) {
+		// TODO Auto-generated method stub
+		
+		usuarioRepository.save(u);
+		return findUsuarios();
+	}
+
 }
