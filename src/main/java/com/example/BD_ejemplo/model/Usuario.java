@@ -19,6 +19,7 @@ public class Usuario {
 	private long idUsuario;
 	private String nombre;
 	public int edad;
+	public String correo;
 	public String contra;
 	public long dinero;
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -76,11 +77,21 @@ public class Usuario {
 		this.partidas = partidas;
 	}
 	
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
 	@Override
 	public String toString() {
-		return "Usuario [idUsuario=" + idUsuario + ", nombre=" + nombre + ", edad=" + edad + ", contra=" + contra
-				+ ", dinero=" + dinero + "]";
+		return "Usuario [idUsuario=" + idUsuario + ", nombre=" + nombre + ", edad=" + edad + ", correo=" + correo
+				+ ", contra=" + contra + ", dinero=" + dinero + "]";
 	}
+
+
 	
 }
 

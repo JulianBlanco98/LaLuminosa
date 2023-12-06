@@ -44,6 +44,10 @@ public class MiCommandLineRunner implements CommandLineRunner {
      		usuario1.setDinero(1000L);
      		usuario2.setDinero(1000L);
      		usuario3.setDinero(1000L);
+     		usuario1.setCorreo("correo1@gmail.com");
+     		usuario2.setCorreo("correo2@gmail.com");
+     		usuario3.setCorreo("correo3@gmail.com");
+
      	// 3 partidas
     		Partida p1 = new Partida();
     		Partida p2 = new Partida();
