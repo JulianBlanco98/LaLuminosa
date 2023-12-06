@@ -34,6 +34,10 @@ public class HomeController {
 	public String index() {		
         return "redirect:/index";
     }
+	@GetMapping("/registro")
+    public String mostrarPaginaRegistro() {
+        return "registro"; // Esto asume que el nombre del archivo es "registro.html" en la carpeta "templates"
+    }
 	
 
 }
