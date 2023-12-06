@@ -24,13 +24,16 @@ public class HomeController {
 		
 		return "Usuario/listarUsuario";
 	}
-	@GetMapping("/")
+	/*@GetMapping("/")
 	public String holaPage(Model model) {
 		String texto ="Hola mundo en ejecución";
 		model.addAttribute("Bienvenida", texto);
 		
 		return "index";
-	}
+	}*/
+	public String index() {		
+        return "redirect:/index";
+    }
 	
 
 }
