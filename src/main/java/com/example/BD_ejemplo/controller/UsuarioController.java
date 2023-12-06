@@ -22,7 +22,7 @@ public class UsuarioController {
     	System.out.println("\t UsuarioController::showAddUsuarioForm");    	
         return "registro";
     }
-	@PostMapping("/addUsuario")
+	@PostMapping("/registro")
 	public String addUsuario(Usuario usuario, Model model){
     	System.out.println("\t UsuarioController::addUsuario");    	    	
     	///logica de validacion de usuarios, email correcto, repetido o no?, nombre usuario repetido, formato....

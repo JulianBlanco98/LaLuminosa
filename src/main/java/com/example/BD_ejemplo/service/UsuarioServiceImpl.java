@@ -27,6 +27,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 	public Iterable<Usuario> crearUsuario(Usuario u) {
 		// TODO Auto-generated method stub
 		
+		u.setDinero(1000L); //añade 1000 euros de saldo inicial
 		usuarioRepository.save(u);
 		return findUsuarios();
 	}
