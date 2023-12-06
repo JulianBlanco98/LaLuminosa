@@ -1,11 +1,16 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: 'Titillium Web', sans-serif;
     background: #191B28;
+}
+
+.ruleta {
+    margin: 2%;
 }
 
 .roulette-wrapper {
@@ -29,6 +34,7 @@ body {
 
 .roulette-wrapper .wheel {
     display: flex;
+    font-weight: bold;
 }
 
 .roulette-wrapper .wheel .row {
