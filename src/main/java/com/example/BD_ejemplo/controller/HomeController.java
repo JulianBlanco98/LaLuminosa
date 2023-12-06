@@ -22,7 +22,7 @@ public class HomeController {
 		List<Usuario> usuarios = usuarioService.findUsuarios();
 		model.addAttribute("usuarios", usuarios);
 		
-		return "Usuario/listarUsuario";
+		return "listarUsuario";
 	}
 	/*@GetMapping("/")
 	public String holaPage(Model model) {
