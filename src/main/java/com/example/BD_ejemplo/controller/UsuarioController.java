@@ -13,13 +13,9 @@ import com.example.BD_ejemplo.service.UsuarioService;
 @Controller
 public class UsuarioController {
 
+	@Autowired
 	private UsuarioService usuarioService;
 	
-	@Autowired
-	public UsuarioController(UsuarioController usuarioService) {
-		super();
-		this.usuarioService =  (UsuarioService) usuarioService;		
-	}
 	
 	@GetMapping("/registro")
     public String showAddUsuarioForm(Usuario usuario) {    	
