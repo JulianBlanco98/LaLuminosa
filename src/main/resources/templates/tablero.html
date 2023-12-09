@@ -9,29 +9,34 @@
 		body {
 			font-family: 'Titillium Web', sans-serif;
 		}
+		
 
 		.rojo {
-			background-color: red;
+			background-color: #ff1000;
 		}
 
 		.negro {
-			background-color: black;
+			background-color: #2D3035;
 		}
 
 		.verde {
-			background-color: green;
+			background-color: #00dd56;
+		}
+		.rojo, .verde, .negro {
+			box-shadow: inset 0 0 7px 3px #666666;	
 		}
 
 		table {
 			font-size: 40px;
 			border-collapse: collapse;
+			margin: 0 auto;
 
 		}
 
 		td {
 			color: #e3e3e3;
-			width: 50px;
-			height: 50px;
+			width: 75px;
+			height: 75px;
 			border: 3px solid #ddd;
 			text-align: center;
 		}
@@ -41,10 +46,12 @@
 			padding: 15px;
 		}
 	</style>
+
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
 			var table = document.getElementById('tablero_juego');
 
+			// First loop for merging cells with the same color or value '0'
 			for (var i = 0; i < table.rows.length; i++) {
 				var row = table.rows[i];
 
@@ -54,70 +61,78 @@
 
 					if (currentCell.innerText === nextCell.innerText &&
 						(currentCell.classList.contains('rojo') || currentCell.classList.contains('negro'))) {
-						// Fusionar las celdas si tienen el mismo color
+						// Merge cells if they have the same color
 						currentCell.colSpan = 2;
 						nextCell.style.display = 'none';
 
-						// Cambiar el contenido de la etiqueta <span> a "Rojo" o "Negro"
+						// Change the content of the <span> element to "Rojo" or "Negro"
 						var spanElement = currentCell.querySelector('span');
 						var color = currentCell.classList.contains('rojo') ? 'Rojo' : 'Negro';
 						spanElement.innerText = color;
 					} else if (currentCell.innerText === '0' && nextCell.innerText === '0') {
-						// Fusionar las celdas si tienen el valor 0
+						// Merge cells if they have the value 0
 						currentCell.colSpan = 2;
 						nextCell.style.display = 'none';
-
-
 					}
-
-
 				}
 			}
+
+			// Second loop for merging cells with value '-1'
 			var foundZero = false;
 
 			for (var i = 0; i < table.rows.length; i++) {
 				var row = table.rows[i];
 
-				for (var j = 0; j < row.cells.length - 1; j++) {
+				for (var j = 0; j < row.cells.length - 2; j++) {
 					var currentCell = row.cells[j];
 					var nextCell = row.cells[j + 1];
 					var nextNextCell = row.cells[j + 2];
 
 					if (currentCell.colSpan === 2 && nextCell.style.display === 'none' && currentCell.innerText === '0') {
-						// Check if the current cell has colSpan=2, the next cell is hidden, and value is '0'
-						var spanElement = currentCell.querySelector('span');
-
 						// Update content based on whether it's the first or second encounter of '0'
+						var spanElement = currentCell.querySelector('span');
 						spanElement.innerText = foundZero ? 'Par' : 'Impar';
 
 						// Set foundZero to true after the first encounter
 						foundZero = true;
 					}
-					else if (currentCell.innerText === '-1' && nextCell.innerText === '-1' && nextNextCell.innerText === '-1') {
-						// Merge cells with value '-1'
-						currentCell.colSpan = 3;
-						nextCell.style.display = 'none';
-						nextNextCell.style.display = 'none';
-
-						// Clear content of the merged cells
-						var spanElement = currentCell.querySelector('span');
-						spanElement.innerText = '';
-					}
-					else if (currentCell.innerText === '-1' && nextCell.innerText === '-1') {
-						// Merge cells with value '-1'
-						currentCell.colSpan = 2;
-						nextCell.style.display = 'none';
-
-						// Clear content of the merged cells
-						var spanElement = currentCell.querySelector('span');
-						spanElement.innerText = '';
-					}
+				}
+			}
+			var lastRow = document.getElementById('tablero_juego').rows[3];
+			var cellsWithMinusOne = [];
+			for (var i = 0; i < lastRow.cells.length; i++) {
+				var cell = lastRow.cells[i];
+				var spanValue = cell.querySelector('span').innerText;
+				if (spanValue === '-1') {
+					cellsWithMinusOne.push(cell);
 				}
 			}
 
-		});
-	</script>
+			// Verificar y combinar las primeras 3 celdas
+			if (cellsWithMinusOne.length >= 3) {
+				// Combina las primeras 3 celdas
+				cellsWithMinusOne[0].colSpan = 3;
+				cellsWithMinusOne[1].style.display = 'none';
+				cellsWithMinusOne[2].style.display = 'none';
 
+				// Actualiza el contenido del primer span a vacío
+				var spanElement = cellsWithMinusOne[0].querySelector('span');
+				spanElement.innerText = '';
+			}
+
+			// Verificar y combinar las últimas 2 celdas
+			if (cellsWithMinusOne.length >= 2) {
+				// Combina las últimas 2 celdas
+				cellsWithMinusOne[cellsWithMinusOne.length - 2].colSpan = 2;
+				cellsWithMinusOne[cellsWithMinusOne.length - 1].style.display = 'none';
+
+				// Actualiza el contenido del último span a vacío
+				var spanElementLast = cellsWithMinusOne[cellsWithMinusOne.length - 2].querySelector('span');
+				spanElementLast.innerText = '';
+			}
+		});
+
+	</script>
 
 
 
