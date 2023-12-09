@@ -1,9 +1,128 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="ISO-8859-1">
+	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<!--<link rel="stylesheet" type="text/css" href="Css/tablero.css"> -->
+	<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+	<style>
+		body {
+			font-family: 'Titillium Web', sans-serif;
+		}
+
+		.rojo {
+			background-color: red;
+		}
+
+		.negro {
+			background-color: black;
+		}
+
+		.verde {
+			background-color: green;
+		}
+
+		table {
+			font-size: 40px;
+			border-collapse: collapse;
+
+		}
+
+		td {
+			color: #e3e3e3;
+			width: 50px;
+			height: 50px;
+			border: 3px solid #ddd;
+			text-align: center;
+		}
+
+		th,
+		td {
+			padding: 15px;
+		}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			var table = document.getElementById('tablero_juego');
+
+			for (var i = 0; i < table.rows.length; i++) {
+				var row = table.rows[i];
+
+				for (var j = 0; j < row.cells.length - 1; j++) {
+					var currentCell = row.cells[j];
+					var nextCell = row.cells[j + 1];
+
+					if (currentCell.innerText === nextCell.innerText &&
+						(currentCell.classList.contains('rojo') || currentCell.classList.contains('negro'))) {
+						// Fusionar las celdas si tienen el mismo color
+						currentCell.colSpan = 2;
+						nextCell.style.display = 'none';
+
+						// Cambiar el contenido de la etiqueta <span> a "Rojo" o "Negro"
+						var spanElement = currentCell.querySelector('span');
+						var color = currentCell.classList.contains('rojo') ? 'Rojo' : 'Negro';
+						spanElement.innerText = color;
+					} else if (currentCell.innerText === '0' && nextCell.innerText === '0') {
+						// Fusionar las celdas si tienen el valor 0
+						currentCell.colSpan = 2;
+						nextCell.style.display = 'none';
+
+
+					}
+
+
+				}
+			}
+			var foundZero = false;
+
+			for (var i = 0; i < table.rows.length; i++) {
+				var row = table.rows[i];
+
+				for (var j = 0; j < row.cells.length - 1; j++) {
+					var currentCell = row.cells[j];
+					var nextCell = row.cells[j + 1];
+					var nextNextCell = row.cells[j + 2];
+
+					if (currentCell.colSpan === 2 && nextCell.style.display === 'none' && currentCell.innerText === '0') {
+						// Check if the current cell has colSpan=2, the next cell is hidden, and value is '0'
+						var spanElement = currentCell.querySelector('span');
+
+						// Update content based on whether it's the first or second encounter of '0'
+						spanElement.innerText = foundZero ? 'Par' : 'Impar';
+
+						// Set foundZero to true after the first encounter
+						foundZero = true;
+					}
+					else if (currentCell.innerText === '-1' && nextCell.innerText === '-1' && nextNextCell.innerText === '-1') {
+						// Merge cells with value '-1'
+						currentCell.colSpan = 3;
+						nextCell.style.display = 'none';
+						nextNextCell.style.display = 'none';
+
+						// Clear content of the merged cells
+						var spanElement = currentCell.querySelector('span');
+						spanElement.innerText = '';
+					}
+					else if (currentCell.innerText === '-1' && nextCell.innerText === '-1') {
+						// Merge cells with value '-1'
+						currentCell.colSpan = 2;
+						nextCell.style.display = 'none';
+
+						// Clear content of the merged cells
+						var spanElement = currentCell.querySelector('span');
+						spanElement.innerText = '';
+					}
+				}
+			}
+
+		});
+	</script>
+
+
+
+
+
+
 </head>
 
 <body>
@@ -11,11 +130,191 @@
 	<h1>Prueba de Tablero</h1>
 
 	<h2>Tablero</h2>
-    <table border="1">
-        <tr th:each="fila, filaStat : ${tablero.tablero}">
-            <td th:each="celda, celdaStat : ${fila}" th:if="${celda.valor != -1}" th:text="${celda.valor}"></td>
-        </tr>
-    </table>
+	<!-- <table border="1">
+		<tr th:each="fila : ${tablero.tablero}">
+			<td th:each="celda : ${fila}" th:class="${celda.color}">
+				Verifica la propiedad 'valor' utilizando la expresión 'celda.valor'
+				<span th:text="${celda.valor}"></span>
+			</td>
+		</tr>
+	</table> -->
+	<table id="tablero_juego">
+		<tbody>
+			<tr th:each="fila : ${tablero.tablero}">
+				<td th:each="celda : ${fila}" th:class="${celda.color.toLowerCase()}">
+					<span th:text="${celda.valor}"></span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- <table>
+		<tbody>
+			<tr>
+				<td class="verde">
+					<span>0</span>
+				</td>
+				<td class="negro">
+					<span>3</span>
+				</td>
+				<td class="rojo">
+					<span>6</span>
+				</td>
+				<td class="negro">
+					<span>9</span>
+				</td>
+				<td class="rojo">
+					<span>12</span>
+				</td>
+				<td class="negro">
+					<span>15</span>
+				</td>
+				<td class="rojo">
+					<span>18</span>
+				</td>
+				<td class="negro">
+					<span>21</span>
+				</td>
+				<td class="rojo">
+					<span>24</span>
+				</td>
+				<td class="negro">
+					<span>27</span>
+				</td>
+				<td class="rojo">
+					<span>30</span>
+				</td>
+				<td class="negro">
+					<span>33</span>
+				</td>
+				<td class="rojo">
+					<span>36</span>
+				</td>
+			</tr>
+			<tr>
+				<td class="verde">
+					<span>0</span>
+				</td>
+				<td class="rojo">
+					<span>2</span>
+				</td>
+				<td class="rojo">
+					<span>5</span>
+				</td>
+				<td class="negro">
+					<span>8</span>
+				</td>
+				<td class="negro">
+					<span>11</span>
+				</td>
+				<td class="rojo">
+					<span>14</span>
+				</td>
+				<td class="rojo">
+					<span>17</span>
+				</td>
+				<td class="negro">
+					<span>20</span>
+				</td>
+				<td class="negro">
+					<span>23</span>
+				</td>
+				<td class="rojo">
+					<span>26</span>
+				</td>
+				<td class="rojo">
+					<span>29</span>
+				</td>
+				<td class="negro">
+					<span>32</span>
+				</td>
+				<td class="negro">
+					<span>35</span>
+				</td>
+			</tr>
+			<tr>
+				<td class="verde">
+					<span>0</span>
+				</td>
+				<td class="rojo">
+					<span>1</span>
+				</td>
+				<td class="negro">
+					<span>4</span>
+				</td>
+				<td class="rojo">
+					<span>7</span>
+				</td>
+				<td class="negro">
+					<span>10</span>
+				</td>
+				<td class="rojo">
+					<span>13</span>
+				</td>
+				<td class="negro">
+					<span>16</span>
+				</td>
+				<td class="rojo">
+					<span>19</span>
+				</td>
+				<td class="negro">
+					<span>22</span>
+				</td>
+				<td class="rojo">
+					<span>25</span>
+				</td>
+				<td class="negro">
+					<span>28</span>
+				</td>
+				<td class="rojo">
+					<span>31</span>
+				</td>
+				<td class="negro">
+					<span>34</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span>-1</span>
+				</td>
+				<td>
+					<span>-1</span>
+				</td>
+				<td>
+					<span>-1</span>
+				</td>
+				<td>
+					<span>0</span>
+				</td>
+				<td>
+					<span>0</span>
+				</td>
+				<td class="rojo">
+					<span>0</span>
+				</td>
+				<td class="rojo">
+					<span>0</span>
+				</td>
+				<td class="negro">
+					<span>0</span>
+				</td>
+				<td class="negro">
+					<span>0</span>
+				</td>
+				<td>
+					<span>0</span>
+				</td>
+				<td>
+					<span>0</span>
+				</td>
+				<td>
+					<span>-1</span>
+				</td>
+				<td>
+					<span>-1</span>
+				</td>
+			</tr>
+		</tbody>
+	</table> -->
 
 </body>
 

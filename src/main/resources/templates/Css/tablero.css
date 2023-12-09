@@ -1,0 +1,34 @@
+body {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.rojo {
+    background-color: red;
+}
+
+.negro {
+    background-color: black;
+}
+
+.verde {
+    background-color: green;
+}
+
+table {
+    font-size: 40px;
+    border-collapse: collapse;
+
+}
+
+td {
+    color: #e3e3e3;
+    width: 50px;
+    height: 50px;
+    border: 3px solid #ddd;
+    text-align: center;
+}
+
+th,
+td {
+    padding: 15px;
+}
