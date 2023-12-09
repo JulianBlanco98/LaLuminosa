@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+</head>
+
+<body>
+
+	<h1>Prueba de Tablero</h1>
+
+	<h2>Tablero</h2>
+    <table border="1">
+        <tr th:each="fila, filaStat : ${tablero.tablero}">
+            <td th:each="celda, celdaStat : ${fila}" th:if="${celda.valor != -1}" th:text="${celda.valor}"></td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

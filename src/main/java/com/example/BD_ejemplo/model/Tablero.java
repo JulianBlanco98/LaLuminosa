@@ -72,7 +72,6 @@ public class Tablero {
 			if (j == 5 || j == 6) { // celdas de apuesta rojo
 				tablero[3][j].setTipo(3);
 				tablero[3][j].setColor("rojo");
-				
 
 			}
 			if (j == 7 || j == 8) { // celdas de apuesta negro
@@ -154,7 +153,7 @@ public class Tablero {
 			System.out.println();
 		}
 	}
-	
+
 	public void imprimirOcupadas() {
 		for (int i = 0; i < fila; i++) {
 			for (int j = 0; j < columna; j++) {
@@ -163,7 +162,6 @@ public class Tablero {
 			System.out.println();
 		}
 	}
-	
 
 	public void imprimirTipo() {
 		for (int i = 0; i < fila; i++) {
@@ -195,34 +193,43 @@ public class Tablero {
 	public void setColumna(int columna) {
 		this.columna = columna;
 	}
+
 	public int getValorTablero(int i, int j) {
-		
+
 //		int valor = 0;
 //		valor = this.tablero[i][j].getValor();
 //		return valor;
-		System.out.println("Fila: "+i+", Columna: "+j);
+		System.out.println("Fila: " + i + ", Columna: " + j);
 		return this.tablero[i][j].getValor();
 	}
+
 	public int getTipoCeldaTablero(int i, int j) {
 		return this.tablero[i][j].getTipo();
 	}
+
 	public void fichaEnCelda(int i, int j) {
-		
+
 		this.tablero[i][j].setOcupada(true);
 	}
+
 	public Celda getCeldaNumero(int numero) {
 		Celda aux = null;
-		for(int i=0;i<fila;i++) {
-			for(int j=0;j<(columna-1);j++) { //recorrer solo las filas de números
-				if(tablero[i][j].getValor() == numero) {
+		for (int i = 0; i < fila; i++) {
+			for (int j = 0; j < (columna - 1); j++) { // recorrer solo las filas de números
+				if (tablero[i][j].getValor() == numero) {
 					aux = tablero[i][j];
 				}
 			}
 		}
 		return aux;
 	}
+
 	public Celda getCeldaFilaColumna(int i, int j) {
 		return tablero[i][j];
+	}
+
+	public Celda[][] getTablero() {
+		return tablero;
 	}
 
 }
