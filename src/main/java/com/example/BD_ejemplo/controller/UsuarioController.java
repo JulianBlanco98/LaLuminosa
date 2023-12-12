@@ -39,7 +39,7 @@ public class UsuarioController {
         return "redirect:/index.html"; //se registra OK, se redirecciona a la página principal.  
     }
 	
-	@PostMapping("/login")
+	@PostMapping("index")
 	public String login(Usuario usuario) {
     	System.out.println("\t UsuarioController::login");    	    	
     	
