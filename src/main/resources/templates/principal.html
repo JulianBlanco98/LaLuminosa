@@ -1,61 +1,114 @@
-
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaLuminosa/PaginaPrincipal</title>
-    <link rel="stylesheet" href="Css/principal.css" th:href="@{Css/principal.css}">
-    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
-    
-	
-    
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LaLuminosa/PaginaPrincipal</title>
+	<link rel="stylesheet" href="../static/Css/principal.css" th:href="@{/Css/principal.css}">
+	<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+
+	<style>
+		body {
+			font-family: 'Titillium Web', sans-serif;
+		}
+
+
+		.rojo {
+			background-color: #ff1000;
+		}
+
+		.negro {
+			background-color: #2D3035;
+		}
+
+		.verde {
+			background-color: #00dd56;
+		}
+
+		.rojo,
+		.verde,
+		.negro {
+			box-shadow: inset 0 0 7px 3px #666666;
+		}
+
+		table {
+			font-size: 40px;
+			border-collapse: collapse;
+			margin: 0 auto;
+
+		}
+
+		td {
+			color: #e3e3e3;
+			width: 75px;
+			height: 75px;
+			border: 3px solid #ddd;
+			text-align: center;
+		}
+
+		th,
+		td {
+			padding: 15px;
+		}
+	</style>
+
 </head>
 
 <body>
 
-    <header>
-        <div class="imagen_logo">
-            <img src="Recursos/laluminosa_sinfondo.png" alt="logo de la página">
-        </div>
-        <div id="saldo">
-            <p>SALDO: </p>
-        </div>
-        <div id="profit">
-            <p>PROFIT: </p>
-        </div>
-        <div class="imagen_out">
-            <a href=""><img src="Recursos/salida.png" alt="icono de salida"></a>            
-        </div>
-    </header>
-    <div class="contenedor">
+	<header>
+		<div class="imagen_logo">
+			<img src="../static/Recursos/laluminosa_sinfondo.png" alt="logo de la página"
+				th:src="@{/Recursos/laluminosa_sinfondo.png}">
+		</div>
+		<div id="saldo">
+			<p>SALDO: </p>
+		</div>
+		<div id="profit">
+			<p>PROFIT: </p>
+		</div>
+		<div class="imagen_out">
+			<a href=""><img src="Recursos/salida.png" alt="icono de salida"></a>
+		</div>
+	</header>
+	<div class="contenedor">
 
-        <div class="ruleta">
-            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-            <script src="JS/principal.js"></script>
-            <div class='roulette-wrapper'>
-                <div class='selector'></div>
-                <div class='wheel'></div>
-            </div>
+		<div class="ruleta">
+			<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+			<script src="JS/principal.js"></script>
+			<div class='roulette-wrapper'>
+				<div class='selector'></div>
+				<div class='wheel'></div>
+			</div>
 
-            <div>
-                <input placeholder='outcome'>
-                <button>
-                    Spin Wheel
-                </button>
-            </div>
-        </div>
-        <div id="tablero">
+			<div>
+				<input placeholder='outcome'>
+				<button>
+					Spin Wheel
+				</button>
+			</div>
+		</div>
+		<div id="tablero">
 
-        </div>
-        <div class="fichas">
-            
-        </div>
+			<table id="tablero_juego">
+				<tbody>
+					<tr th:each="fila : ${tablero.tablero}">
+						<td th:each="celda : ${fila}" th:class="${celda.color.toLowerCase()}">
+							<span th:text="${celda.valor}"></span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 
-    </div>
-    <footer>
+		</div>
+		<div class="fichas">
 
-    </footer>
+		</div>
+
+	</div>
+	<footer>
+
+	</footer>
 
 </body>
 
