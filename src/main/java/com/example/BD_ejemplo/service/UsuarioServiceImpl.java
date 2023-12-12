@@ -31,5 +31,11 @@ public class UsuarioServiceImpl implements UsuarioService{
 		usuarioRepository.save(u);
 		return findUsuarios();
 	}
+	
+	@Override
+    public Usuario findUsuarioByNombreYContrasena(String nombre, String contrasena) {
+        // Implementation for finding a user by name and password
+        return usuarioRepository.findByNombreAndContra(nombre, contrasena);
+    }
 
 }
