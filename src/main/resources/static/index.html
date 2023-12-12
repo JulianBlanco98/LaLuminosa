@@ -13,38 +13,8 @@
 
 
 	<!-- <h1 th:text="${Bienvenida}">Primer ejemplo con Thymeleaf</h1> -->
-	<header>
-
-	</header>
-	<div class="contenedor">
-		<form action="#" th:action="@{index}" th:object="${usuario}" method="post">
-			<div class="form-floating mb-3">
-				<input type="text" th:field="*{nombre}" class="form-control" id="inputNombre" placeholder="Ingrese su nombre">
-				<label for="inputNombre">Nombre</label>
-			</div>
-
-			<!--<div class="form-floating mb-3">
-				<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-				<label for="floatingInput">Correo Electronico</label>
-			</div> -->
-			<div class="form-floating mb-3">
-				<input type="password" th:field="*{contra}" class="form-control" id="inputPassword" placeholder="Ingrese su contraseña">
-				<label for="inputPassword">Contraseña</label>
-			</div>
-
-
-			<!-- <button type="submit" class="btn btn-primary">Enviar</button> -->
-			<button type="submit" class="btn btn-success">Enviar</button>
-			<button type="reset" class="btn btn-danger">Cancelar</button>
-
-			<div class="form-check mt-3">
-				<a href="/registro" class="form-check-label">¿No estás registrado? Regístrate aquí</a>
-			</div>
-		</form>
-	</div>
-	<footer>
-
-	</footer>
+	<a href="/login">Ir a login</a>
+	<a href="/registro">Ir a Registro</a>
 
 </body>
 
