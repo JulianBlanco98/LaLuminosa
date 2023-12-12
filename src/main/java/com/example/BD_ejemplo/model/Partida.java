@@ -38,6 +38,11 @@ public class Partida {
 
 	public Partida() {
 		fichas= new ArrayList<>();
+		fichas.add(new Ficha(5));
+		fichas.add(new Ficha(10));
+		fichas.add(new Ficha(20));
+		fichas.add(new Ficha(50));
+		fichas.add(new Ficha(100));
 		tiempo = 0L;
 		victoria = 0;
 		derrota = 0;
