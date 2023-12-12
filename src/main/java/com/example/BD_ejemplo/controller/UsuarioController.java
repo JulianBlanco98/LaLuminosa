@@ -61,6 +61,7 @@ public class UsuarioController {
 			
 			//Creamos la Partida del Jugador
 			Partida partida = new Partida();
+			partida.getTablero().inicializarMatriz();
 			
 			//Se la añadimos tanto al usuario como a la partida (1 a N)
 			partida.setUsuario(usuario);
