@@ -19,7 +19,7 @@
 	<div class="contenedor">
 		<form action="#" th:action="@{/login}" th:object="${usuario}" method="post">
 			<div class="form-floating mb-3">
-				<input type="text" class="form-control" id="inputNombre" placeholder="Ingrese su nombre">
+				<input type="text" th:field="*{nombre}" class="form-control" id="inputNombre" placeholder="Ingrese su nombre">
 				<label for="inputNombre">Nombre</label>
 			</div>
 
@@ -28,7 +28,7 @@
 				<label for="floatingInput">Correo Electronico</label>
 			</div> -->
 			<div class="form-floating mb-3">
-				<input type="password" class="form-control" id="inputPassword" placeholder="Ingrese su contraseña">
+				<input type="password" th:field="*{contra}" class="form-control" id="inputPassword" placeholder="Ingrese su contraseña">
 				<label for="inputPassword">Contraseña</label>
 			</div>
 
