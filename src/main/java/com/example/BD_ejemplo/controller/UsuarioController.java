@@ -42,6 +42,12 @@ public class UsuarioController {
         return "redirect:/index.html"; //se registra OK, se redirecciona a la página principal.  
     }
 	
+	@GetMapping("/login")
+    public String showLogin(Usuario usuario) {    	
+    	System.out.println("\t UsuarioController::showLogin");    	
+        return "login";
+    }
+	
 	@PostMapping("/index")
 	public String login(@ModelAttribute Usuario usuario, Model model) {
     	System.out.println("\t UsuarioController::login");    	    	
