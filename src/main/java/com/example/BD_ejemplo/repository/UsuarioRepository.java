@@ -11,7 +11,5 @@ import com.example.BD_ejemplo.model.Usuario;
 @Repository
 public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
 	
-	
-	
-
+    Usuario findByNombreAndContra(String nombre, String contrasena);
 }
