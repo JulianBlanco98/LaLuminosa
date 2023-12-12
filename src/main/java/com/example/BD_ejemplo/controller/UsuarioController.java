@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.BD_ejemplo.model.Partida;
 import com.example.BD_ejemplo.model.Usuario;
 import com.example.BD_ejemplo.service.UsuarioService;
 
@@ -52,16 +53,24 @@ public class UsuarioController {
 	public String login(@ModelAttribute Usuario usuario, Model model) {
     	System.out.println("\t UsuarioController::login");    	    	
     	
-    	System.out.println(usuario.getNombre());
-    	
-    	String nombre = usuario.getNombre();
-        String contra = usuario.getContra();
         
-        System.out.println(nombre+" "+contra);
+        
     	
     	Usuario aux = usuarioService.chequearLogin(usuario.getNombre(), usuario.getContra());
 		if(aux!=null) {
-			System.out.println(aux.toString());
+			
+			//Creamos la Partida del Jugador
+			Partida partida = new Partida();
+			
+			//Se la añadimos tanto al usuario como a la partida (1 a N)
+			partida.setUsuario(usuario);
+			usuario.getPartidas().add(partida);
+			
+			//le añadimos ambos atributos
+			model.addAttribute("usuario", usuario);
+			model.addAttribute("partida", partida);
+			
+			
 			return "principal";
 		}else {
 			 return "Error";
