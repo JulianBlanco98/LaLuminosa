@@ -31,13 +31,13 @@ header>* {
 }
 
 header .imagen_logo img {
-    width: 200px;
+    width: 150px;
     float: left;
     margin-left: 30px;
 }
 
 header .imagen_out img {
-    width: 130px;
+    width: 90px;
     float: right;
     margin-right: 30px;
 }
