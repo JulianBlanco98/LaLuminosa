@@ -50,12 +50,12 @@ public class MiCommandLineRunner implements CommandLineRunner {
 
      	// 3 partidas
     		Partida p1 = new Partida();
-    		Partida p2 = new Partida();
-    		Partida p3 = new Partida();
+    		
+    		
 
     		// Rellenamos los datos de partidas: usuario1 tendrá 2 partidas, usuario2 tendrá
     		// 1 y usuario 3: 0
-    		p1.setTiempo(3000L);
+    		/*p1.setTiempo(3000L);
     		p2.setTiempo(4000L);
     		p3.setTiempo(500L);
     		p1.setVictoria(6);
@@ -68,15 +68,15 @@ public class MiCommandLineRunner implements CommandLineRunner {
     		p2.setProfit(-35L);
     		p3.setProfit(10L);
 
-    		// Se añaden usuarios a partidas
+    		// Se añaden usuarios a partidas*/
     		p1.setUsuario(usuario1);
-    		p2.setUsuario(usuario1);
-    		p3.setUsuario(usuario2);
+    		//p2.setUsuario(usuario1);
+    		//p3.setUsuario(usuario2);
 
     		// Se añaden las partidas a los usuarios
     		usuario1.getPartidas().add(p1);
-    		usuario1.getPartidas().add(p2);
-    		usuario2.getPartidas().add(p3);
+    		//usuario1.getPartidas().add(p2);
+    		//usuario2.getPartidas().add(p3);
 
     		// Creamos los usuarios
     		usuario1 = usuarioRepository.save(usuario1);
@@ -84,8 +84,8 @@ public class MiCommandLineRunner implements CommandLineRunner {
     		usuario3 = usuarioRepository.save(usuario3);
 
     		p1 = partidaRepository.save(p1);
-    		p2 = partidaRepository.save(p2);
-    		p3 = partidaRepository.save(p3);
+    		//p2 = partidaRepository.save(p2);
+    		//p3 = partidaRepository.save(p3);
 
         // Agrega tu lógica de inicialización aquí
     }
