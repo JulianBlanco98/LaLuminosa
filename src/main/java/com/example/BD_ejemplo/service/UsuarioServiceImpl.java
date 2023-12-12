@@ -38,4 +38,10 @@ public class UsuarioServiceImpl implements UsuarioService{
         return usuarioRepository.findByNombreAndContra(nombre, contrasena);
     }
 
+	@Override
+	public Usuario chequearLogin(String nombre, String contra) {
+		// TODO Auto-generated method stub
+		return usuarioRepository.chequearLogin(nombre, contra);
+	}
+
 }

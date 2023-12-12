@@ -43,8 +43,11 @@ public class UsuarioController {
 	public String login(Usuario usuario) {
     	System.out.println("\t UsuarioController::login");    	    	
     	
-    	Usuario aux = usuarioService.findUsuarioByNombreYContrasena(usuario.getNombre(), usuario.getContra());
+    	System.out.println(usuario.getNombre());
+    	
+    	Usuario aux = usuarioService.chequearLogin(usuario.getNombre(), usuario.getContra());
 		if(aux!=null) {
+			System.out.println(aux.toString());
 			return "principal";
 		}else {
 			 return "Error";

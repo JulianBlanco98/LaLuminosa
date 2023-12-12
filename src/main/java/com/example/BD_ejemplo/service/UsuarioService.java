@@ -11,4 +11,6 @@ public interface UsuarioService {
 	public Iterable<Usuario> crearUsuario(Usuario u);
 	
     public Usuario findUsuarioByNombreYContrasena(String nombre, String contrasena);
+    
+    public Usuario chequearLogin(String nombre, String contra);
 }
