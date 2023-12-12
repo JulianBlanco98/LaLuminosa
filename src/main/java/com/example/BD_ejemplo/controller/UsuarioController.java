@@ -39,15 +39,15 @@ public class UsuarioController {
         return "redirect:/index.html"; //se registra OK, se redirecciona a la página principal.  
     }
 	
-	@PostMapping("index")
+	@PostMapping("/index")
 	public String login(Usuario usuario) {
     	System.out.println("\t UsuarioController::login");    	    	
     	
     	Usuario aux = usuarioService.findUsuarioByNombreYContrasena(usuario.getNombre(), usuario.getContra());
 		if(aux!=null) {
-		return "principal";
+			return "principal";
 		}else {
-			 return "redirect:/index.html";
+			 return "Error";
 		}
 	}
 
