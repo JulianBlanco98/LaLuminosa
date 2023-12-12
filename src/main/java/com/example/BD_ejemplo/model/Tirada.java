@@ -19,14 +19,12 @@ public class Tirada {
 	private long apuesta;
 	private int ganado; //boolean
 	private long profit;
-	@OneToMany (mappedBy = "tirada")
-	private List<Ficha> nFichas;
+
 		
 	@ManyToOne
 	public Partida partida;
 	
 	public Tirada() {
-		nFichas= new LinkedList<>();
 		apuesta=0L;
 		ganado=0;
 		profit=0L;
@@ -34,7 +32,6 @@ public class Tirada {
 	
 	public Tirada(List<Ficha> nFichas, long apuesta, int ganado, long profit) {
 		super();
-		this.nFichas = nFichas;
 		this.apuesta = apuesta;
 		this.ganado = ganado;
 		this.profit = profit;
@@ -44,12 +41,6 @@ public class Tirada {
 	}
 	public void setIdTirada(long idTirada) {
 		this.idTirada = idTirada;
-	}
-	public List<Ficha> getnFichas() {
-		return nFichas;
-	}
-	public void setnFichas(List<Ficha> nFichas) {
-		this.nFichas = nFichas;
 	}
 	public long getApuesta() {
 		return apuesta;
@@ -84,19 +75,4 @@ public class Tirada {
 		return "Tirada [idTirada=" + idTirada + ", apuesta=" + apuesta + ", ganado=" + ganado + ", profit=" + profit
 				+ "]";
 	}
-	/**
-	 * Método para agregar las fichas a tiradas
-	 * @param ficha
-	 * @return
-	 */
-	public boolean addFichas(Ficha ficha) {
-		return nFichas.add(ficha);
-	}
-	
-	
-	
-	
-	
-	
-
 }

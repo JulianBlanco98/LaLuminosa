@@ -54,12 +54,7 @@ public class main_prueba {
     	
     	//Primera tirada
     	Tirada t1 = new Tirada();
-    	t1.addFichas(f_5);
-    	t1.addFichas(f_10);
-    	t1.addFichas(f_20);
-    	t1.addFichas(f_50);
-    	t1.addFichas(f_100);
-    	
+
     	//hay que ver esto, porque el atributo apuesta lo veo raro
     	//en este caso, vamos a hacer un movimiento con una ficha de 5 a un número
     	t1.setApuesta(f_5.getValor());

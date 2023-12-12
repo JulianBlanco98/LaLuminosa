@@ -15,7 +15,7 @@ public class Ficha {
 	private int valor;
 	
 	@ManyToOne
-	private Tirada tirada;
+	private Partida partida;
 	
 	public Ficha() {
 		valor=0;
@@ -38,19 +38,13 @@ public class Ficha {
 	}
 
 
-
-
-	public Tirada getTirada() {
-		return tirada;
+	public Partida getPartida() {
+		return partida;
 	}
 
-
-
-
-	public void setTirada(Tirada tirada) {
-		this.tirada = tirada;
+	public void setPartida(Partida partida) {
+		this.partida = partida;
 	}
-
 
 	public int getValor() {
 		return valor;

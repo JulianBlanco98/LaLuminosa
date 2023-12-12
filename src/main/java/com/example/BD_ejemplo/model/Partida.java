@@ -28,12 +28,16 @@ public class Partida {
 
 	@ManyToOne
 	public Usuario usuario;
+	
+	@OneToMany(mappedBy = "fichas")
+	private List<Ficha> fichas = new ArrayList<>();
 
 	// prueba
 	@Transient
 	public Tablero tablero;
 
 	public Partida() {
+		fichas= new ArrayList<>();
 		tiempo = 0L;
 		victoria = 0;
 		derrota = 0;
@@ -170,7 +174,6 @@ public class Partida {
 		//Número aleatorio de la ruleta. Prueba de que se acierta un número
 		int numeroSacado = 11; 
 		
-		tirada.getnFichas().get(0);
 	}
 	
 	public void restarSaldoApuesta(Usuario j1, Tirada t) {		
