@@ -12,7 +12,7 @@ public class Ficha {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private long idFicha;
-	private int valor;
+	public int valor;
 	
 	@ManyToOne
 	private Partida partida;

@@ -30,7 +30,7 @@ public class Partida {
 	public Usuario usuario;
 	
 	@OneToMany(mappedBy = "partida")
-	private List<Ficha> fichas = new ArrayList<>();
+	public List<Ficha> fichas = new ArrayList<>();
 
 	// prueba
 	@Transient
