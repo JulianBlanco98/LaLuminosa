@@ -1,11 +1,14 @@
 package com.example.BD_ejemplo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.BD_ejemplo.model.Partida;
 import com.example.BD_ejemplo.model.Usuario;
@@ -48,6 +51,13 @@ public class UsuarioController {
     	System.out.println("\t UsuarioController::showLogin");    	
         return "login";
     }
+	
+	@PostMapping("/prueba")
+	public String manejarResultado(@RequestParam("outcome") int outcome) {
+	    // Realizar operaciones con el valor outcome
+	    System.out.println("Resultado recibido en el controlador: " + outcome);
+        return "principal";
+	  }
 	
 	@PostMapping("/index")
 	public String login(@ModelAttribute Usuario usuario, Model model) {

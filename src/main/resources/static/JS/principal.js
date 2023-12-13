@@ -5,6 +5,7 @@ $(document).ready(function () {
   $('button').on('click', function () {
     var outcome = Math.floor(Math.random() * 38);
     console.log(outcome)
+    sendOutcomeToController(outcome);
     spinWheel(outcome);
     
   });
@@ -88,6 +89,21 @@ function spinWheel(roll) {
     'transition-duration': '2s',
     'transform': 'translate3d(-' + landingPosition + 'px, 0px, 0px)'
   });
+  
+  function sendOutcomeToController(outcome) {
+  $.ajax({
+    type: 'POST',
+    url: '/prueba', // Reemplaza esto con la URL correcta de tu controlador
+    data: { outcome: outcome },
+    success: function (response) {
+      // Manejar la respuesta del controlador si es necesario
+      console.log('Solicitud AJAX exitosa:', response);
+    },
+    error: function (error) {
+      console.error('Error en la solicitud AJAX:', error);
+    }
+  });
+}
 
   setTimeout(function () {
     $wheel.css({
