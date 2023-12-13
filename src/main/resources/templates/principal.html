@@ -6,6 +6,11 @@
 	<title>LaLuminosa/PaginaPrincipal</title>
 	<link rel="stylesheet" href="../static/Css/principal.css" th:href="@{/Css/principal.css}">
 	<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		var partida = /*[[${partida}]]*/ null;
+    /*]]>*/
+	</script>
 
 	<style>
 		body {
@@ -55,8 +60,19 @@
 	<script>
 
 		var fichaArrastrada = false;
+		let spanValue;
+		let numeroFicha;
 
 		document.addEventListener('DOMContentLoaded', function () {
+			initWheel();
+
+			$('button').on('click', function () {
+				var outcome = Math.floor(Math.random() * 38);
+				console.log(outcome)
+				sendOutcomeToController(outcome, fichaValor, numeroFicha);
+				spinWheel(outcome);
+
+			});
 			var table = document.getElementById('tablero_juego');
 
 			// First loop for merging cells with the same color or value '0'
@@ -164,10 +180,10 @@
 					targetTd.appendChild(draggedElement);
 
 					// Obtener el valor del span dentro del td
-					var spanValue = targetTd.querySelector('span').textContent;
+					spanValue = targetTd.querySelector('span').textContent;
 					// Valor de la ficha
 					var fichaValor = draggedElement.getAttribute('id');
-					var numeroFicha = fichaValor.slice(5);
+					numeroFicha = fichaValor.slice(5);
 
 					console.log("Valor de la ficha: " + numeroFicha);
 					// Hacer lo que quieras con el valor obtenido
@@ -175,11 +191,11 @@
 
 					fichaArrastrada = true; // Marcar que se ha arrastrado una ficha
 					// Llenar los campos del formulario
-					document.getElementById("fichaValor").value = fichaValor;
-					document.getElementById("numeroFicha").value = numeroFicha;
+					//document.getElementById("fichaValor").value = fichaValor;
+					//document.getElementById("numeroFicha").value = numeroFicha;
 
 					// Enviar el formulario
-					document.getElementById("myForm").submit();
+					//document.getElementById("myForm").submit();
 				} else {
 					console.log("La imagen solo puede ser soltada en un td con la clase 'verde', 'rojo' o 'negro'");
 					alert('La imagen solo puede ser soltada en un td de número o de apuesta');
@@ -189,7 +205,115 @@
 				alert('Ya has arrastrado una ficha. No puedes arrastrar más fichas.');
 			}
 		}
+		function initWheel() {
+			var $wheel = $('.roulette-wrapper .wheel'),
+				row = "";
 
+			row += "<div class='row'>";
+			row += "  <div class='card black'>32<\/div>";
+			row += "  <div class='card red'>1<\/div>";
+			row += "  <div class='card black'>23<\/div>";
+			row += "  <div class='card red'>14<\/div>";
+			row += "  <div class='card black'>21<\/div>";
+			row += "  <div class='card red'>2<\/div>";
+			row += "  <div class='card black'>3<\/div>";
+			row += "  <div class='card red'>26<\/div>";
+			row += "  <div class='card black'>20<\/div>";
+			row += "  <div class='card red'>13<\/div>";
+			row += "  <div class='card black'>4<\/div>";
+			row += "  <div class='card red'>18<\/div>";
+			row += "  <div class='card black'>34<\/div>";
+			row += "  <div class='card red'>12<\/div>";
+			row += "  <div class='card black'>27<\/div>";
+			row += "  <div class='card red'>29<\/div>";
+			row += "  <div class='card black'>16<\/div>";
+			row += "  <div class='card red'>36<\/div>";
+			row += "  <div class='card green'>0<\/div>";
+			row += "  <div class='card black'>11<\/div>";
+			row += "  <div class='card red'>5<\/div>";
+			row += "  <div class='card black'>22<\/div>";
+			row += "  <div class='card red'>30<\/div>";
+			row += "  <div class='card black'>10<\/div>";
+			row += "  <div class='card red'>6<\/div>";
+			row += "  <div class='card black'>9<\/div>";
+			row += "  <div class='card red'>24<\/div>";
+			row += "  <div class='card black'>28<\/div>";
+			row += "  <div class='card red'>17<\/div>";
+			row += "  <div class='card black'>35<\/div>";
+			row += "  <div class='card red'>31<\/div>";
+			row += "  <div class='card black'>8<\/div>";
+			row += "  <div class='card red'>7<\/div>";
+			row += "  <div class='card black'>15<\/div>";
+			row += "  <div class='card red'>19<\/div>";
+			row += "  <div class='card black'>33<\/div>";
+			row += "  <div class='card red'>25<\/div>";
+
+			row += "<\/div>";
+
+			for (var x = 0; x < 29; x++) {
+				$wheel.append(row);
+			}
+		}
+
+		function spinWheel(roll) {
+
+			var $wheel = $('.roulette-wrapper .wheel'),
+				order = [0, 11, 5, 22, 30, 10, 6, 9, 24, 28, 17, 35, 31, 8, 7, 15, 19, 33, 25, 32, 1, 23, 14, 21, 2, 3, 26, 20, 13, 4, 18, 34, 12, 27, 29, 16, 36],
+				position = order.indexOf(roll);
+			console.log("Array: " + order);
+			console.log("Posicion: " + roll);
+			console.log("Tamaño array: " + order.length);
+			//determine position where to land
+			var rows = 12,
+				card = 75 + 3 * 2,
+				landingPosition = (rows * order.length * card) + (position * card);
+			console.log("Card: " + position);
+			console.log("LandingPosition: " + position);
+			var randomize = Math.floor(Math.random() * 75) - (75 / 2);
+
+			landingPosition = landingPosition + randomize;
+
+			var object = {
+				x: Math.floor(Math.random() * 70) / 100,
+				y: Math.floor(Math.random() * 20) / 100
+			};
+
+			$wheel.css({
+				'transition-timing-function': 'cubic-bezier(0,' + object.x + ',' + object.y + ',1)',
+				'transition-duration': '2s',
+				'transform': 'translate3d(-' + landingPosition + 'px, 0px, 0px)'
+			});
+
+			setTimeout(function () {
+				$wheel.css({
+					'transition-timing-function': '',
+					'transition-duration': '',
+				});
+
+				var resetTo = -(position * card + randomize);
+				$wheel.css('transform', 'translate3d(' + resetTo + 'px, 0px, 0px)');
+			}, 2 * 1000);
+		}
+
+		function sendOutcomeToController(outcome, fichavalor, nfichas) {
+			$.ajax({
+				type: 'POST',
+				url: '/tirada', // Reemplaza esto con la URL correcta de tu controlador
+				data: {
+					outcome: outcome,
+					fichavalor: fichavalor,
+					nfichas: nfichas, 
+					partida: partida
+				},
+				success: function (response) {
+					// Manejar la respuesta del controlador si es necesario
+					console.log('Solicitud AJAX exitosa:', response);
+				},
+				error: function (error) {
+					console.error('Error en la solicitud AJAX:', error);
+				}
+			});
+		}
 
 
 
@@ -219,7 +343,7 @@
 
 		<div class="ruleta">
 			<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-			<script src="JS/principal.js"></script>
+			<!--<script src="JS/principal.js"></script>-->
 			<div class='roulette-wrapper'>
 				<div class='selector'></div>
 				<div class='wheel'></div>
@@ -272,10 +396,10 @@
 		</div>
 
 	</div>
-	<form id="myForm" method="post" action="/principal">
+	<!-- <form id="myForm" method="post" action="/principal">
 		<input type="hidden" name="fichaValor" id="fichaValor" />
 		<input type="hidden" name="numeroFicha" id="numeroFicha" />
-	</form>
+	</form> -->
 	<footer>
 
 	</footer>
