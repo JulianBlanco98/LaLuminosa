@@ -199,10 +199,7 @@ public class Partida {
 					return this.tablero.getTablero()[i][j];
 				}
 			}
-		}
-		
-		
-		
+		}		
 		return c;
 	}
 	public boolean comprobarApuesta(Celda ganadora, Celda jugador, Usuario j1, Tirada t) {
