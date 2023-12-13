@@ -189,8 +189,22 @@
 
 		</div>
 		<div class="fichas">
-
-			<h4><span th:text="${partida.fichas[1].valor}"></span></h4>
+			
+			<div id="f5">	
+				<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[0].valor + '.png'}}" alt="Imagen de la ficha"/>
+			</div>
+			<div id="f10">	
+				<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[1].valor + '.png'}}" alt="Imagen de la ficha"/>
+			</div>
+			<div id="f20">	
+				<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[2].valor + '.png'}}" alt="Imagen de la ficha"/>
+			</div>
+			<div id="f50">	
+				<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[3].valor + '.png'}}" alt="Imagen de la ficha"/>
+			</div>
+			<div id="f100">	
+				<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[4].valor + '.png'}}" alt="Imagen de la ficha"/>
+			</div>
 
 		</div>
 

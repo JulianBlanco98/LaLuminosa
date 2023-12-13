@@ -106,3 +106,13 @@ header p {
 .card.green {
     background: #00C74D;
 }
+.fichas {
+	display: flex;
+	margin: 50px 0;
+	justify-content: center;
+	
+}
+.fichas img {
+	width: 100px;
+	margin: 0 30px;
+}
