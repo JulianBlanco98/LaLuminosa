@@ -62,32 +62,32 @@ class BdEjemploApplicationTestsTiradaFicha {
 		f6.setValor(100);
 		
 		//se añaden las fichas a tiradas dependiendo de la apuesta
-//		f1.setTirada(t1);
-//		f2.setTirada(t1);
-//		f3.setTirada(t1);
-		f4.setTirada(t1);
-		f5.setTirada(t1);
-//		f6.setTirada(t1);
-//		f1.setTirada(t2);
-//		f2.setTirada(t2);
-		f3.setTirada(t2);
-//		f4.setTirada(t2);
-//		f5.setTirada(t2);
-		f6.setTirada(t2);
-		
-		//se añaden las fichas
-		t1.getnFichas().add(f1);
-		t1.getnFichas().add(f2);
-		t1.getnFichas().add(f3);
-		t1.getnFichas().add(f4);
-		t1.getnFichas().add(f5);
-		t1.getnFichas().add(f6);
-		t2.getnFichas().add(f1);
-		t2.getnFichas().add(f2);
-		t2.getnFichas().add(f3);
-		t2.getnFichas().add(f4);
-		t2.getnFichas().add(f5);
-		t2.getnFichas().add(f6);
+////		f1.setTirada(t1);
+////		f2.setTirada(t1);
+////		f3.setTirada(t1);
+//		f4.setTirada(t1);
+//		f5.setTirada(t1);
+////		f6.setTirada(t1);
+////		f1.setTirada(t2);
+////		f2.setTirada(t2);
+//		f3.setTirada(t2);
+////		f4.setTirada(t2);
+////		f5.setTirada(t2);
+//		f6.setTirada(t2);
+//		
+//		//se añaden las fichas
+//		t1.getnFichas().add(f1);
+//		t1.getnFichas().add(f2);
+//		t1.getnFichas().add(f3);
+//		t1.getnFichas().add(f4);
+//		t1.getnFichas().add(f5);
+//		t1.getnFichas().add(f6);
+//		t2.getnFichas().add(f1);
+//		t2.getnFichas().add(f2);
+//		t2.getnFichas().add(f3);
+//		t2.getnFichas().add(f4);
+//		t2.getnFichas().add(f5);
+//		t2.getnFichas().add(f6);
 		
 		//Creamos las 2 tiradas
 		t1 = tiradaRepository.save(t1);
