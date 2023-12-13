@@ -3,7 +3,7 @@ $(document).ready(function () {
   initWheel();
 
   $('button').on('click', function () {
-    var outcome = parseInt($('input').val());
+    var outcome = Math.floor(Math.random() * 38);
     console.log(outcome)
     spinWheel(outcome);
     
