@@ -163,6 +163,12 @@
 
 				// Hacer lo que quieras con el valor obtenido
 				console.log("Valor del span en el td: " + spanValue);
+				// Si el spanValue es 'Impar', crear un nuevo span con valor 37 y mostrarlo
+				if (spanValue === 'Impar') {
+					var newSpan = document.createElement('span');
+					newSpan.textContent = '37';
+					targetTd.appendChild(newSpan);
+				}
 			} else {
 				console.log("La imagen solo puede ser soltada en un td con la clase 'verde', 'rojo' o 'negro'");
 				alert('La imagen solo puede ser soltada en un td con la clase verde, rojo o negro');
