@@ -112,7 +112,7 @@ header p {
 	justify-content: center;
 	
 }
-.fichas img {
+.fichas img, #ficha5 {
 	width: 100px;
 	margin: 0 30px;
 }
