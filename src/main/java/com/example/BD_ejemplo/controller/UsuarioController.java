@@ -22,6 +22,8 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 	
 	
+	
+	
 	@GetMapping("/registro")
     public String showAddUsuarioForm(Usuario usuario) {    	
     	System.out.println("\t UsuarioController::showAddUsuarioForm");    	
@@ -82,6 +84,8 @@ public class UsuarioController {
 			//Se la añadimos tanto al usuario como a la partida (1 a N)
 			partida.setUsuario(aux);
 			aux.getPartidas().add(partida);
+			
+			
 			
 			//System.out.println(aux.toString());
 			//System.out.println("Usuario dinero: "+aux.getDinero());
