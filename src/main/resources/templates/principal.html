@@ -160,14 +160,18 @@
 
 				// Obtener el valor del span dentro del td
 				var spanValue = targetTd.querySelector('span').textContent;
-
+				// Valor de la ficha
+				var fichaValor = draggedElement.getAttribute('id');
+				var numeroFicha = fichaValor.slice(5);
+				
+				console.log("Valor de la ficha: "+numeroFicha);
 				// Hacer lo que quieras con el valor obtenido
 				console.log("Valor del span en el td: " + spanValue);
 				
 				
 			} else {
 				console.log("La imagen solo puede ser soltada en un td con la clase 'verde', 'rojo' o 'negro'");
-				alert('La imagen solo puede ser soltada en un td con la clase verde, rojo o negro');
+				alert('La imagen solo puede ser soltada en un td de número o de apuesta');
 			}
 		}
 

@@ -4,7 +4,9 @@ $(document).ready(function () {
 
   $('button').on('click', function () {
     var outcome = parseInt($('input').val());
+    console.log(outcome)
     spinWheel(outcome);
+    
   });
 });
 
@@ -59,11 +61,12 @@ function initWheel() {
 }
 
 function spinWheel(roll) {
+	
   var $wheel = $('.roulette-wrapper .wheel'),
     order = [0, 11, 5, 22, 30, 10, 6, 9, 24, 28, 17, 35, 31, 8, 7, 15, 19, 33, 25, 32, 1, 23, 14, 21, 2, 3, 26, 20, 13, 4, 18, 34, 12, 27, 29, 16, 36],
     position = order.indexOf(roll);
   console.log("Array: " + order);
-  console.log("Posicion: "+position);
+  console.log("Posicion: "+roll);
   console.log("Tamaño array: "+order.length);
   //determine position where to land
   var rows = 12,
