@@ -108,16 +108,19 @@ public class Tablero {
 			tablero[i][0].setTipo(0);
 		}
 		//par-impar rojo-negro
-		tablero[3][3].setValor(37);
+		/*tablero[3][3].setValor(37);
 		tablero[3][4].setValor(37);
 		tablero[3][5].setValor(38);
 		tablero[3][6].setValor(38);
 		tablero[3][7].setValor(39);
 		tablero[3][8].setValor(39);
 		tablero[3][9].setValor(40);
-		tablero[3][10].setValor(40);
+		tablero[3][10].setValor(40);*/
 
-		
+		tablero[3][3].setColor("azul");
+		tablero[3][4].setColor("azul");
+		tablero[3][9].setColor("lila");
+		tablero[3][10].setColor("lila");
 		
 		// Resto de casillas: ponerlas a null
 		tablero[3][0].setValor(-1);

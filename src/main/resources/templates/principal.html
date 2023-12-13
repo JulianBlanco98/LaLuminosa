@@ -154,7 +154,7 @@
 			var targetTd = event.target.closest('td');
 
 			// Verificar si el td de destino tiene la clase adecuada
-			if (targetTd.classList.contains("verde") || targetTd.classList.contains("rojo") || targetTd.classList.contains("negro")) {
+			if (targetTd.classList.contains("verde") || targetTd.classList.contains("rojo") || targetTd.classList.contains("negro") || targetTd.classList.contains("azul") || targetTd.classList.contains("lila")) {
 				// Mover la imagen al td de destino
 				targetTd.appendChild(draggedElement);
 
@@ -163,12 +163,8 @@
 
 				// Hacer lo que quieras con el valor obtenido
 				console.log("Valor del span en el td: " + spanValue);
-				// Si el spanValue es 'Impar', crear un nuevo span con valor 37 y mostrarlo
-				if (spanValue === 'Impar') {
-					var newSpan = document.createElement('span');
-					newSpan.textContent = '37';
-					targetTd.appendChild(newSpan);
-				}
+				
+				
 			} else {
 				console.log("La imagen solo puede ser soltada en un td con la clase 'verde', 'rojo' o 'negro'");
 				alert('La imagen solo puede ser soltada en un td con la clase verde, rojo o negro');
