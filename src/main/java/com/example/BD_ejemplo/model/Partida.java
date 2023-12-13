@@ -29,7 +29,7 @@ public class Partida {
 	@ManyToOne
 	public Usuario usuario;
 	
-	@OneToMany(mappedBy = "fichas")
+	@OneToMany(mappedBy = "ficha")
 	private List<Ficha> fichas = new ArrayList<>();
 
 	// prueba
