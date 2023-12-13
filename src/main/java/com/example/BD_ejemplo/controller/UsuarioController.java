@@ -61,14 +61,15 @@ public class UsuarioController {
 			
 			//Creamos la Partida del Jugador
 			Partida partida = new Partida();
+			//Inicializamos el tablero
 			partida.getTablero().inicializarMatriz();
 			
 			//Se la añadimos tanto al usuario como a la partida (1 a N)
 			partida.setUsuario(aux);
 			aux.getPartidas().add(partida);
 			
-			System.out.println(aux.toString());
-			System.out.println("Usuario dinero: "+aux.getDinero());
+			//System.out.println(aux.toString());
+			//System.out.println("Usuario dinero: "+aux.getDinero());
 			
 			//le añadimos ambos atributos
 			model.addAttribute("usuario", aux);

@@ -120,13 +120,13 @@ class BdEjemploApplicationTestsTiradaFicha {
 		}
 		
 		//Ver las fichas según la tirada usada
-		List<Ficha> fichasUsadas = fichaRepository.findFichasByTiradaId(t1.getIdTirada());
+		/*List<Ficha> fichasUsadas = fichaRepository.findFichasByTiradaId(t1.getIdTirada());
 		System.out.println("Número de fichas usadas: "+fichasUsadas.size());
 		Iterator it3 = fichasUsadas.iterator();
 		while(it3.hasNext()) {
 			Ficha aux = (Ficha)it3.next();
 			System.out.println(aux.toString());
-		}
+		}*/
 		
 		
 	}
