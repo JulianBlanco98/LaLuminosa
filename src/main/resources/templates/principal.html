@@ -53,6 +53,9 @@
 	</style>
 
 	<script>
+
+		var fichaArrastrada = false;
+
 		document.addEventListener('DOMContentLoaded', function () {
 			var table = document.getElementById('tablero_juego');
 
@@ -145,33 +148,39 @@
 			event.dataTransfer.setData("text", event.target.id);
 		}
 
+
 		function drop(event) {
 			event.preventDefault();
-			var draggedElementId = event.dataTransfer.getData("text");
-			var draggedElement = document.getElementById(draggedElementId);
+			if (!fichaArrastrada) { // Verificar si no se ha arrastrado una ficha
+				var draggedElementId = event.dataTransfer.getData("text");
+				var draggedElement = document.getElementById(draggedElementId);
 
-			// Obtener el td de destino
-			var targetTd = event.target.closest('td');
+				// Obtener el td de destino
+				var targetTd = event.target.closest('td');
 
-			// Verificar si el td de destino tiene la clase adecuada
-			if (targetTd.classList.contains("verde") || targetTd.classList.contains("rojo") || targetTd.classList.contains("negro") || targetTd.classList.contains("azul") || targetTd.classList.contains("lila")) {
-				// Mover la imagen al td de destino
-				targetTd.appendChild(draggedElement);
+				// Verificar si el td de destino tiene la clase adecuada
+				if (targetTd.classList.contains("verde") || targetTd.classList.contains("rojo") || targetTd.classList.contains("negro") || targetTd.classList.contains("azul") || targetTd.classList.contains("lila")) {
+					// Mover la imagen al td de destino
+					targetTd.appendChild(draggedElement);
 
-				// Obtener el valor del span dentro del td
-				var spanValue = targetTd.querySelector('span').textContent;
-				// Valor de la ficha
-				var fichaValor = draggedElement.getAttribute('id');
-				var numeroFicha = fichaValor.slice(5);
-				
-				console.log("Valor de la ficha: "+numeroFicha);
-				// Hacer lo que quieras con el valor obtenido
-				console.log("Valor del span en el td: " + spanValue);
-				
-				
+					// Obtener el valor del span dentro del td
+					var spanValue = targetTd.querySelector('span').textContent;
+					// Valor de la ficha
+					var fichaValor = draggedElement.getAttribute('id');
+					var numeroFicha = fichaValor.slice(5);
+
+					console.log("Valor de la ficha: " + numeroFicha);
+					// Hacer lo que quieras con el valor obtenido
+					console.log("Valor del span en el td: " + spanValue);
+
+					fichaArrastrada = true; // Marcar que se ha arrastrado una ficha
+				} else {
+					console.log("La imagen solo puede ser soltada en un td con la clase 'verde', 'rojo' o 'negro'");
+					alert('La imagen solo puede ser soltada en un td de número o de apuesta');
+				}
 			} else {
-				console.log("La imagen solo puede ser soltada en un td con la clase 'verde', 'rojo' o 'negro'");
-				alert('La imagen solo puede ser soltada en un td de número o de apuesta');
+				console.log("Ya se ha arrastrado una ficha. No se pueden arrastrar más fichas.");
+				alert('Ya has arrastrado una ficha. No puedes arrastrar más fichas.');
 			}
 		}
 
@@ -238,20 +247,20 @@
 					draggable="true" ondragstart="drag(event)" id="ficha5" />
 			</div>
 			<div id="f10">
-				<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[1].valor + '.png'}}" alt="Imagen de la ficha" 
-				draggable="true" ondragstart="drag(event)" id="ficha10" />
+				<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[1].valor + '.png'}}" alt="Imagen de la ficha"
+					draggable="true" ondragstart="drag(event)" id="ficha10" />
 			</div>
 			<div id="f20">
-				<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[2].valor + '.png'}}" alt="Imagen de la ficha" 
-				draggable="true" ondragstart="drag(event)" id="ficha20" />
+				<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[2].valor + '.png'}}" alt="Imagen de la ficha"
+					draggable="true" ondragstart="drag(event)" id="ficha20" />
 			</div>
 			<div id="f50">
-				<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[3].valor + '.png'}}" alt="Imagen de la ficha" 
-				draggable="true" ondragstart="drag(event)" id="ficha50" />
+				<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[3].valor + '.png'}}" alt="Imagen de la ficha"
+					draggable="true" ondragstart="drag(event)" id="ficha50" />
 			</div>
 			<div id="f100">
-				<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[4].valor + '.png'}}" alt="Imagen de la ficha" 
-				draggable="true" ondragstart="drag(event)" id="ficha100" />
+				<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[4].valor + '.png'}}" alt="Imagen de la ficha"
+					draggable="true" ondragstart="drag(event)" id="ficha100" />
 			</div>
 
 		</div>
