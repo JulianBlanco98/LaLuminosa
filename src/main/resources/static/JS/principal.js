@@ -5,7 +5,7 @@ $(document).ready(function () {
   $('button').on('click', function () {
     var outcome = Math.floor(Math.random() * 38);
     console.log(outcome)
-    sendOutcomeToController(outcome);
+    //sendOutcomeToController(outcome);
     spinWheel(outcome);
     
   });
@@ -104,7 +104,7 @@ function spinWheel(roll) {
   function sendOutcomeToController(outcome) {
   $.ajax({
     type: 'POST',
-    url: '/prueba', // Reemplaza esto con la URL correcta de tu controlador
+    url: '/tirada', // Reemplaza esto con la URL correcta de tu controlador
     data: { outcome: outcome },
     success: function (response) {
       // Manejar la respuesta del controlador si es necesario

@@ -25,9 +25,20 @@
 			background-color: #00dd56;
 		}
 
+		.azul {
+			background-color: rgb(12, 12, 192);
+		}
+
+		.lila {
+			background-color: #df7900;
+			;
+		}
+
 		.rojo,
 		.verde,
-		.negro {
+		.negro,
+		.azul,
+		.lila {
 			box-shadow: inset 0 0 7px 3px #666666;
 		}
 
@@ -54,7 +65,7 @@
 
 	<script>
 
-		var fichaArrastrada = false;
+
 
 		document.addEventListener('DOMContentLoaded', function () {
 			var table = document.getElementById('tablero_juego');
@@ -150,39 +161,36 @@
 
 		function drop(event) {
 			event.preventDefault();
-			if (!fichaArrastrada) { // Verificar si no se ha arrastrado una ficha
-				var draggedElementId = event.dataTransfer.getData("text");
-				var draggedElement = document.getElementById(draggedElementId);
 
-				// Obtener el td de destino
-				var targetTd = event.target.closest('td');
 
-				// Verificar si el td de destino tiene la clase adecuada
-				if (targetTd.classList.contains("verde") || targetTd.classList.contains("rojo") || targetTd.classList.contains("negro") || targetTd.classList.contains("azul") || targetTd.classList.contains("lila")) {
-					// Mover la imagen al td de destino
-					targetTd.appendChild(draggedElement);
+			var draggedElementId = event.dataTransfer.getData("text");
+			var draggedElement = document.getElementById(draggedElementId);
 
-					// Obtener el valor del span dentro del td
-					var spanValue = targetTd.querySelector('span').textContent;
-					// Valor de la ficha
-					var fichaValor = draggedElement.getAttribute('id');
-					var numeroFicha = fichaValor.slice(5);
+			// Obtener el td de destino
+			var targetTd = event.target.closest('td');
 
-					console.log("Valor de la ficha: " + numeroFicha);
-					// Hacer lo que quieras con el valor obtenido
-					console.log("Valor del span en el td: " + spanValue);
+			// Verificar si el td de destino tiene la clase adecuada
+			if (targetTd.classList.contains("verde") || targetTd.classList.contains("rojo") || targetTd.classList.contains("negro") || targetTd.classList.contains("azul") || targetTd.classList.contains("lila")) {
+				// Mover la imagen al td de destino
+				targetTd.appendChild(draggedElement);
 
-					fichaArrastrada = true; // Marcar que se ha arrastrado una ficha
-				} else {
-					console.log("La imagen solo puede ser soltada en un td con la clase 'verde', 'rojo' o 'negro'");
-					alert('La imagen solo puede ser soltada en un td de número o de apuesta');
-				}
+				// Obtener el valor del span dentro del td
+				var spanValue = targetTd.querySelector('span').textContent; //Valor que necesitamos: valor de la celda de la pos de la ficha
+				// Valor de la ficha
+				var fichaValor = draggedElement.getAttribute('id');
+				var numeroFicha = fichaValor.slice(5); //Valor que necesitamos: valor de la ficha
+
+				console.log("Valor de la ficha: " + numeroFicha);
+				// Hacer lo que quieras con el valor obtenido
+				console.log("Valor del span en el td: " + spanValue);
+				
 			} else {
-				console.log("Ya se ha arrastrado una ficha. No se pueden arrastrar más fichas.");
-				alert('Ya has arrastrado una ficha. No puedes arrastrar más fichas.');
+				console.log("La celda solo puede ser soltada en un td con la clase 'verde', 'rojo' o 'negro'");
+				alert('La ficha solo puede ser soltada en una celda de número o de apuesta');
 			}
-
 		}
+
+
 
 
 
