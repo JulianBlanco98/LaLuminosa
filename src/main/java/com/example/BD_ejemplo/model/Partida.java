@@ -189,7 +189,22 @@ public class Partida {
 		return apuesta * multi;
 	}
 	
-	
+	public Celda recuperarcelda(String valor) {
+		Celda c = new Celda();
+		int aux = Integer.parseInt(valor);
+		
+		for(int i = 0; i<13; i++) {
+			for(int j = 0; j<4; j++) {
+				if(this.tablero.getTablero()[i][j].getValor()==aux) {
+					return this.tablero.getTablero()[i][j];
+				}
+			}
+		}
+		
+		
+		
+		return c;
+	}
 	public boolean comprobarApuesta(Celda ganadora, Celda jugador, Usuario j1, Tirada t) {
 		
 		//Si el jugador apuesta a un numero
