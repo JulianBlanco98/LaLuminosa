@@ -90,6 +90,17 @@ function spinWheel(roll) {
     'transform': 'translate3d(-' + landingPosition + 'px, 0px, 0px)'
   });
   
+  setTimeout(function () {
+    $wheel.css({
+      'transition-timing-function': '',
+      'transition-duration': '',
+    });
+
+    var resetTo = -(position * card + randomize);
+    $wheel.css('transform', 'translate3d(' + resetTo + 'px, 0px, 0px)');
+  }, 2 * 1000);
+}
+
   function sendOutcomeToController(outcome) {
   $.ajax({
     type: 'POST',
@@ -103,15 +114,4 @@ function spinWheel(roll) {
       console.error('Error en la solicitud AJAX:', error);
     }
   });
-}
-
-  setTimeout(function () {
-    $wheel.css({
-      'transition-timing-function': '',
-      'transition-duration': '',
-    });
-
-    var resetTo = -(position * card + randomize);
-    $wheel.css('transform', 'translate3d(' + resetTo + 'px, 0px, 0px)');
-  }, 2 * 1000);
 }
