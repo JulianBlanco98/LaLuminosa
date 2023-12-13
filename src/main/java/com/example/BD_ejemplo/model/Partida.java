@@ -5,6 +5,7 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,7 +24,7 @@ public class Partida {
 	public int derrota;
 	public long profit;
 
-	@OneToMany(mappedBy = "partida", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "partida", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<Tirada> tiradas = new ArrayList<>();
 
 	@ManyToOne
