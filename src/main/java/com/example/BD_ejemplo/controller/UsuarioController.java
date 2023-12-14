@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.BD_ejemplo.model.Celda;
 import com.example.BD_ejemplo.model.Partida;
 import com.example.BD_ejemplo.model.Tablero;
+import com.example.BD_ejemplo.model.Tirada;
 import com.example.BD_ejemplo.model.Usuario;
 import com.example.BD_ejemplo.repository.PartidaRepository;
 import com.example.BD_ejemplo.service.FichaService;
@@ -64,7 +66,7 @@ public class UsuarioController {
     }
 	
 	@PostMapping("/tirada")
-	public String manejarResultado(@RequestParam("outcome") int outcome,@RequestParam("valorTablero") String fichaValor,
+	public String manejarResultado(@RequestParam("outcome") String outcome,@RequestParam("valorTablero") String fichaValor,
             @RequestParam("numeroFicha") String numeroFicha,@RequestParam("clasePartida") long idPartida , Model model) {
 	    // Realizar operaciones con el valor outcome
 	    System.out.println("Resultado recibido en el controlador: " + outcome);
@@ -79,7 +81,33 @@ public class UsuarioController {
 	    t.inicializarMatriz();
 	    aux.setTablero(t);
 	    
-	    aux.getUsuario().setDinero(200L);
+	   //Aplicar la lógica de la ruleta
+	    Tirada tirada = new Tirada();
+	    long apuestaJugador = Long.parseLong(numeroFicha);
+	    tirada.setApuesta(apuestaJugador);
+	    System.out.println("Apuesta de la tirada: "+tirada.getApuesta());
+	    
+	    Celda numeroRuleta = null;
+	    Celda apostada = null;
+	    
+	    numeroRuleta = aux.recuperarcelda(outcome);
+	    System.out.println("Celda de la ruleta: "+numeroRuleta.toString());
+	    apostada = aux.recuperarcelda(fichaValor);
+	    System.out.println("Celda de la apuesta: "+apostada.toString());
+	    boolean ganaTirada = aux.comprobarApuesta(numeroRuleta, apostada, aux.getUsuario(), tirada);;
+	    if (ganaTirada)
+	    {
+	    	System.out.println("Has ganado la apuesta");
+	    	//return a html de ganado
+	    }
+	    else
+	    {
+	    	System.out.println("Has perdido");
+	    	//return a html de derrota
+	    }
+	    
+	    
+	    
 	    
 	    model.addAttribute("partida", aux);
         return "principal";

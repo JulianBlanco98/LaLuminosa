@@ -202,19 +202,19 @@ public class Partida {
 		Celda c = new Celda();
 		if(valor.equals("Rojo")){
 			c.setColor("rojo");
-			c.setTipo(2);
+			c.setTipo(3);
 		}else if(valor.equals("Negro")) {
 			c.setColor("negro");
-			c.setTipo(2);
-		}else if(valor.equals("Par")) {
 			c.setTipo(3);
+		}else if(valor.equals("Par")) {
+			c.setTipo(2);
 			c.setEspar(true);
 		}else if(valor.equals("Impar")) {
-			c.setTipo(3);
+			c.setTipo(2);
 			c.setEspar(false);
 		}else {
-			for(int i = 0; i<13; i++) {
-				for(int j = 0; j<3; j++) {
+			for(int i = 0; i<3; i++) {
+				for(int j = 0; j<13; j++) {
 					int aux = Integer.parseInt(valor);
 					if(tablero.getTablero()[i][j].getValor() == aux) {
 						return tablero.getTablero()[i][j];
