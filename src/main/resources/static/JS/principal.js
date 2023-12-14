@@ -249,7 +249,7 @@ function spinWheel(roll) {
 
 	$wheel.css({
 		'transition-timing-function': 'cubic-bezier(0,' + object.x + ',' + object.y + ',1)',
-		'transition-duration': '2s',
+		'transition-duration': '0s',
 		'transform': 'translate3d(-' + landingPosition + 'px, 0px, 0px)'
 	});
 
@@ -261,7 +261,7 @@ function spinWheel(roll) {
 
 		var resetTo = -(position * card + randomize);
 		$wheel.css('transform', 'translate3d(' + resetTo + 'px, 0px, 0px)');
-	}, 2 * 1000);
+	}, 0 * 1000);
 }
 
 function sendOutcomeToController(outcome,clasePartida,valorTablero,numeroFicha) {

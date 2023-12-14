@@ -94,24 +94,41 @@ public class UsuarioController {
 	    System.out.println("Celda de la ruleta: "+numeroRuleta.toString());
 	    apostada = aux.recuperarcelda(fichaValor);
 	    System.out.println("Celda de la apuesta: "+apostada.toString());
-	    boolean ganaTirada = aux.comprobarApuesta(numeroRuleta, apostada, aux.getUsuario(), tirada);;
+	    boolean ganaTirada = aux.comprobarApuesta(numeroRuleta, apostada, aux.getUsuario(), tirada);
 	    if (ganaTirada)
 	    {
 	    	System.out.println("Has ganado la apuesta");
-	    	//return a html de ganado
+	    	model.addAttribute("partida", aux);
+	        return "redirect:/prueba";
+	   
 	    }
 	    else
 	    {
 	    	System.out.println("Has perdido");
+	    	model.addAttribute("partida", aux);
+	        return "redirect:/prueba";
 	    	//return a html de derrota
 	    }
 	    
 	    
 	    
 	    
-	    model.addAttribute("partida", aux);
-        return "principal";
+	    //guardar en BD
+//	    model.addAttribute("partida", aux);
+//        return "redirect:/index";
 	  }
+	
+	
+	@GetMapping("/prueba")
+	public String ganador(@ModelAttribute Partida partida, Model model) {
+		System.out.println("Controller ganador");
+//	    System.out.println("ID PARTIDA: "+partida.getIdPartida()+", dinero:"+partida.getUsuario().getDinero());
+//    	model.addAttribute("partida", partida);
+		
+		System.out.println("Controller ganador2");
+
+		return "ganador";
+	}
 	
 	@PostMapping("/index")
 	public String login(@ModelAttribute Usuario usuario, Model model) {
