@@ -82,7 +82,7 @@ public class UsuarioController {
 	    aux.getUsuario().setDinero(200L);
 	    
 	    model.addAttribute("partida", aux);
-        return "redirect:principal";
+        return "principal";
 	  }
 	
 	@PostMapping("/index")
