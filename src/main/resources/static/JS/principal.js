@@ -265,6 +265,7 @@ function spinWheel(roll) {
 }
 
 function sendOutcomeToController(outcome,clasePartida,spanValue,numeroFicha) {
+	console.log(spanValue)
 	$.ajax({
 		type: 'POST',
 		url: '/tirada', // Reemplaza esto con la URL correcta de tu controlador

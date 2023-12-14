@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.BD_ejemplo.model.Partida;
+import com.example.BD_ejemplo.model.Tablero;
 import com.example.BD_ejemplo.model.Usuario;
 import com.example.BD_ejemplo.repository.PartidaRepository;
 import com.example.BD_ejemplo.service.PartidaService;
@@ -59,19 +60,21 @@ public class UsuarioController {
     }
 	
 	@PostMapping("/tirada")
-	public String manejarResultado(@RequestParam("outcome") int outcome,@RequestParam("fichaValor") String fichaValor,
-            @RequestParam("nfichas") String numeroFicha,@RequestParam("partida") long idPartida , Model model) {
+	public String manejarResultado(@RequestParam("outcome") int outcome,@RequestParam("spanValue") String fichaValor,
+            @RequestParam("numeroFicha") String numeroFicha,@RequestParam("clasePartida") long idPartida , Model model) {
 	    // Realizar operaciones con el valor outcome
 	    System.out.println("Resultado recibido en el controlador: " + outcome);
 	    System.out.println("Número de la ficha:"+numeroFicha);
 	    System.out.println("apostado en: "+fichaValor);
 	    Partida aux = partidaservice.findPartidaByidPartida(idPartida);
 	    
-	    
+
 	    //partidaservice
+	    Tablero t = new Tablero();
+	    t.inicializarMatriz();
+	    aux.setTablero(t);
 	    
-	    
-	    //model.addAttribute("partida", partida);
+	    model.addAttribute("partida", aux);
         return "principal";
 	  }
 	
