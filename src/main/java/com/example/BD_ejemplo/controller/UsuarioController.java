@@ -79,8 +79,10 @@ public class UsuarioController {
 	    t.inicializarMatriz();
 	    aux.setTablero(t);
 	    
+	    aux.getUsuario().setDinero(200L);
+	    
 	    model.addAttribute("partida", aux);
-        return "principal";
+        return "redirect:principal";
 	  }
 	
 	@PostMapping("/index")
