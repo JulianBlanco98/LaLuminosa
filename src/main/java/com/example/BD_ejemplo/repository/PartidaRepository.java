@@ -20,6 +20,9 @@ public interface PartidaRepository extends CrudRepository<Partida, Long> {
 	@Query("SELECT p FROM Partida p WHERE p.usuario.idUsuario = ?1")
 	List<Partida> findPartidasByUserId(Long userId);
 	
+	@Query("SELECT p FROM Partida p WHERE p.idPartida = ?1")
+	Partida buscarPartidaID(Long idPartida);
+
 //	@Query("SELECT p FROM Partida p WHERE p.usuario.idUsuario = :userId")
 //    List<Partida> findPartidasByUserId(@Param("userId") Long userId);
 

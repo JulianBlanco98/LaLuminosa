@@ -1,5 +1,7 @@
 package com.example.BD_ejemplo.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,14 @@ public class PartidaServiceImpl implements PartidaService{
 		p = partidarepository.save(p);
 		return p;
 	}
+
+	@Override
+	public Partida findPartidaByidPartida(long id) {
+		Partida p = partidarepository.buscarPartidaID(id);
+		return p;
+	}
+	
+	
 	
 	
 	

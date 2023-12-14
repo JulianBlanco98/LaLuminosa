@@ -60,13 +60,18 @@ public class UsuarioController {
 	
 	@PostMapping("/tirada")
 	public String manejarResultado(@RequestParam("outcome") int outcome,@RequestParam("fichaValor") String fichaValor,
-            @RequestParam("nfichas") String numeroFicha, @ModelAttribute("partida") Partida partida, Model model) {
+            @RequestParam("nfichas") String numeroFicha,@RequestParam("partida") long idPartida , Model model) {
 	    // Realizar operaciones con el valor outcome
 	    System.out.println("Resultado recibido en el controlador: " + outcome);
 	    System.out.println("Número de la ficha:"+numeroFicha);
 	    System.out.println("apostado en: "+fichaValor);
-	    System.out.println(partida.toString());
-		//model.addAttribute("partida", partida);
+	    Partida aux = partidaservice.findPartidaByidPartida(idPartida);
+	    
+	    
+	    //partidaservice
+	    
+	    
+	    //model.addAttribute("partida", partida);
         return "principal";
 	  }
 	

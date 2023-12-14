@@ -103,7 +103,7 @@ $(document).ready(function() {
 
 		var outcome = Math.floor(Math.random() * 38);
 		console.log(outcome)
-		sendOutcomeToController(outcome);
+		sendOutcomeToController(outcome,clasePartida,spanValue,numeroFicha);
 		spinWheel(outcome);
 
 	});
@@ -264,11 +264,14 @@ function spinWheel(roll) {
 	}, 2 * 1000);
 }
 
-function sendOutcomeToController(outcome) {
+function sendOutcomeToController(outcome,clasePartida,spanValue,numeroFicha) {
 	$.ajax({
 		type: 'POST',
 		url: '/tirada', // Reemplaza esto con la URL correcta de tu controlador
-		data: { outcome: outcome },
+		data: { outcome: outcome,
+		clasePartida: clasePartida,
+		spanValue:spanValue,
+		numeroFicha: numeroFicha},
 		success: function(response) {
 			// Manejar la respuesta del controlador si es necesario
 			console.log('Solicitud AJAX exitosa:', response);
