@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.BD_ejemplo.model.Partida;
 import com.example.BD_ejemplo.model.Usuario;
+import com.example.BD_ejemplo.repository.PartidaRepository;
+import com.example.BD_ejemplo.service.PartidaService;
 import com.example.BD_ejemplo.service.UsuarioService;
 
 
@@ -21,7 +23,9 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	
+
+	@Autowired
+    private PartidaService partidaservice;
 	
 	
 	@GetMapping("/registro")
@@ -84,6 +88,8 @@ public class UsuarioController {
 			//Se la añadimos tanto al usuario como a la partida (1 a N)
 			partida.setUsuario(aux);
 			aux.getPartidas().add(partida);
+			
+			partida = partidaservice.crearPartida(partida);
 			
 			
 			
