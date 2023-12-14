@@ -232,6 +232,7 @@ public class Partida {
 				j1.setDinero(j1.getDinero()+ actualizarSaldoJugador(t.getApuesta(), 36));
 				return true;
 			}else {
+				j1.setDinero(j1.getDinero() - t.getApuesta());
 				return false;
 			}
 			//Si el jugador apuesa a Par/Impar
@@ -241,6 +242,7 @@ public class Partida {
 
 				return true;
 			}else {
+				j1.setDinero(j1.getDinero() - t.getApuesta());
 				return false;
 			}
 			//Si el jugador apuesta a Rojo/Negroe
@@ -249,6 +251,7 @@ public class Partida {
 				j1.setDinero(j1.getDinero()+ actualizarSaldoJugador(t.getApuesta(), 2));
 				return true;
 			}else {
+				j1.setDinero(j1.getDinero() - t.getApuesta());
 				return false;
 			}
 			//Sin opcion
