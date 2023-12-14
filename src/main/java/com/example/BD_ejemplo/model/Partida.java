@@ -60,6 +60,15 @@ public class Partida {
 		this.usuario = usuario;
 	}
 
+	
+	public List<Ficha> getFichas() {
+		return fichas;
+	}
+
+	public void setFichas(List<Ficha> fichas) {
+		this.fichas = fichas;
+	}
+
 	public long getIdPartida() {
 		return idPartida;
 	}

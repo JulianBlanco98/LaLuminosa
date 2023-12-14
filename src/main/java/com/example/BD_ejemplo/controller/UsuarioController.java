@@ -14,6 +14,7 @@ import com.example.BD_ejemplo.model.Partida;
 import com.example.BD_ejemplo.model.Tablero;
 import com.example.BD_ejemplo.model.Usuario;
 import com.example.BD_ejemplo.repository.PartidaRepository;
+import com.example.BD_ejemplo.service.FichaService;
 import com.example.BD_ejemplo.service.PartidaService;
 import com.example.BD_ejemplo.service.UsuarioService;
 
@@ -27,6 +28,9 @@ public class UsuarioController {
 
 	@Autowired
     private PartidaService partidaservice;
+	
+	@Autowired
+    private FichaService fichaservice;
 	
 	
 	@GetMapping("/registro")
@@ -60,15 +64,16 @@ public class UsuarioController {
     }
 	
 	@PostMapping("/tirada")
-	public String manejarResultado(@RequestParam("outcome") int outcome,@RequestParam("spanValue") String fichaValor,
+	public String manejarResultado(@RequestParam("outcome") int outcome,@RequestParam("valorTablero") String fichaValor,
             @RequestParam("numeroFicha") String numeroFicha,@RequestParam("clasePartida") long idPartida , Model model) {
 	    // Realizar operaciones con el valor outcome
 	    System.out.println("Resultado recibido en el controlador: " + outcome);
 	    System.out.println("Número de la ficha:"+numeroFicha);
 	    System.out.println("apostado en: "+fichaValor);
 	    Partida aux = partidaservice.findPartidaByidPartida(idPartida);
+	    System.out.println("ID PARTIDA: "+aux.getIdPartida()+", dinero:"+aux.getUsuario().getDinero());
 	    
-
+	    
 	    //partidaservice
 	    Tablero t = new Tablero();
 	    t.inicializarMatriz();
@@ -97,9 +102,11 @@ public class UsuarioController {
 			partida.setUsuario(aux);
 			aux.getPartidas().add(partida);
 			
+			for(int i = 0; i<5; i++) {
+			partida.getFichas().get(i).setPartida(partida);
+			fichaservice.guardarFicha(partida.getFichas().get(i));
+			}
 			partida = partidaservice.crearPartida(partida);
-			
-			
 			
 			//System.out.println(aux.toString());
 			//System.out.println("Usuario dinero: "+aux.getDinero());

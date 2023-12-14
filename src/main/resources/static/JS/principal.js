@@ -1,7 +1,7 @@
 
 
 var fichaUsada = false;
-let spanValue;
+let valorTablero;
 let numeroFicha;
 
 
@@ -103,7 +103,7 @@ $(document).ready(function() {
 
 		var outcome = Math.floor(Math.random() * 38);
 		console.log(outcome)
-		sendOutcomeToController(outcome,clasePartida,spanValue,numeroFicha);
+		sendOutcomeToController(outcome,clasePartida,valorTablero,numeroFicha);
 		spinWheel(outcome);
 
 	});
@@ -150,14 +150,14 @@ function drop(event) {
 		targetTd.appendChild(draggedElement);
 
 		// Obtener el valor del span dentro del td
-		spanValue = targetTd.querySelector('span').textContent; //Valor que necesitamos: valor de la celda de la pos de la ficha
+		valorTablero = targetTd.querySelector('span').textContent; //Valor que necesitamos: valor de la celda de la pos de la ficha
 		// Valor de la ficha
 		var fichaValor = draggedElement.getAttribute('id');
 		numeroFicha = fichaValor.slice(5); //Valor que necesitamos: valor de la ficha
 
 		console.log("Valor de la ficha: " + numeroFicha);
 		// Hacer lo que quieras con el valor obtenido
-		console.log("Valor del span en el td: " + spanValue);
+		console.log("Valor del span en el td: " + valorTablero);
 
 		// Desactivar la capacidad de arrastre para todas las fichas
 		var fichas = document.querySelectorAll('.fichas img');
@@ -264,14 +264,14 @@ function spinWheel(roll) {
 	}, 2 * 1000);
 }
 
-function sendOutcomeToController(outcome,clasePartida,spanValue,numeroFicha) {
-	console.log(spanValue)
+function sendOutcomeToController(outcome,clasePartida,valorTablero,numeroFicha) {
+	console.log(valorTablero)
 	$.ajax({
 		type: 'POST',
 		url: '/tirada', // Reemplaza esto con la URL correcta de tu controlador
 		data: { outcome: outcome,
 		clasePartida: clasePartida,
-		spanValue:spanValue,
+		valorTablero: valorTablero,
 		numeroFicha: numeroFicha},
 		success: function(response) {
 			// Manejar la respuesta del controlador si es necesario
