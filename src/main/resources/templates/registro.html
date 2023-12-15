@@ -17,13 +17,15 @@
 		<h1>REGISTRO</h1>
 
 		<div id="formulario">
-			<form action="#" th:action="@{/registro}" th:object="${usuario}" method="post" >
+			<form action="#" th:action="@{/registro}" th:object="${usuario}" method="post">
 				<div class="form-floating mb-3">
-					<input type="text" th:field="*{nombre}" class="form-control" id="inputNombre" placeholder="Ingrese su nombre" required>
+					<input type="text" th:field="*{nombre}" class="form-control" id="inputNombre"
+						placeholder="Ingrese su nombre" required>
 					<label for="inputNombre">Nombre</label>
 				</div>
 				<div class="form-floating mb-3">
-					<input type="number" th:field="*{edad}" class="form-control" id="inputEdad" placeholder="Ingrese su edad" min="0" required>
+					<input type="number" th:field="*{edad}" class="form-control" id="inputEdad"
+						placeholder="Ingrese su edad" min="0" required>
 					<label for="inputEdad">Edad</label>
 				</div>
 				<div class="form-floating mb-3">
@@ -38,6 +40,9 @@
 				</div>
 				<button type="submit" class="btn btn-success">Enviar</button>
 				<button type="reset" class="btn btn-danger">Cancelar</button>
+
+				<a href="/login" class="form-check-label">¿Estás registrado? Logueate aquí</a>
+
 			</form>
 		</div>
 

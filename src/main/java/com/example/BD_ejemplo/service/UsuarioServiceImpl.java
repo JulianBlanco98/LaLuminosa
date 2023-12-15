@@ -28,10 +28,15 @@ public class UsuarioServiceImpl implements UsuarioService{
 	@Override
 	public Iterable<Usuario> crearUsuario(Usuario u) {
 		// TODO Auto-generated method stub
+		Usuario aux = usuarioRepository.encontrarPorNombre(u.getNombre());
 		
+		if(aux==null) {
+			return null;
+		}else {
 		u.setDinero(1000L); //añade 1000 euros de saldo inicial
 		usuarioRepository.save(u);
 		return findUsuarios();
+		}
 	}
 	
 	@Override
