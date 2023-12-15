@@ -234,7 +234,7 @@ public class UsuarioController {
 	    System.out.println("Vista después de ganador");
 	    System.out.println(partida.getUsuario().getDinero());
 	    model.addAttribute("partida", partida);
-	    return "redirect:/index"; // Devuelve el nombre de la vista Thymeleaf
+	    return "principal"; // Devuelve el nombre de la vista Thymeleaf
 	}
 	
 	@GetMapping("/index")
@@ -244,7 +244,7 @@ public class UsuarioController {
 
         // Tu lógica para mostrar la vista de index con la partida
         model.addAttribute("partida", partida);
-        return "index"; // o el nombre de tu vista Thymeleaf
+        return "principal"; // o el nombre de tu vista Thymeleaf
     }
 
 
