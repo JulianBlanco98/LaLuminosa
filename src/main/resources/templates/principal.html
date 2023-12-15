@@ -7,8 +7,8 @@
 	<link rel="stylesheet" href="../static/Css/principal.css" th:href="@{/Css/principal.css}">
 	<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
 
-	
-	
+
+
 
 	<style>
 		body {
@@ -64,6 +64,44 @@
 		td {
 			padding: 15px;
 		}
+
+		.medio {
+			display: flex;
+			width: 100%;
+		}
+
+		.listaTiradas {
+			width: 20%;
+			background-color: aliceblue;
+			margin: 0 10px;
+		}
+
+		#tablero {
+			width: 60%;
+		}
+
+		.botonJuego {
+			width: 20%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		#jugar {
+			font-size: 60px;
+		}
+
+		.abajo {
+			display: flex;
+		}
+
+		#botonReseteo {
+			width: 20%;
+			margin: 0 10px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
 	</style>
 
 	<script>
@@ -92,6 +130,7 @@
 	</header>
 	<div class="contenedor">
 
+
 		<div class="ruleta">
 			<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 			<script th:src="@{/JS/principal.js}"></script>
@@ -100,58 +139,75 @@
 				<div class='wheel'></div>
 			</div>
 
-			<div>
+		</div>
+
+		<div class="medio">
+
+			<div class="listaTiradas">
+
+
+
+			</div>
+
+			<div id="tablero">
+
+				<table id="tablero_juego">
+					<tbody>
+						<tr th:each="fila : ${partida.tablero.tablero}">
+							<td th:each="celda : ${fila}" th:class="${celda.color.toLowerCase()}" ondrop="drop(event)"
+								ondragover="allowDrop(event)">
+								<span th:text="${celda.valor}" draggable="true" ondragstart="drag(event)"></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+
+			<div class="botonJuego">
 				<!--<input placeholder='outcome'> -->
 				<button id="jugar">
 					JUGAR
 				</button>
 			</div>
-		</div>
-		<div id="tablero">
 
-			<table id="tablero_juego">
-				<tbody>
-					<tr th:each="fila : ${partida.tablero.tablero}">
-						<td th:each="celda : ${fila}" th:class="${celda.color.toLowerCase()}" ondrop="drop(event)"
-							ondragover="allowDrop(event)">
-							<span th:text="${celda.valor}" draggable="true" ondragstart="drag(event)"></span>
-						</td>
-					</tr>
-				</tbody>
-			</table>
 
 		</div>
-		<div id="botonReseteo">
-			<button type="button" onclick="resetearFicha()">Resetear Fichas</button>
-		</div>
-		<div class="fichas">
+		<div class="abajo">
 
-			<div id="f5">
-				<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[0].valor + '.png'}}" alt="Imagen de la ficha"
-					draggable="true" ondragstart="drag(event)" id="ficha5" />
+			<div id="botonReseteo">
+				<button type="button" onclick="resetearFicha()">Resetear Fichas</button>
 			</div>
-			<div id="f10">
-				<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[1].valor + '.png'}}" alt="Imagen de la ficha"
-					draggable="true" ondragstart="drag(event)" id="ficha10" />
-			</div>
-			<div id="f20">
-				<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[2].valor + '.png'}}" alt="Imagen de la ficha"
-					draggable="true" ondragstart="drag(event)" id="ficha20" />
-			</div>
-			<div id="f50">
-				<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[3].valor + '.png'}}" alt="Imagen de la ficha"
-					draggable="true" ondragstart="drag(event)" id="ficha50" />
-			</div>
-			<div id="f100">
-				<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[4].valor + '.png'}}" alt="Imagen de la ficha"
-					draggable="true" ondragstart="drag(event)" id="ficha100" />
-			</div>
+			<div class="fichas">
 
+				<div id="f5">
+					<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[0].valor + '.png'}}" alt="Imagen de la ficha"
+						draggable="true" ondragstart="drag(event)" id="ficha5" />
+				</div>
+				<div id="f10">
+					<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[1].valor + '.png'}}" alt="Imagen de la ficha"
+						draggable="true" ondragstart="drag(event)" id="ficha10" />
+				</div>
+				<div id="f20">
+					<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[2].valor + '.png'}}" alt="Imagen de la ficha"
+						draggable="true" ondragstart="drag(event)" id="ficha20" />
+				</div>
+				<div id="f50">
+					<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[3].valor + '.png'}}" alt="Imagen de la ficha"
+						draggable="true" ondragstart="drag(event)" id="ficha50" />
+				</div>
+				<div id="f100">
+					<img th:src="@{'/Recursos/Fichas/' + ${partida.fichas[4].valor + '.png'}}" alt="Imagen de la ficha"
+						draggable="true" ondragstart="drag(event)" id="ficha100" />
+				</div>
+
+			</div>
 		</div>
+
 
 	</div>
-	
-	 <div id="prueba" th:class="${partida.idPartida}"></div>
+
+	<div id="prueba" th:class="${partida.idPartida}"></div>
 	<footer>
 
 	</footer>

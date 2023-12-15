@@ -110,6 +110,7 @@ header p {
 	display: flex;
 	margin: 50px 0;
 	justify-content: center;
+	width: 60%;
 	
 }
 .fichas img, #ficha5,  #ficha10, #ficha20, #ficha50, #ficha100 {
