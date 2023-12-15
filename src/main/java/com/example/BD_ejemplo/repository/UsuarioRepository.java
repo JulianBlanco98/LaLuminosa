@@ -16,4 +16,8 @@ public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
     
     @Query("SELECT u FROM Usuario u WHERE u.nombre = ?1 AND u.contra = ?2")
     Usuario chequearLogin(String nombre, String contra);
+    
+    @Query("SELECT u FROM Usuario u WHERE u.nombre = ?1")
+    Usuario encontrarPorNombre(String nombre);
+
 }

@@ -56,14 +56,16 @@ public class UsuarioController {
 		// devolver la misma vista;
 		// Yo no escribo la logica de control de errores. Sorry :(.
 		// Pista: Spring y Thymeleaf proporcionan formas de validar datos...
-
+		Iterable<Usuario> usuarios = usuarioService.crearUsuario(usuario);
+		if(usuarios!=null) {
 		System.out.println(usuario);
-
+			return "Error2";
+		}else {
 		// le pedimos al servicio que nos cree un usuario
-		model.addAttribute("usuarios", usuarioService.crearUsuario(usuario)); // no es estrictamente necesario añadir el
-																				// atributo al model aquí.
-
+		model.addAttribute("usuarios", usuarios); // no es estrictamente necesario añadir el
+																				// atributo al model aqu
 		return "redirect:/index.html"; // se registra OK, se redirecciona a la página principal.
+		}
 	}
 
 	@GetMapping("/login")
