@@ -43,7 +43,7 @@ public class MiCommandLineRunner implements CommandLineRunner {
      		usuario3.setContra("a");
      		usuario1.setDinero(1000L);
      		usuario2.setDinero(1000L);
-     		usuario3.setDinero(50L);
+     		usuario3.setDinero(1000L);
      		usuario1.setCorreo("correo1@gmail.com");
      		usuario2.setCorreo("correo2@gmail.com");
      		usuario3.setCorreo("correo3@gmail.com");

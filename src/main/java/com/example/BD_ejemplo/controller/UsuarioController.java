@@ -158,7 +158,7 @@ public class UsuarioController {
 			System.out.println("Has ganado la apuesta");
 			model.addAttribute("partida", aux);
 			try {
-				Thread.sleep(8000);
+				Thread.sleep(4000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -189,6 +189,7 @@ public class UsuarioController {
 		Partida p = partidaservice.findPartidaByidPartida(partidaID);
 //	    System.out.println("ID PARTIDA: "+partida.getIdPartida()+", dinero:"+partida.getUsuario().getDinero());
 		model.addAttribute("partida", p);
+		model.addAttribute("tirada",p.getTiradas().get(p.getTiradas().size()-1));
 		System.out.println("Controller ganador2");
 
 		return "ganador";
