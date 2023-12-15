@@ -38,7 +38,7 @@ public class UsuarioController {
 
 	@Autowired
 	private TiradaService tiradaservice;
-	
+
 	@GetMapping("/registro")
 	public String showAddUsuarioForm(Usuario usuario) {
 		System.out.println("\t UsuarioController::showAddUsuarioForm");
@@ -145,19 +145,15 @@ public class UsuarioController {
 		apostada = aux.recuperarcelda(fichaValor);
 		System.out.println("Celda de la apuesta: " + apostada.toString());
 		boolean ganaTirada = aux.comprobarApuesta(numeroRuleta, apostada, aux.getUsuario(), tirada);
-		
+
 		aux.getTiradas().add(tirada);
 		tirada.setPartida(aux);
 		aux = partidaservice.actualizarPartida(idPartida, aux);
 		tirada = tiradaservice.guardarTirada(tirada);
 		System.out.println(tirada.toString());
-		
-		
-		//Guardar la tirada en la base de datos
-		
-		
-		
-		
+
+		// Guardar la tirada en la base de datos
+
 		if (ganaTirada) {
 			System.out.println("Has ganado la apuesta");
 			model.addAttribute("partida", aux);
@@ -167,7 +163,7 @@ public class UsuarioController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			 return ResponseEntity.ok().body(Collections.singletonMap("gano", true));
+			return ResponseEntity.ok().body(Collections.singletonMap("gano", true));
 
 		} else {
 			System.out.println("Has perdido");
@@ -197,21 +193,61 @@ public class UsuarioController {
 
 		return "ganador";
 	}
-	
-	
-	@GetMapping("/index")
-	public String principal(@ModelAttribute Partida partida, Model model) {
+
+	/*@GetMapping("/index")
+	public String principal(@RequestParam(name = "partidaId", required = false) Long partidaId, Model model) {
 		
+
+		System.out.println("get mapping despues de ganador");
+		
+		Partida p = partidaservice.findPartidaByidPartida(partidaId);
+
 		Tablero t = new Tablero();
 		t.inicializarMatriz();
-		partida.setTablero(t);
-		System.out.println(partida.getUsuario().getNombre());
-		model.addAttribute("partida", partida);
-		return "principal";
+		p.setTablero(t);
+		model.addAttribute("partida", p);
 		
+
+		return "principal";
+	}*/
+	
+	/*@GetMapping("/prueba2")
+    public String mostrarPagina(Model model, @ModelAttribute("partida") Partida partida) {
+        // Tu lógica aquí
+		
+		System.out.println("vista despeus de ganador");
+		System.out.println(partida.getUsuario().getDinero());
+		model.addAttribute("partida", partida);
+        return "redirect:principal"; // Devuelve el nombre de la vista Thymeleaf
+    }*/
+	
+	@GetMapping("/prueba2/{idPartida}")
+	public String mostrarPagina(@PathVariable Long idPartida, Model model) {
+	    // Lógica para manejar el idPartida, por ejemplo, cargar los datos de la partida desde la base de datos
+	    Partida partida = partidaservice.findPartidaByidPartida(idPartida);
+
+	    // Tu lógica aquí
+	    Tablero t = new Tablero();
+	    t.inicializarMatriz();
+	    partida.setTablero(t);
+	    
+	    System.out.println("Vista después de ganador");
+	    System.out.println(partida.getUsuario().getDinero());
+	    model.addAttribute("partida", partida);
+	    return "redirect:/index"; // Devuelve el nombre de la vista Thymeleaf
 	}
 	
-	
+	@GetMapping("/index")
+    public String mostrarIndex(Model model) {
+		// Recuperar la partida del modelo
+        Partida partida = (Partida) model.getAttribute("partida");
+
+        // Tu lógica para mostrar la vista de index con la partida
+        model.addAttribute("partida", partida);
+        return "index"; // o el nombre de tu vista Thymeleaf
+    }
+
+
 	@PostMapping("/index")
 	public String login(@ModelAttribute Usuario usuario, Model model) {
 		System.out.println("\t UsuarioController::login");

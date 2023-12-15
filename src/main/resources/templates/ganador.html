@@ -10,11 +10,8 @@
 	<h1>hola</h1>
 	<h1><span th:text="${partida.usuario.dinero}"></h1>
 
-	<form action="#" th:action="@{principal}" th:object="${partida}" method="get">
-		
-		<button type="submit">VOLVER A JUGAR</button>
-		
-	</form>
+	<a th:href="@{/prueba2/{idPartida}(idPartida=${partida.idPartida})}">VOLVER A JUGAR</a>
+
 		
 
 
