@@ -8,7 +8,59 @@
 
 <body>
 
-	<h1><span th:text="${tirada.apuesta}"></h1>
+	<!--HA GANADO-->
+	<div class="ganador" th:if="${tirada.ganado}">
+		<h3>FELICIDADES, HAS GANADO</h3>
+		<!-- GANANCIAS O PERDIDAS -->
+		<div class="apuesta5" th:if="${tirada.apuesta == 5}">
+			<h3>HAS APOSTADO 5$</h3>
+		</div>
+		<div class="apuesta10" th:if="${tirada.apuesta == 10}">
+			<h3>HAS APOSTADO 10$</h3>
+		</div>
+		<div class="apuesta20" th:if="${tirada.apuesta == 20}">
+			<h3>HAS APOSTADO 20$</h3>
+		</div>
+		<div class="apuesta50" th:if="${tirada.apuesta == 50}">
+			<h3>HAS APOSTADO 50$</h3>
+		</div>
+		<div class="apuesta100" th:if="${tirada.apuesta == 100}">
+			<h3>HAS APOSTADO 100$</h3>
+		</div>
+
+		<div>
+			<h3>Tu ganancia es: <span th:text="${tirada.profit}"></span>$</h3>
+		</div>
+		<div>
+			<h3>Tu nuevo saldo es: <span th:text="${partida.usuario.dinero}"></span>$</h3>
+		</div>
+	</div>
+
+
+
+	<!--HA PERDIDO-->
+	<div class="perdedor"  th:if="${not tirada.ganado}">
+		<h3>Lo siento, no has ganado esta vez</h3>
+		<div class="apuesta5" th:if="${tirada.apuesta == 5}">
+			<h3>HAS PERDIDO 5$</h3>
+		</div>
+		<div class="apuesta10" th:if="${tirada.apuesta == 10}">
+			<h3>HAS PERDIDO 10$</h3>
+		</div>
+		<div class="apuesta20" th:if="${tirada.apuesta == 20}">
+			<h3>HAS PERDIDO 20$</h3>
+		</div>
+		<div class="apuesta50" th:if="${tirada.apuesta == 50}">
+			<h3>HAS PERDIDO 50$</h3>
+		</div>
+		<div class="apuesta100" th:if="${tirada.apuesta == 100}">
+			<h3>HAS PERDIDO 100$</h3>
+		</div>
+
+		<div>
+			<h3>Tu nuevo saldo es: <span th:text="${partida.usuario.dinero}"></span>$</h3>
+		</div>
+	</div>
 
 
 
