@@ -230,28 +230,36 @@ public class Partida {
 		if(jugador.getTipo()==0 || jugador.getTipo()==1) {
 			if(ganadora.getValor()==jugador.getValor()) {
 				j1.setDinero(j1.getDinero()+ actualizarSaldoJugador(t.getApuesta(), 36));
+				t.setProfit(actualizarSaldoJugador(t.getApuesta(), 36));
+				t.setGanado(true);
 				return true;
 			}else {
 				j1.setDinero(j1.getDinero() - t.getApuesta());
+				t.setProfit(t.getApuesta()*-1);
 				return false;
 			}
 			//Si el jugador apuesa a Par/Impar
 		}else if(jugador.getTipo()==2) {
 			if(ganadora.isEspar()==jugador.isEspar()) {
 				j1.setDinero(j1.getDinero()+ actualizarSaldoJugador(t.getApuesta(), 2));
-
+				t.setProfit(actualizarSaldoJugador(t.getApuesta(), 2));
+				t.setGanado(true);
 				return true;
 			}else {
 				j1.setDinero(j1.getDinero() - t.getApuesta());
+				t.setProfit(t.getApuesta()*-1);
 				return false;
 			}
 			//Si el jugador apuesta a Rojo/Negroe
 		}else if(jugador.getTipo()==3) {
 			if(ganadora.getColor()==jugador.getColor()) {
 				j1.setDinero(j1.getDinero()+ actualizarSaldoJugador(t.getApuesta(), 2));
+				t.setProfit(actualizarSaldoJugador(t.getApuesta(), 2));
+				t.setGanado(true);
 				return true;
 			}else {
 				j1.setDinero(j1.getDinero() - t.getApuesta());
+				t.setProfit(t.getApuesta()*-1);
 				return false;
 			}
 			//Sin opcion

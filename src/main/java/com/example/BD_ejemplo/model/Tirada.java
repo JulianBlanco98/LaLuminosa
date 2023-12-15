@@ -17,7 +17,7 @@ public class Tirada {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private long idTirada;
 	private long apuesta;
-	private int ganado; //boolean
+	private boolean ganado; //boolean
 	private long profit;
 
 		
@@ -26,11 +26,11 @@ public class Tirada {
 	
 	public Tirada() {
 		apuesta=0L;
-		ganado=0;
+		ganado=false;
 		profit=0L;
 	}
 	
-	public Tirada(List<Ficha> nFichas, long apuesta, int ganado, long profit) {
+	public Tirada(List<Ficha> nFichas, long apuesta, boolean ganado, long profit) {
 		super();
 		this.apuesta = apuesta;
 		this.ganado = ganado;
@@ -48,10 +48,10 @@ public class Tirada {
 	public void setApuesta(long apuesta) {
 		this.apuesta = apuesta;
 	}
-	public int getGanado() {
+	public boolean isGanado() {
 		return ganado;
 	}
-	public void setGanado(int ganado) {
+	public void setGanado(boolean ganado) {
 		this.ganado = ganado;
 	}
 	public long getProfit() {

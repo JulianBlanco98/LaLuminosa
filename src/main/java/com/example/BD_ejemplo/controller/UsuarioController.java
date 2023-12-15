@@ -20,6 +20,7 @@ import com.example.BD_ejemplo.model.Usuario;
 import com.example.BD_ejemplo.repository.PartidaRepository;
 import com.example.BD_ejemplo.service.FichaService;
 import com.example.BD_ejemplo.service.PartidaService;
+import com.example.BD_ejemplo.service.TiradaService;
 import com.example.BD_ejemplo.service.UsuarioService;
 
 @Controller
@@ -34,6 +35,9 @@ public class UsuarioController {
 	@Autowired
 	private FichaService fichaservice;
 
+	@Autowired
+	private TiradaService tiradaservice;
+	
 	@GetMapping("/registro")
 	public String showAddUsuarioForm(Usuario usuario) {
 		System.out.println("\t UsuarioController::showAddUsuarioForm");
@@ -140,14 +144,39 @@ public class UsuarioController {
 		apostada = aux.recuperarcelda(fichaValor);
 		System.out.println("Celda de la apuesta: " + apostada.toString());
 		boolean ganaTirada = aux.comprobarApuesta(numeroRuleta, apostada, aux.getUsuario(), tirada);
+		
+		aux.getTiradas().add(tirada);
+		tirada.setPartida(aux);
+		aux = partidaservice.actualizarPartida(idPartida, aux);
+		tirada = tiradaservice.guardarTirada(tirada);
+		System.out.println(tirada.toString());
+		
+		
+		//Guardar la tirada en la base de datos
+		
+		
+		
+		
 		if (ganaTirada) {
 			System.out.println("Has ganado la apuesta");
 			model.addAttribute("partida", aux);
+			try {
+				Thread.sleep(4000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			 return ResponseEntity.ok().body(Collections.singletonMap("gano", true));
 
 		} else {
 			System.out.println("Has perdido");
 			model.addAttribute("partida", aux);
+			try {
+				Thread.sleep(4000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return ResponseEntity.ok().body(Collections.singletonMap("gano", false));
 			// return a html de derrota
 		}

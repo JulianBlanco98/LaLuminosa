@@ -62,10 +62,10 @@ class BdEjemploApplicationTestsPartidaTirada {
 
 		//asignamos valores a los atributos de tirada
 		t1.setApuesta(70L);
-		t1.setGanado(1); //boolean
+//		t1.setGanado(1); //boolean
 		t1.setProfit(70L);
 		t2.setApuesta(110L);
-		t2.setGanado(0); //boolean
+//		t2.setGanado(0); //boolean
 		t2.setProfit(-110L);
 		
 		t1.setPartida(p1);

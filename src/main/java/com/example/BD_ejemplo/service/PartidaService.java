@@ -10,4 +10,7 @@ public interface PartidaService {
 	
 	public Partida findPartidaByidPartida(long id);
 	
+    public Partida actualizarPartida(long id, Partida nuevaPartida);
+
+	
 }
