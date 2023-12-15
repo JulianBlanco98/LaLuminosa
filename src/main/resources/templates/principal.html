@@ -97,7 +97,7 @@
 
 		#botonReseteo {
 			width: 20%;
-			margin: 0 10px;
+			margin: 65px 10px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -175,9 +175,13 @@
 		</div>
 		<div class="abajo">
 
-			<div id="botonReseteo">
+			<!--<div id="botonReseteo">
 				<button type="button" onclick="resetearFicha()">Resetear Fichas</button>
-			</div>
+			</div> -->
+			<button class="button" id="botonReseteo" onclick="resetearFicha()">
+				<img src="../static/Recursos/reset.png" th:src="@{/Recursos/reset.png}">
+				<span class="lable">Resetear Fichas</span>
+			</button>
 			<div class="fichas">
 
 				<div id="f5">
