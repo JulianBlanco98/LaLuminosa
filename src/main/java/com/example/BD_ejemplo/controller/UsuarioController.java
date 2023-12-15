@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -186,17 +187,31 @@ public class UsuarioController {
 //        return "redirect:/index";
 	}
 
-	@GetMapping("/prueba")
-	public String ganador(@ModelAttribute Partida partida, Model model) {
+	@GetMapping("/prueba/{id}")
+	public String ganador(@PathVariable("id") Long partidaID, Model model) {
 		System.out.println("Controller ganador");
+		Partida p = partidaservice.findPartidaByidPartida(partidaID);
 //	    System.out.println("ID PARTIDA: "+partida.getIdPartida()+", dinero:"+partida.getUsuario().getDinero());
-//    	model.addAttribute("partida", partida);
-
+		model.addAttribute("partida", p);
 		System.out.println("Controller ganador2");
 
 		return "ganador";
 	}
-
+	
+	
+	@GetMapping("/index")
+	public String principal(@ModelAttribute Partida partida, Model model) {
+		
+		Tablero t = new Tablero();
+		t.inicializarMatriz();
+		partida.setTablero(t);
+		System.out.println(partida.getUsuario().getNombre());
+		model.addAttribute("partida", partida);
+		return "principal";
+		
+	}
+	
+	
 	@PostMapping("/index")
 	public String login(@ModelAttribute Usuario usuario, Model model) {
 		System.out.println("\t UsuarioController::login");

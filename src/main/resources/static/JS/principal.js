@@ -279,11 +279,11 @@ function sendOutcomeToController(outcome,clasePartida,valorTablero,numeroFicha) 
 			
 			if (response.gano) {
 				console.log("entra aqui si gana");
-                window.location.href = '/prueba';
+                window.location.href = '/prueba/' + clasePartida;
             } else {
                 // Manejar otro caso si es necesario
                 	console.log("entra aqui si pierde");
-               		 window.location.href = '/prueba';
+               		 window.location.href = '/prueba/' + clasePartida;
             }
 			
 		},

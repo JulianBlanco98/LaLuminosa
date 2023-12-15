@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
 </head>
+
 <body>
-<!--<h1><span th:text="${partida.usuario.dinero}"></h1>-->
-<h1>hola</h1>
+	<h1>hola</h1>
+	<h1><span th:text="${partida.usuario.dinero}"></h1>
+
+	<form action="#" th:action="@{principal}" th:object="${partida}" method="get">
+		
+		<button type="submit">VOLVER A JUGAR</button>
+		
+	</form>
+		
+
 
 </body>
+
 </html>
