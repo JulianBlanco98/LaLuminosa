@@ -324,6 +324,25 @@ function resetearFicha() {
 		var idDeLaImagen = imagenFicha.id;
 		idDeLaImagen = idDeLaImagen.slice(5);
 		console.log('ID de la imagen:', idDeLaImagen);
+
+		var divDestino = document.getElementById('f' + idDeLaImagen);
+		console.log(divDestino);
+
+		if (divDestino) {
+			// Mueve la imagen al div correspondiente
+			divDestino.appendChild(imagenFicha);
+			console.log('Imagen movida al div:', divDestino.id);
+
+			// Restablece la propiedad draggable de todas las imágenes de las fichas
+			var todasLasFichas = document.querySelectorAll('.fichas img');
+			todasLasFichas.forEach(function(ficha) {
+				ficha.draggable = true;
+				ficha.style.cursor = 'grab'; // Establece el cursor a "grab"
+			});
+
+		} else {
+			console.log('No se encontró el div correspondiente al ID de la imagen.');
+		}
 	}
 	else {
 		console.log('No hay ficha en el tablero.');
