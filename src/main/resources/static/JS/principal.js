@@ -249,7 +249,7 @@ function spinWheel(roll) {
 
 	$wheel.css({
 		'transition-timing-function': 'cubic-bezier(0,' + object.x + ',' + object.y + ',1)',
-		'transition-duration': '0s',
+		'transition-duration': '2s',
 		'transform': 'translate3d(-' + landingPosition + 'px, 0px, 0px)'
 	});
 
@@ -261,7 +261,7 @@ function spinWheel(roll) {
 
 		var resetTo = -(position * card + randomize);
 		$wheel.css('transform', 'translate3d(' + resetTo + 'px, 0px, 0px)');
-	}, 0 * 1000);
+	}, 2 * 1000);
 }
 
 function sendOutcomeToController(outcome,clasePartida,valorTablero,numeroFicha) {
@@ -276,6 +276,16 @@ function sendOutcomeToController(outcome,clasePartida,valorTablero,numeroFicha) 
 		success: function(response) {
 			// Manejar la respuesta del controlador si es necesario
 			console.log('Solicitud AJAX exitosa:', response);
+			
+			if (response.gano) {
+				console.log("entra aqui si gana");
+                window.location.href = '/prueba';
+            } else {
+                // Manejar otro caso si es necesario
+                	console.log("entra aqui si pierde");
+               		 window.location.href = '/prueba';
+            }
+			
 		},
 		error: function(error) {
 			console.error('Error en la solicitud AJAX:', error);
