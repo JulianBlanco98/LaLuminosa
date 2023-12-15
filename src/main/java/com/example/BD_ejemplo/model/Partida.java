@@ -195,7 +195,7 @@ public class Partida {
 	}
 	
 	public long actualizarSaldoJugador(long apuesta, int multi) {
-		return apuesta * multi;
+		return apuesta * multi-apuesta;
 	}
 	
 	public Celda recuperarcelda(String valor) {
