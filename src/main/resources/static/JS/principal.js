@@ -3,6 +3,7 @@
 var fichaUsada = false;
 let valorTablero;
 let numeroFicha;
+let dinero;
 
 
 
@@ -13,7 +14,13 @@ $(document).ready(function() {
 
 	var idPartida = document.getElementById("prueba");
 	var clasePartida = idPartida.className;
+	var saldoElement = document.getElementById('saldo');
 
+	// Obtén el elemento <span> dentro del elemento con id "saldo"
+	var spanElement = saldoElement.querySelector('span');
+
+	// Obtén el valor del contenido del <span>
+	dinero = spanElement.textContent;
 	// Ahora 'clasePartida' contiene la clase del elemento con id "prueba"
 	console.log(clasePartida);
 
@@ -97,13 +104,18 @@ $(document).ready(function() {
 		spanElementLast.innerText = '';
 	}
 	$('button').on('click', function() {
-
+		console.log("DINEROOOO-"+dinero)
+		console.log("APUESTAAAAA---"+numeroFicha)
+		if (dinero < numeroFicha) {
+        alert('El número de ficha debe ser igual o mayor a 100');
+		return; 
+    }
 		//Código de principal
 
 
 		var outcome = Math.floor(Math.random() * 38);
 		console.log(outcome)
-		sendOutcomeToController(outcome,clasePartida,valorTablero,numeroFicha);
+		sendOutcomeToController(outcome, clasePartida, valorTablero, numeroFicha);
 		spinWheel(outcome);
 
 	});
@@ -264,31 +276,33 @@ function spinWheel(roll) {
 	}, 2 * 1000);
 }
 
-function sendOutcomeToController(outcome,clasePartida,valorTablero,numeroFicha) {
-	console.log(valorTablero)
-	$.ajax({
-		type: 'POST',
-		url: '/tirada', // Reemplaza esto con la URL correcta de tu controlador
-		data: { outcome: outcome,
+function sendOutcomeToController(outcome, clasePartida, valorTablero, numeroFicha) {
+console.log(valorTablero)
+$.ajax({
+	type: 'POST',
+	url: '/tirada', // Reemplaza esto con la URL correcta de tu controlador
+	data: {
+		outcome: outcome,
 		clasePartida: clasePartida,
 		valorTablero: valorTablero,
-		numeroFicha: numeroFicha},
-		success: function(response) {
-			// Manejar la respuesta del controlador si es necesario
-			console.log('Solicitud AJAX exitosa:', response);
-			
-			if (response.gano) {
-				console.log("entra aqui si gana");
-                window.location.href = '/prueba/' + clasePartida;
-            } else {
-                // Manejar otro caso si es necesario
-                	console.log("entra aqui si pierde");
-               		 window.location.href = '/prueba/' + clasePartida;
-            }
-			
-		},
-		error: function(error) {
-			console.error('Error en la solicitud AJAX:', error);
+		numeroFicha: numeroFicha
+	},
+	success: function(response) {
+		// Manejar la respuesta del controlador si es necesario
+		console.log('Solicitud AJAX exitosa:', response);
+
+		if (response.gano) {
+			console.log("entra aqui si gana");
+			window.location.href = '/prueba/' + clasePartida;
+		} else {
+			// Manejar otro caso si es necesario
+			console.log("entra aqui si pierde");
+			window.location.href = '/prueba/' + clasePartida;
 		}
-	});
+
+	},
+	error: function(error) {
+		console.error('Error en la solicitud AJAX:', error);
+	}
+});
 }

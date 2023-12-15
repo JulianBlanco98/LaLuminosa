@@ -158,7 +158,7 @@ public class UsuarioController {
 			System.out.println("Has ganado la apuesta");
 			model.addAttribute("partida", aux);
 			try {
-				Thread.sleep(4000);
+				Thread.sleep(8000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
