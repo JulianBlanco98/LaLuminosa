@@ -102,7 +102,7 @@
 
 			<div>
 				<!--<input placeholder='outcome'> -->
-				<button>
+				<button id="jugar">
 					JUGAR
 				</button>
 			</div>
@@ -120,6 +120,9 @@
 				</tbody>
 			</table>
 
+		</div>
+		<div id="botonReseteo">
+			<button type="button" onclick="resetearFicha()">Resetear Fichas</button>
 		</div>
 		<div class="fichas">
 
@@ -147,6 +150,7 @@
 		</div>
 
 	</div>
+	
 	 <div id="prueba" th:class="${partida.idPartida}"></div>
 	<footer>
 

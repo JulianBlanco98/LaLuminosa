@@ -2,7 +2,7 @@
 
 var fichaUsada = false;
 let valorTablero;
-let numeroFicha;
+let numeroFicha = null;
 let dinero;
 
 
@@ -21,6 +21,7 @@ $(document).ready(function() {
 
 	// Obtén el valor del contenido del <span>
 	dinero = spanElement.textContent;
+	console.log("DINERO..............." + dinero);
 	// Ahora 'clasePartida' contiene la clase del elemento con id "prueba"
 	console.log(clasePartida);
 
@@ -103,18 +104,21 @@ $(document).ready(function() {
 		var spanElementLast = cellsWithMinusOne[cellsWithMinusOne.length - 2].querySelector('span');
 		spanElementLast.innerText = '';
 	}
-	$('button').on('click', function() {
-		console.log("DINEROOOO-"+dinero)
-		console.log("APUESTAAAAA---"+numeroFicha)
-		if (dinero < numeroFicha) {
-        alert('El número de ficha debe ser igual o mayor a 100');
-		return; 
-    }
+	$('#jugar').on('click', function() {
+
+		if (parseInt(dinero) < parseInt(numeroFicha)) {
+			alert('El número de ficha debe ser igual o mayor a 100');
+			return;
+		}
+		if (numeroFicha === null) {
+			alert('Tienes que poner una ficha para poder jugar');
+			return;
+		}
 		//Código de principal
 
-
+		console.log("FUERA DEL IFFFF");
 		var outcome = Math.floor(Math.random() * 38);
-		console.log(outcome)
+		console.log("Valor de la ruleta: " + outcome)
 		sendOutcomeToController(outcome, clasePartida, valorTablero, numeroFicha);
 		spinWheel(outcome);
 
@@ -277,32 +281,52 @@ function spinWheel(roll) {
 }
 
 function sendOutcomeToController(outcome, clasePartida, valorTablero, numeroFicha) {
-console.log(valorTablero)
-$.ajax({
-	type: 'POST',
-	url: '/tirada', // Reemplaza esto con la URL correcta de tu controlador
-	data: {
-		outcome: outcome,
-		clasePartida: clasePartida,
-		valorTablero: valorTablero,
-		numeroFicha: numeroFicha
-	},
-	success: function(response) {
-		// Manejar la respuesta del controlador si es necesario
-		console.log('Solicitud AJAX exitosa:', response);
+	console.log(valorTablero)
+	$.ajax({
+		type: 'POST',
+		url: '/tirada', // Reemplaza esto con la URL correcta de tu controlador
+		data: {
+			outcome: outcome,
+			clasePartida: clasePartida,
+			valorTablero: valorTablero,
+			numeroFicha: numeroFicha
+		},
+		success: function(response) {
+			// Manejar la respuesta del controlador si es necesario
+			console.log('Solicitud AJAX exitosa:', response);
 
-		if (response.gano) {
-			console.log("entra aqui si gana");
-			window.location.href = '/prueba/' + clasePartida;
-		} else {
-			// Manejar otro caso si es necesario
-			console.log("entra aqui si pierde");
-			window.location.href = '/prueba/' + clasePartida;
+			if (response.gano) {
+				console.log("entra aqui si gana");
+				window.location.href = '/prueba/' + clasePartida;
+			} else {
+				// Manejar otro caso si es necesario
+				console.log("entra aqui si pierde");
+				window.location.href = '/prueba/' + clasePartida;
+			}
+
+		},
+		error: function(error) {
+			console.error('Error en la solicitud AJAX:', error);
 		}
+	});
+}
 
-	},
-	error: function(error) {
-		console.error('Error en la solicitud AJAX:', error);
+function resetearFicha() {
+	// Encuentra la ficha en el tablero (por ejemplo, la primera ficha)
+	var fichaEnTablero = document.getElementById('tablero_juego');
+	console.log(fichaEnTablero);
+
+	// Obtén la imagen de la ficha en el tablero
+	var imagenFicha = fichaEnTablero.querySelector('img');
+	console.log(imagenFicha);
+
+	if (imagenFicha) {
+		var idDeLaImagen = imagenFicha.id;
+		idDeLaImagen = idDeLaImagen.slice(5);
+		console.log('ID de la imagen:', idDeLaImagen);
 	}
-});
+	else {
+		console.log('No hay ficha en el tablero.');
+		alert('No hay ninguna ficha en el tablero');
+	}
 }
