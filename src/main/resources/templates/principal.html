@@ -87,9 +87,7 @@
 			justify-content: center;
 		}
 
-		#jugar {
-			font-size: 60px;
-		}
+		
 
 		.abajo {
 			display: flex;
@@ -125,7 +123,7 @@
 			<a href="/prueba">PRUEBA</a>
 		</div>
 		<div class="imagen_out">
-			<a href=""><img src="Recursos/salida.png" alt="icono de salida"></a>
+			<a href="/login"><img src="Recursos/salida.png" th:src="@{/Recursos/salida.png}" alt="icono de salida"></a>
 		</div>
 	</header>
 	<div class="contenedor">
@@ -145,7 +143,7 @@
 
 			<div class="listaTiradas">
 
-
+				
 
 			</div>
 
@@ -167,7 +165,10 @@
 			<div class="botonJuego">
 				<!--<input placeholder='outcome'> -->
 				<button id="jugar">
-					JUGAR
+					<span class="button_lg">
+						<span class="button_sl"></span>
+						<span class="button_text">Jugar</span>
+					</span>
 				</button>
 			</div>
 
