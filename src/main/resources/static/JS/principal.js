@@ -108,6 +108,7 @@ $(document).ready(function() {
 	$('#jugar').on('click', function() {
 		
 		if(btnPresionado){
+			//Poner gris background boton
 			return;
 		}
 		
