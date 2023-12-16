@@ -74,48 +74,7 @@ public class UsuarioController {
 		return "login";
 	}
 
-	/*
-	 * @PostMapping("/tirada") public String
-	 * manejarResultado(@RequestParam("outcome") String
-	 * outcome,@RequestParam("valorTablero") String fichaValor,
-	 * 
-	 * @RequestParam("numeroFicha") String numeroFicha,@RequestParam("clasePartida")
-	 * long idPartida , Model model) { // Realizar operaciones con el valor outcome
-	 * System.out.println("Resultado recibido en el controlador: " + outcome);
-	 * System.out.println("Número de la ficha:"+numeroFicha);
-	 * System.out.println("apostado en: "+fichaValor); Partida aux =
-	 * partidaservice.findPartidaByidPartida(idPartida);
-	 * System.out.println("ID PARTIDA: "+aux.getIdPartida()+", dinero:"+aux.
-	 * getUsuario().getDinero());
-	 * 
-	 * 
-	 * //partidaservice Tablero t = new Tablero(); t.inicializarMatriz();
-	 * aux.setTablero(t);
-	 * 
-	 * //Aplicar la lógica de la ruleta Tirada tirada = new Tirada(); long
-	 * apuestaJugador = Long.parseLong(numeroFicha);
-	 * tirada.setApuesta(apuestaJugador);
-	 * System.out.println("Apuesta de la tirada: "+tirada.getApuesta());
-	 * 
-	 * Celda numeroRuleta = null; Celda apostada = null;
-	 * 
-	 * numeroRuleta = aux.recuperarcelda(outcome);
-	 * System.out.println("Celda de la ruleta: "+numeroRuleta.toString()); apostada
-	 * = aux.recuperarcelda(fichaValor);
-	 * System.out.println("Celda de la apuesta: "+apostada.toString()); boolean
-	 * ganaTirada = aux.comprobarApuesta(numeroRuleta, apostada, aux.getUsuario(),
-	 * tirada); if (ganaTirada) { System.out.println("Has ganado la apuesta");
-	 * model.addAttribute("partida", aux); return "redirect:/prueba";
-	 * 
-	 * } else { System.out.println("Has perdido"); model.addAttribute("partida",
-	 * aux); return "redirect:/prueba"; //return a html de derrota }
-	 * 
-	 * 
-	 * 
-	 * 
-	 * //guardar en BD // model.addAttribute("partida", aux); // return
-	 * "redirect:/index"; }
-	 */
+	
 
 	@PostMapping("/tirada")
 	public ResponseEntity<?> manejarResultado(@RequestParam("outcome") String outcome,
@@ -160,7 +119,7 @@ public class UsuarioController {
 			System.out.println("Has ganado la apuesta");
 			model.addAttribute("partida", aux);
 			try {
-				Thread.sleep(4000);
+				Thread.sleep(3000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -197,32 +156,7 @@ public class UsuarioController {
 		return "ganador";
 	}
 
-	/*@GetMapping("/index")
-	public String principal(@RequestParam(name = "partidaId", required = false) Long partidaId, Model model) {
-		
-
-		System.out.println("get mapping despues de ganador");
-		
-		Partida p = partidaservice.findPartidaByidPartida(partidaId);
-
-		Tablero t = new Tablero();
-		t.inicializarMatriz();
-		p.setTablero(t);
-		model.addAttribute("partida", p);
-		
-
-		return "principal";
-	}*/
 	
-	/*@GetMapping("/prueba2")
-    public String mostrarPagina(Model model, @ModelAttribute("partida") Partida partida) {
-        // Tu lógica aquí
-		
-		System.out.println("vista despeus de ganador");
-		System.out.println(partida.getUsuario().getDinero());
-		model.addAttribute("partida", partida);
-        return "redirect:principal"; // Devuelve el nombre de la vista Thymeleaf
-    }*/
 	
 	@GetMapping("/prueba2/{idPartida}")
 	public String mostrarPagina(@PathVariable Long idPartida, Model model) {
@@ -273,11 +207,6 @@ public class UsuarioController {
 			}
 			partida = partidaservice.crearPartida(partida);
 
-			// System.out.println(aux.toString());
-			// System.out.println("Usuario dinero: "+aux.getDinero());
-
-			// le añadimos ambos atributos
-//			model.addAttribute("usuario", aux);
 			model.addAttribute("partida", partida);
 
 			return "principal";
