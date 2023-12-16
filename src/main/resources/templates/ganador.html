@@ -15,16 +15,36 @@
 		.col-md-4 img {
 			padding: 10%;
 		}
+
 		.col-md-8 {
-			
+
 			border-left: 2px solid black;
 		}
+
 		.card-body {
 			padding: 0;
 
 		}
+
 		.card {
 			border: 2px solid black;
+		}
+		
+		.card-body p {
+			font-weight: bold;
+			font-size: 20px;
+		}
+
+		.fondo {
+			width: 100%;
+			height: 100vh;
+			position: absolute;
+		}
+		.fondo-ganado {
+			background-image: linear-gradient(to top, #00a600, #0fb80a, #1bc915, #26dc1e, #2fee26);
+		}
+		.fondo-noganado {
+			background-image: linear-gradient(to top, #c90000, #d30018, #dc002a, #e4053b, #eb124b);
 		}
 	</style>
 </head>
@@ -60,13 +80,16 @@
 		</div>
 	</div> -->
 
+	<div th:class="${tirada.ganado} ? 'fondo fondo-ganado' : 'fondo fondo-noganado'"></div>
+
+
 	<div class="container d-flex align-items-center justify-content-center" style="height: 100vh;">
 
 
 
 		<div class="card col-xxl-9 ganador text-center shadow-lg bg-body-tertiary rounded" th:if="${tirada.ganado}">
 			<div class="row g-0">
-				<div class="col-md-4">
+				<div class="col-md-4 d-flex align-items-center">
 					<img src="../static/Recursos/Fichas/100.png"
 						th:src="@{'/Recursos/Fichas/' + ${tirada.apuesta} + '.png'}" class="img-fluid rounded-start"
 						alt="...">
@@ -74,7 +97,7 @@
 				<div class="col-md-8">
 					<div class="card-body">
 						<div class="card-header text-center">
-							<h4>!Has ganado!</h4>
+							<h4 class="display-2">Has ganado!</h4>
 						</div>
 						<!-- <h5 class="card-title">¡HAS GANADO!</h5> -->
 						<!-- GANANCIAS O PERDIDAS -->
@@ -95,10 +118,11 @@
 						</div>
 
 						<p class="card-text mt-4" th:text="'Tu ganancia es: ' + ${tirada.profit} + '€'"></p>
-						<p class="card-text mt-4" th:text="'Tu nuevo saldo es: ' + ${partida.usuario.dinero} + ' €'"></p>
+						<p class="card-text mt-4" th:text="'Tu nuevo saldo es: ' + ${partida.usuario.dinero} + ' €'">
+						</p>
 
 						<a th:href="@{/prueba2/{idPartida}(idPartida=${partida.idPartida})}"
-							class="btn btn-primary mt-5">VOLVER A JUGAR</a>
+							class="btn btn-primary mb-3 mt-5">VOLVER A JUGAR</a>
 					</div>
 				</div>
 			</div>
@@ -106,10 +130,8 @@
 
 		<div class="card col-xxl-9 ganador text-center shadow-lg bg-body-tertiary rounded" th:if="${not tirada.ganado}">
 			<div class="row g-0">
-				<div class="col-md-4">
-					<!-- Aquí puedes adaptar la imagen según tu lógica -->
-					<!-- Puedes usar th:if para condicionalmente mostrar diferentes imágenes -->
-					<!-- Ejemplo: th:if="${tirada.apuesta == 100}" -->
+				<div class="col-md-4 d-flex align-items-center">
+					
 					<img src="../static/Recursos/Fichas/100.png"
 						th:src="@{'/Recursos/Fichas/' + ${tirada.apuesta} + '.png'}" class="img-fluid rounded-start"
 						alt="...">
@@ -117,7 +139,7 @@
 				<div class="col-md-8">
 					<div class="card-body">
 						<div class="card-header text-center">
-							<h4>!Has perdido!</h4>
+							<h4 class="display-2">Has perdido!</h4>
 						</div>
 						<!-- <h5 class="card-title">Lo siento, no has ganado esta vez</h5> -->
 						<!-- GANANCIAS O PERDIDAS -->
@@ -137,10 +159,11 @@
 							<p class="card-text">HAS PERDIDO 100 €</p>
 						</div>
 
-						<p class="card-text mt-5" th:text="'Tu nuevo saldo es: ' + ${partida.usuario.dinero} + ' €'"></p>
+						<p class="card-text mt-5" th:text="'Tu nuevo saldo es: ' + ${partida.usuario.dinero} + ' €'">
+						</p>
 
 						<a th:href="@{/prueba2/{idPartida}(idPartida=${partida.idPartida})}"
-							class="btn btn-primary mt-5	">VOLVER A JUGAR</a>
+							class="btn btn-primary mt-5	mb-3">VOLVER A JUGAR</a>
 					</div>
 				</div>
 			</div>
