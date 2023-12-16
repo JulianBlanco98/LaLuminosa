@@ -11,6 +11,7 @@ $(document).ready(function() {
 	//setup multiple rows of colours, can also add and remove while spinning but overall this is easier.
 	initWheel();
 	var table = document.getElementById('tablero_juego');
+	var btnPresionado = false;
 
 	var idPartida = document.getElementById("prueba");
 	var clasePartida = idPartida.className;
@@ -105,6 +106,12 @@ $(document).ready(function() {
 		spanElementLast.innerText = '';
 	}
 	$('#jugar').on('click', function() {
+		
+		if(btnPresionado){
+			//Poner gris background boton
+			return;
+		}
+		
 
 		if (parseInt(dinero) < parseInt(numeroFicha)) {
 			alert('El número de ficha debe ser igual o mayor a 100');
@@ -115,8 +122,7 @@ $(document).ready(function() {
 			return;
 		}
 		//Código de principal
-
-		console.log("FUERA DEL IFFFF");
+		btnPresionado = true;
 		var outcome = Math.floor(Math.random() * 38);
 		console.log("Valor de la ruleta: " + outcome)
 		sendOutcomeToController(outcome, clasePartida, valorTablero, numeroFicha);
