@@ -7,10 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.example.BD_ejemplo.model.Partida;
-import com.example.BD_ejemplo.model.Tirada;
 import com.example.BD_ejemplo.model.Usuario;
 import com.example.BD_ejemplo.repository.PartidaRepository;
-import com.example.BD_ejemplo.repository.TiradaRepository;
 import com.example.BD_ejemplo.repository.UsuarioRepository;
 
 @Component
@@ -22,9 +20,6 @@ public class MiCommandLineRunner implements CommandLineRunner {
 	@Autowired
 	private PartidaRepository partidaRepository;
 	
-	@Autowired
-	private TiradaRepository tiradaRepository;
-
     @Override
     public void run(String... args) throws Exception {
     	
@@ -60,45 +55,7 @@ public class MiCommandLineRunner implements CommandLineRunner {
     		// Se añaden usuarios a partidas*/
     		p1.setUsuario(usuario1);
 
-    		Tirada tirada1 = new Tirada(100L, false, -1000L);
-            Tirada tirada2 = new Tirada(50L, true, 100L);
-            Tirada tirada3 = new Tirada(5L, false, -5L);
-            Tirada tirada4 = new Tirada(5L, true, 180L);
-            Tirada tirada5 = new Tirada(100L, true, 240);
-            Tirada tirada6 = new Tirada(50L, false, -50L);
-            Tirada tirada7 = new Tirada(100L, false, -1000L);
-            Tirada tirada8 = new Tirada(50L, true, 100L);
-            Tirada tirada9 = new Tirada(5L, false, -5L);
-            Tirada tirada10 = new Tirada(5L, true, 180L);
-            Tirada tirada11= new Tirada(100L, true, 240);
-            Tirada tirada12 = new Tirada(50L, false, -50L);
-            
-            p1.getTiradas().add(tirada1);
-            p1.getTiradas().add(tirada2);
-            p1.getTiradas().add(tirada3);
-            p1.getTiradas().add(tirada4);
-            p1.getTiradas().add(tirada5);
-            p1.getTiradas().add(tirada6);
-            p1.getTiradas().add(tirada7);
-            p1.getTiradas().add(tirada8);
-            p1.getTiradas().add(tirada9);
-            p1.getTiradas().add(tirada10);
-            p1.getTiradas().add(tirada11);
-            p1.getTiradas().add(tirada12);
-            
-            tirada1.setPartida(p1);
-            tirada2.setPartida(p1);
-            tirada3.setPartida(p1);
-            tirada4.setPartida(p1);
-            tirada5.setPartida(p1);
-            tirada6.setPartida(p1);
-            tirada7.setPartida(p1);
-            tirada8.setPartida(p1);
-            tirada9.setPartida(p1);
-            tirada10.setPartida(p1);
-            tirada11.setPartida(p1);
-            tirada12.setPartida(p1);
-            
+           
         
 
     		// Se añaden las partidas a los usuarios
@@ -110,19 +67,6 @@ public class MiCommandLineRunner implements CommandLineRunner {
     		usuario3 = usuarioRepository.save(usuario3);
 
     		p1 = partidaRepository.save(p1);
-    		
-    		tirada1 = tiradaRepository.save(tirada1);
-    		tirada2 = tiradaRepository.save(tirada2);
-    		tirada3 = tiradaRepository.save(tirada3);
-    		tirada4 = tiradaRepository.save(tirada4);
-    		tirada5 = tiradaRepository.save(tirada5);
-    		tirada6 = tiradaRepository.save(tirada6);
-    		tirada7 = tiradaRepository.save(tirada7);
-    		tirada8 = tiradaRepository.save(tirada8);
-    		tirada9 = tiradaRepository.save(tirada9);
-    		tirada10 = tiradaRepository.save(tirada10);
-    		tirada11 = tiradaRepository.save(tirada11);
-    		tirada12 = tiradaRepository.save(tirada12);
-
+  
     }
 }
