@@ -17,6 +17,7 @@ public class Tirada {
 	private long apuesta;
 	private boolean ganado; //boolean
 	private long profit;
+	private int numeroRuleta;
 
 		
 	@ManyToOne
@@ -26,14 +27,26 @@ public class Tirada {
 		apuesta=0L;
 		ganado=false;
 		profit=0L;
+		numeroRuleta=-1;
 	}
 	
-	public Tirada(long apuesta, boolean ganado, long profit) {
+	public Tirada(long apuesta, boolean ganado, long profit, int numeroRuleta) {
 		super();
 		this.apuesta = apuesta;
 		this.ganado = ganado;
 		this.profit = profit;
+		this.numeroRuleta = numeroRuleta;
 	}
+	
+	
+	public int getNumeroRuleta() {
+		return numeroRuleta;
+	}
+
+	public void setNumeroRuleta(int numeroRuleta) {
+		this.numeroRuleta = numeroRuleta;
+	}
+
 	public long getIdTirada() {
 		return idTirada;
 	}

@@ -88,6 +88,8 @@ public class UsuarioController {
 		Tirada tirada = new Tirada();
 		long apuestaJugador = Long.parseLong(numeroFicha);
 		tirada.setApuesta(apuestaJugador);
+		int numeroR = Integer.parseInt(outcome);
+		tirada.setNumeroRuleta(numeroR);
 		System.out.println("Apuesta de la tirada: " + tirada.getApuesta());
 
 		Celda numeroRuleta = null;
