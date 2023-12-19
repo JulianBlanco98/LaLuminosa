@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.BD_ejemplo.model.Celda;
 import com.example.BD_ejemplo.model.Partida;
@@ -47,16 +48,17 @@ public class UsuarioController {
 
 	@PostMapping("/registro")
 	public String addUsuario(Usuario usuario, Model model) {
+		//, RedirectAttributes redirectAttributes
 		System.out.println("\t UsuarioController::addUsuario");
-	
+
 		Usuario aux = usuarioService.crearUsuario(usuario);
-		if(aux==null) {		
+		if (aux == null) {
 			return "Error2";
-		}else {
-		// le pedimos al servicio que nos cree un usuario
-		model.addAttribute("usuarios", aux); // no es estrictamente necesario añadir el
-																				// atributo al model aqu
-		return "redirect:/index.html"; // se registra OK, se redirecciona a la página principal.
+		} else {
+			// le pedimos al servicio que nos cree un usuario
+			model.addAttribute("usuarios", aux);
+			//redirectAttributes.addFlashAttribute("registroOK", true);
+			return "redirect:/index.html"; // se registra OK, se redirecciona a la página principal.
 		}
 	}
 
@@ -65,8 +67,6 @@ public class UsuarioController {
 		System.out.println("\t UsuarioController::showLogin");
 		return "login";
 	}
-
-	
 
 	@PostMapping("/tirada")
 	public ResponseEntity<?> manejarResultado(@RequestParam("outcome") String outcome,
@@ -124,7 +124,7 @@ public class UsuarioController {
 			System.out.println("Has perdido");
 			model.addAttribute("partida", aux);
 			try {
-				Thread.sleep(4000);
+				Thread.sleep(3000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -144,40 +144,38 @@ public class UsuarioController {
 		Partida p = partidaservice.findPartidaByidPartida(partidaID);
 //	    System.out.println("ID PARTIDA: "+partida.getIdPartida()+", dinero:"+partida.getUsuario().getDinero());
 		model.addAttribute("partida", p);
-		model.addAttribute("tirada",p.getTiradas().get(p.getTiradas().size()-1));
+		model.addAttribute("tirada", p.getTiradas().get(p.getTiradas().size() - 1));
 		System.out.println("Controller ganador2");
 
 		return "ganador";
 	}
 
-	
-	
 	@GetMapping("/prueba2/{idPartida}")
 	public String mostrarPagina(@PathVariable Long idPartida, Model model) {
-	    // Lógica para manejar el idPartida, por ejemplo, cargar los datos de la partida desde la base de datos
-	    Partida partida = partidaservice.findPartidaByidPartida(idPartida);
+		// Lógica para manejar el idPartida, por ejemplo, cargar los datos de la partida
+		// desde la base de datos
+		Partida partida = partidaservice.findPartidaByidPartida(idPartida);
 
-	    // Tu lógica aquí
-	    Tablero t = new Tablero();
-	    t.inicializarMatriz();
-	    partida.setTablero(t);
-	    
-	    System.out.println("Vista después de ganador");
-	    System.out.println(partida.getUsuario().getDinero());
-	    model.addAttribute("partida", partida);
-	    return "principal"; // Devuelve el nombre de la vista Thymeleaf
+		// Tu lógica aquí
+		Tablero t = new Tablero();
+		t.inicializarMatriz();
+		partida.setTablero(t);
+
+		System.out.println("Vista después de ganador");
+		System.out.println(partida.getUsuario().getDinero());
+		model.addAttribute("partida", partida);
+		return "principal"; // Devuelve el nombre de la vista Thymeleaf
 	}
-	
+
 	@GetMapping("/index")
-    public String mostrarIndex(Model model) {
+	public String mostrarIndex(Model model) {
 		// Recuperar la partida del modelo
-        Partida partida = (Partida) model.getAttribute("partida");
+		Partida partida = (Partida) model.getAttribute("partida");
 
-        // Tu lógica para mostrar la vista de index con la partida
-        model.addAttribute("partida", partida);
-        return "principal"; // o el nombre de tu vista Thymeleaf
-    }
-
+		// Tu lógica para mostrar la vista de index con la partida
+		model.addAttribute("partida", partida);
+		return "principal"; // o el nombre de tu vista Thymeleaf
+	}
 
 	@PostMapping("/index")
 	public String login(@ModelAttribute Usuario usuario, Model model) {

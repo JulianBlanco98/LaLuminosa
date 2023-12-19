@@ -175,6 +175,7 @@
 								<th>Apuesta</th>
 								<th>Resultado</th>
 								<th>Profit</th>
+								<th>Último Número</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -185,6 +186,7 @@
 								<td th:text="${tirada.apuesta}"></td>
 								<td th:text="${tirada.ganado ? 'Victoria' : 'Derrota'}"></td>
 								<td th:text="${tirada.profit}"></td>
+								<td th:text="${tirada.numeroRuleta}"></td>
 							</tr>
 						</tbody>
 					</table>
