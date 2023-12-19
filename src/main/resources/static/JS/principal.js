@@ -114,7 +114,7 @@ $(document).ready(function() {
 		
 
 		if (parseInt(dinero) < parseInt(numeroFicha)) {
-			alert('El número de ficha debe ser igual o mayor a 100');
+			alert('Estas intentando apostar con '+numeroFicha+'€ y tienes de saldo '+dinero+'€');
 			return;
 		}
 		if (numeroFicha === null) {
