@@ -177,9 +177,13 @@ function drop(event) {
 		var fichaValor = draggedElement.getAttribute('id');
 		numeroFicha = fichaValor.slice(5); //Valor que necesitamos: valor de la ficha
 
+		var profit = calcularProfit(numeroFicha, valorTablero);
+		console.log("Calculo de profit: "+profit);
+		actualizarProfit(profit);
 		console.log("Valor de la ficha: " + numeroFicha);
 		// Hacer lo que quieras con el valor obtenido
 		console.log("Valor del span en el td: " + valorTablero);
+		
 
 		// Desactivar la capacidad de arrastre para todas las fichas
 		var fichas = document.querySelectorAll('.fichas img');
@@ -345,6 +349,7 @@ function resetearFicha() {
 				ficha.draggable = true;
 				ficha.style.cursor = 'grab'; // Establece el cursor a "grab"
 			});
+			actualizarProfit(0);
 
 		} else {
 			console.log('No se encontró el div correspondiente al ID de la imagen.');
@@ -354,4 +359,23 @@ function resetearFicha() {
 		console.log('No hay ficha en el tablero.');
 		alert('No hay ninguna ficha en el tablero');
 	}
+}
+
+function calcularProfit(numeroFicha, valorTablero){
+	var esNumero = !isNaN(valorTablero); //Ver si se ha apostado a número o a casilla de apuesta
+	console.log("Tipo casilla para profit: "+esNumero);
+	var resultado;
+	
+	if(esNumero){ //numero --> multi *36
+		resultado = numeroFicha * 36;
+	}
+	else{ //no número --> apuesta
+		resultado = numeroFicha * 2;
+	}
+	console.log("Resultado PROFIT: "+resultado);
+	return resultado;
+}
+function actualizarProfit(resultado){
+	var elementoProfit=document.getElementById("profit").querySelector('p');
+	elementoProfit.textContent= 'PROFIT: '+resultado+'€';
 }
