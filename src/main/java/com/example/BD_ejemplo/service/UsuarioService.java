@@ -8,7 +8,7 @@ public interface UsuarioService {
 	
 	public List<Usuario> findUsuarios();
 	
-	public Iterable<Usuario> crearUsuario(Usuario u);
+	public Usuario crearUsuario(Usuario u);
 	
     public Usuario findUsuarioByNombreYContrasena(String nombre, String contrasena);
     
