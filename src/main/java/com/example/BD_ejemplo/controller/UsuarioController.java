@@ -48,14 +48,7 @@ public class UsuarioController {
 	@PostMapping("/registro")
 	public String addUsuario(Usuario usuario, Model model) {
 		System.out.println("\t UsuarioController::addUsuario");
-		/// logica de validacion de usuarios, email correcto, repetido o no?, nombre
-		/// usuario repetido, formato....
-		//
-		// Esquema común:
-		// Si hay errores entonces
-		// devolver la misma vista;
-		// Yo no escribo la logica de control de errores. Sorry :(.
-		// Pista: Spring y Thymeleaf proporcionan formas de validar datos...
+	
 		Usuario aux = usuarioService.crearUsuario(usuario);
 		if(aux==null) {		
 			return "Error2";
