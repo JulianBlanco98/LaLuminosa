@@ -18,10 +18,8 @@ public class Partida {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idPartida;
-	public long tiempo;
 	public int victoria;
 	public int derrota;
-	public long profit;
 
 	@OneToMany(mappedBy = "partida", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<Tirada> tiradas = new ArrayList<>();
@@ -43,20 +41,16 @@ public class Partida {
 		fichas.add(new Ficha(20));
 		fichas.add(new Ficha(50));
 		fichas.add(new Ficha(100));
-		tiempo = 0L;
 		victoria = 0;
 		derrota = 0;
-		profit = 0;
 		tablero = new Tablero();
 
 	}
 
 	public Partida(long tiempo, int victoria, int derrota, long profit, Usuario usuario) {
 		super();
-		this.tiempo = tiempo;
 		this.victoria = victoria;
 		this.derrota = derrota;
-		this.profit = profit;
 		this.usuario = usuario;
 	}
 
@@ -77,14 +71,6 @@ public class Partida {
 		this.idPartida = idPartida;
 	}
 
-	public long getTiempo() {
-		return tiempo;
-	}
-
-	public void setTiempo(long tiempo) {
-		this.tiempo = tiempo;
-	}
-
 	public int getVictoria() {
 		return victoria;
 	}
@@ -99,14 +85,6 @@ public class Partida {
 
 	public void setDerrota(int derrota) {
 		this.derrota = derrota;
-	}
-
-	public long getProfit() {
-		return profit;
-	}
-
-	public void setProfit(long profit) {
-		this.profit = profit;
 	}
 
 	public Usuario getUsuario() {
@@ -127,8 +105,8 @@ public class Partida {
 
 	@Override
 	public String toString() {
-		return "Partida [idPartida=" + idPartida + ", tiempo=" + tiempo + ", victoria=" + victoria + ", derrota="
-				+ derrota + ", profit=" + profit + "]";
+		return "Partida [idPartida=" + idPartida + ", victoria=" + victoria + ", derrota="
+				+ derrota +"]";
 	}
 
 	public Tablero getTablero() {
