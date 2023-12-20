@@ -5,7 +5,11 @@ let valorTablero;
 let numeroFicha = null;
 let dinero;
 
+var ruta = '../Recursos/Sonidos/novamas.mp3';
+console.log('Ruta del archivo de audio:', ruta);
 
+let audiNovaMas = new Audio('../Recursos/Sonidos/novamas.mp3');
+console.log("Existe el audio: "+audiNovaMas);
 
 $(document).ready(function() {
 	//setup multiple rows of colours, can also add and remove while spinning but overall this is easier.
@@ -123,6 +127,7 @@ $(document).ready(function() {
 		//Código de principal
 		btnPresionado = true;
 		$(this).find('span.button_lg').css('background-color', 'gray');
+		audiNovaMas.play();
 		var outcome = Math.floor(Math.random() * 38);
 		console.log("Valor de la ruleta: " + outcome)
 		sendOutcomeToController(outcome, clasePartida, valorTablero, numeroFicha);
