@@ -5,11 +5,7 @@ let valorTablero;
 let numeroFicha = null;
 let dinero;
 
-var ruta = '../Recursos/Sonidos/novamas.mp3';
-console.log('Ruta del archivo de audio:', ruta);
-
 let audiNovaMas = new Audio('../Recursos/Sonidos/novamas.mp3');
-console.log("Existe el audio: "+audiNovaMas);
 
 $(document).ready(function() {
 	//setup multiple rows of colours, can also add and remove while spinning but overall this is easier.
