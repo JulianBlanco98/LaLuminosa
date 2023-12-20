@@ -43,18 +43,18 @@ class BdEjemploApplicationTestsPartidaTirada {
 
 		// Rellenamos los datos de partidas: usuario1 tendrá 2 partidas, usuario2 tendrá
 		// 1 y usuario 3: 0
-		p1.setTiempo(3000L);
+		/*p1.setTiempo(3000L);
 		p2.setTiempo(4000L);
-		p3.setTiempo(500L);
+		p3.setTiempo(500L);*/
 		p1.setVictoria(6);
 		p2.setVictoria(4);
 		p3.setVictoria(10);
 		p1.setDerrota(3);
 		p2.setDerrota(6);
 		p3.setDerrota(4);
-		p1.setProfit(35L);
+		/*p1.setProfit(35L);
 		p2.setProfit(-35L);
-		p3.setProfit(10L);
+		p3.setProfit(10L);*/
 		
 		//creamos 2 tiradas
 		Tirada t1 = new Tirada();

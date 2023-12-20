@@ -149,7 +149,8 @@ public class Tablero {
 	public void imprimirColor() {
 		for (int i = 0; i < fila; i++) {
 			for (int j = 0; j < columna; j++) {
-				System.out.print("| " + tablero[i][j].getColor() + " | ");
+				//System.out.print("| " + tablero[i][j].getColor() + " | ");
+				System.out.printf("| %5s |", tablero[i][j].getColor());
 			}
 			System.out.println();
 		}
@@ -180,7 +181,8 @@ public class Tablero {
 	public void imprimirTipo() {
 		for (int i = 0; i < fila; i++) {
 			for (int j = 0; j < columna; j++) {
-				System.out.print("| " + tablero[i][j].getTipo() + " | ");
+				//System.out.print("| " + tablero[i][j].getTipo() + " | ");
+				System.out.printf("| %2d |", tablero[i][j].getTipo());
 			}
 			System.out.println();
 		}
