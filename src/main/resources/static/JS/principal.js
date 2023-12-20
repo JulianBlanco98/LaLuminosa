@@ -106,15 +106,14 @@ $(document).ready(function() {
 		spanElementLast.innerText = '';
 	}
 	$('#jugar').on('click', function() {
-		
-		if(btnPresionado){
-			//Poner gris background boton
+
+		if (btnPresionado) {
 			return;
 		}
-		
+
 
 		if (parseInt(dinero) < parseInt(numeroFicha)) {
-			alert('Estas intentando apostar con '+numeroFicha+'€ y tienes de saldo '+dinero+'€');
+			alert('Estas intentando apostar con ' + numeroFicha + '€ y tienes de saldo ' + dinero + '€');
 			return;
 		}
 		if (numeroFicha === null) {
@@ -123,6 +122,7 @@ $(document).ready(function() {
 		}
 		//Código de principal
 		btnPresionado = true;
+		$(this).find('span.button_lg').css('background-color', 'gray');
 		var outcome = Math.floor(Math.random() * 38);
 		console.log("Valor de la ruleta: " + outcome)
 		sendOutcomeToController(outcome, clasePartida, valorTablero, numeroFicha);
@@ -178,12 +178,12 @@ function drop(event) {
 		numeroFicha = fichaValor.slice(5); //Valor que necesitamos: valor de la ficha
 
 		var profit = calcularProfit(numeroFicha, valorTablero);
-		console.log("Calculo de profit: "+profit);
+		console.log("Calculo de profit: " + profit);
 		actualizarProfit(profit);
 		console.log("Valor de la ficha: " + numeroFicha);
 		// Hacer lo que quieras con el valor obtenido
 		console.log("Valor del span en el td: " + valorTablero);
-		
+
 
 		// Desactivar la capacidad de arrastre para todas las fichas
 		var fichas = document.querySelectorAll('.fichas img');
@@ -330,6 +330,8 @@ function resetearFicha() {
 	var imagenFicha = fichaEnTablero.querySelector('img');
 	console.log(imagenFicha);
 
+	numeroFicha = null;
+
 	if (imagenFicha) {
 		var idDeLaImagen = imagenFicha.id;
 		idDeLaImagen = idDeLaImagen.slice(5);
@@ -361,21 +363,21 @@ function resetearFicha() {
 	}
 }
 
-function calcularProfit(numeroFicha, valorTablero){
+function calcularProfit(numeroFicha, valorTablero) {
 	var esNumero = !isNaN(valorTablero); //Ver si se ha apostado a número o a casilla de apuesta
-	console.log("Tipo casilla para profit: "+esNumero);
+	console.log("Tipo casilla para profit: " + esNumero);
 	var resultado;
-	
-	if(esNumero){ //numero --> multi *36
+
+	if (esNumero) { //numero --> multi *36
 		resultado = numeroFicha * 36;
 	}
-	else{ //no número --> apuesta
+	else { //no número --> apuesta
 		resultado = numeroFicha * 2;
 	}
-	console.log("Resultado PROFIT: "+resultado);
+	console.log("Resultado PROFIT: " + resultado);
 	return resultado;
 }
-function actualizarProfit(resultado){
-	var elementoProfit=document.getElementById("profit").querySelector('p');
-	elementoProfit.textContent= 'PROFIT: '+resultado+'€';
+function actualizarProfit(resultado) {
+	var elementoProfit = document.getElementById("profit").querySelector('p');
+	elementoProfit.textContent = 'PROFIT: ' + resultado + '€';
 }
