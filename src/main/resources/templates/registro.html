@@ -14,7 +14,7 @@
 	<header>
 
 	</header>
-	
+
 	<div class="container mt-5 col-md-6">
 		<div class="card">
 			<div class="card-body">
@@ -89,6 +89,28 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			var form = document.querySelector('form');
+
+			form.addEventListener('submit', function (event) {
+				// Validar la longitud de la contraseña
+				var passwordInput = document.getElementById('inputContraseña');
+				if (passwordInput.value.length < 5) {
+					alert('La contraseña debe tener al menos 5 caracteres.');
+					event.preventDefault();
+				}
+
+				// Validar la edad
+				var edadInput = document.getElementById('inputEdad');
+				if (parseInt(edadInput.value) < 18) {
+					alert('La edad debe ser mayor de 18 años.');
+					event.preventDefault();
+				}
+			});
+		});
+	</script>
+
 
 	<footer>
 
