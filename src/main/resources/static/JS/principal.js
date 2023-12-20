@@ -5,7 +5,7 @@ let valorTablero;
 let numeroFicha = null;
 let dinero;
 
-let audiNovaMas = new Audio('../Recursos/Sonidos/novamas.mp3');
+let audiNovaMas = new Audio('../Recursos/Sonidos/novamas3.mp3');
 
 $(document).ready(function() {
 	//setup multiple rows of colours, can also add and remove while spinning but overall this is easier.
