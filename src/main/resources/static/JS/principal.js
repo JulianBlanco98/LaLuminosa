@@ -291,10 +291,10 @@ function spinWheel(roll) {
 }
 
 function sendOutcomeToController(outcome, clasePartida, valorTablero, numeroFicha) {
-	console.log(valorTablero)
+	//Petición de envío al controlador
 	$.ajax({
 		type: 'POST',
-		url: '/tirada', // Reemplaza esto con la URL correcta de tu controlador
+		url: '/tirada',
 		data: {
 			outcome: outcome,
 			clasePartida: clasePartida,
@@ -302,7 +302,7 @@ function sendOutcomeToController(outcome, clasePartida, valorTablero, numeroFich
 			numeroFicha: numeroFicha
 		},
 		success: function(response) {
-			// Manejar la respuesta del controlador si es necesario
+			// Manejar la respuesta del controlador
 			console.log('Solicitud AJAX exitosa:', response);
 
 			if (response.gano) {

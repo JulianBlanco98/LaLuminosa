@@ -29,7 +29,7 @@
 		.card {
 			border: 2px solid black;
 		}
-		
+
 		.card-body p {
 			font-weight: bold;
 			font-size: 20px;
@@ -40,9 +40,11 @@
 			height: 100vh;
 			position: absolute;
 		}
+
 		.fondo-ganado {
 			background-image: linear-gradient(to top, #00a600, #0fb80a, #1bc915, #26dc1e, #2fee26);
 		}
+
 		.fondo-noganado {
 			background-image: linear-gradient(to top, #c90000, #d30018, #dc002a, #e4053b, #eb124b);
 		}
@@ -84,9 +86,6 @@
 
 
 	<div class="container d-flex align-items-center justify-content-center" style="height: 100vh;">
-
-
-
 		<div class="card col-xxl-9 ganador text-center shadow-lg bg-body-tertiary rounded" th:if="${tirada.ganado}">
 			<div class="row g-0">
 				<div class="col-md-4 d-flex align-items-center">
@@ -99,8 +98,6 @@
 						<div class="card-header text-center">
 							<h4 class="display-2">Has ganado!</h4>
 						</div>
-						<!-- <h5 class="card-title">¡HAS GANADO!</h5> -->
-						<!-- GANANCIAS O PERDIDAS -->
 						<div class="apuesta5 mt-4" th:if="${tirada.apuesta == 5}">
 							<p class="card-text">HAS APOSTADO 5 €</p>
 						</div>
@@ -131,7 +128,7 @@
 		<div class="card col-xxl-9 ganador text-center shadow-lg bg-body-tertiary rounded" th:if="${not tirada.ganado}">
 			<div class="row g-0">
 				<div class="col-md-4 d-flex align-items-center">
-					
+
 					<img src="../static/Recursos/Fichas/100.png"
 						th:src="@{'/Recursos/Fichas/' + ${tirada.apuesta} + '.png'}" class="img-fluid rounded-start"
 						alt="...">
