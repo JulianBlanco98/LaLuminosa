@@ -49,8 +49,8 @@
 			background-image: linear-gradient(to top, #c90000, #d30018, #dc002a, #e4053b, #eb124b);
 		}
 	</style>
-	<audio id="audioGanado" th:src="@{/Recursos/Sonidos/novamas3.mp3}" preload="auto"></audio>
-	<audio id="audioPerdido" th:src="@{/Recursos/Sonidos/novamas.mp3}" preload="auto"></audio>
+	<audio id="audioGanado" th:src="@{/Recursos/Sonidos/ganador.mp3}" preload="auto"></audio>
+	<audio id="audioPerdido" th:src="@{/Recursos/Sonidos/perdedor.mp3}" preload="auto"></audio>
 </head>
 
 <body>
@@ -223,7 +223,6 @@
 <script th:inline="javascript">
 	var ganado = /*[[${tirada.ganado}]]*/ false;
 	console.log("Ganado: "+ganado);
-	// Obtén la referencia a los elementos de audio
 	var audioGanado = document.getElementById('audioGanado');
 	var audioPerdido = document.getElementById('audioPerdido');
 
