@@ -21,7 +21,7 @@ public class main_prueba {
     	System.out.println("MATRIZ PAR/IMPAR");
     	t.imprimirpParImopar();
     	System.out.println("--------------------------------------------------");
-    	System.out.println("MATRIZ TIPO: 0(0 verde), 1(número), 2(apuestas)");
+    	System.out.println("MATRIZ TIPO: 0(0 verde), 1(número), 2(apuestas par/impar), 3(apuestas rojo/negro)");
     	t.imprimirTipo();
     	
     	
