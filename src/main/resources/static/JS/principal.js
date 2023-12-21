@@ -23,6 +23,9 @@ $(document).ready(function() {
 	// Obtén el valor del contenido del <span>
 	dinero = spanElement.textContent;
 	console.log("DINERO..............." + dinero);
+	if (parseInt(dinero) <= 0) {
+		alert('No tienes dinero. Tienes que crearte una cuenta nueva para poder jugar.');
+	}
 	// Ahora 'clasePartida' contiene la clase del elemento con id "prueba"
 	console.log(clasePartida);
 
@@ -105,6 +108,9 @@ $(document).ready(function() {
 		var spanElementLast = cellsWithMinusOne[cellsWithMinusOne.length - 2].querySelector('span');
 		spanElementLast.innerText = '';
 	}
+
+	
+
 	$('#jugar').on('click', function() {
 
 		if (btnPresionado) {
@@ -116,6 +122,7 @@ $(document).ready(function() {
 			alert('Estas intentando apostar con ' + numeroFicha + '€ y tienes de saldo ' + dinero + '€');
 			return;
 		}
+
 		if (numeroFicha === null) {
 			alert('Tienes que poner una ficha para poder jugar');
 			return;
