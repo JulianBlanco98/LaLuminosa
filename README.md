@@ -6,6 +6,8 @@ Proyecto Final de la Asignatura de Metodología y Desarrollo de Aplicaciones Int
 
 Proyecto creado para conocer el framework de SpringBoot para la creación de una aplicación web en conjunto con Thymeleaf para la vista. Se usa el patrón Modelo - Vista - Controlador (MVC)
 
+La aplicación web consiste en una ruleta básica de casino donde se pueden hacer diferentes apuestas sobre un tablero. Tiene un sistema de login y registro para verificar que no hay 2 usuarios iguales y que solo pueden jugar a la ruleta aquellos usuarios que se hayan logueado.
+
 ## Autores (contributors)
 
 [@Julián Blanco González](https://github.com/JulianBlanco98)
